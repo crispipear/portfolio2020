@@ -1,0 +1,84 @@
+$primary: #2d2d31;
+$secondary: #676767;
+$background: #fcfcfc;
+$priFont: 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
+'Fira Sans', 'Droid Sans', sans-serif;
+$secFont: 'Lora', Georgia, 'Times New Roman', Times, serif;
+$priReg: 400;
+$priMed: 500;
+$priBold: 600;
+$secReg: 400;
+$secBold: 600;
+
+.color-primary{
+    color: $primary;
+}
+.color-secondary{
+    color: $secondary;
+}
+.text-sec-reg{
+    font-family: $secFont;
+    font-weight: $secReg;
+}
+.text-sec-bold{
+    font-family: $secFont;
+    font-weight: $secBold;
+}
+.font-size-xxl{
+    font-size: 3rem;
+}
+.font-size-xl{
+    font-size: 2.4rem;
+}
+.font-size-l{
+    font-size: 2em;
+}
+.font-size-m{
+    font-size: 1.4rem;
+}
+.font-size-s{
+    font-size: 1rem;
+}
+.font-size-xs{
+    font-size: 0.92rem;
+}
+.grid-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+    margin: 32px 0;
+}
+.link-hover{
+    display: inline-block;
+    text-decoration: none;
+    color: $primary;
+    font-weight: $priBold;
+    position: relative;
+    transition: all 0.16s;
+    &:before, &:after{
+      transition: all 0.16s;
+      left: 0;
+      width: 100%;
+      position: absolute;
+      z-index: -1;
+      content: '';
+      background: $primary;
+    }
+    &:before{
+      height: 1px;
+      bottom: 0;
+      left: 0;
+    }   
+    &:after{
+      top: 0;
+      height: 100%;
+      opacity: 0;
+    }
+    &:hover:after{
+      opacity: 1;
+    }
+    &:hover{
+      color: white;
+      font-style: italic;
+    }
+  }
