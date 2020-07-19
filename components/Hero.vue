@@ -1,11 +1,18 @@
 <template>
     <div class="hero" v-if="introData">
-        <div>
-            <h1>{{introData.intro_header}}</h1>
+        <div class="scroll-indicator">
+            <div class="scroll">
+                <div class="scroll-line"></div>
+            </div>
         </div>
         <div>
-            <h2>{{introData.content_primary}}</h2>
-            <h2>{{introData.content_secondary}}</h2>
+            <span>design x</span>
+            <span>technology</span>
+        </div>
+        <div>
+            <prismic-rich-text :field="introData.intro_header"/>
+            <prismic-rich-text :field="introData.content_primary"/>
+            <prismic-rich-text :field="introData.content_secondary"/>
         </div>
     </div>
 </template>
@@ -18,24 +25,18 @@ export default {
 </script>
 <style lang="scss">
     .hero{
-        padding: 8%;
         display: flex;
-        flex-direction: row;
-        div:first-of-type{
-            flex: 1;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 82vh;
+        position: relative;
+        padding-bottom: 8%;
+        p{
+            @extend .fs-m;
+            @extend .text-on-dark;
         }
-        div:last-of-type{
-            flex: 2;
-        }
-        h1{
-           @extend .text-sec-bold;
-           @extend .color-primary;
-           @extend .font-size-xl;
-        }
-        h2{
-           @extend .text-sec-reg;
-           @extend .color-secondary;
-           @extend .font-size-m;
+        span{
+            @extend .text-stroked;
         }
     }
 </style>

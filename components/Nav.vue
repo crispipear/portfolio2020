@@ -16,7 +16,9 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        padding: 2% 12.5%;
+        padding: 2.5% 12.5%;
+        color: $light;
+        z-index: 100;
     }
     nav a{
         text-decoration: none;
@@ -42,8 +44,7 @@
         }
     }
     .nav-head{
-        @extend .color-primary;
-        @extend .font-size-m;
-        @extend .text-sec-bold;
+        @extend .fs-m;
+        @extend .fw-m;
     }
 </style>

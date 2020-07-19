@@ -14,7 +14,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=2' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Heebo:wght@300;400&display=swap' }
     ]
   },
   components: true,
@@ -30,7 +30,8 @@ export default {
   styleResources: {
     scss: [
         '~/assets/variables.scss',
-        '~/assets/mixins.scss'
+        '~/assets/mixins.scss',
+        '~/assets/scroller.scss'
     ]
   }
 }

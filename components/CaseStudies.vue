@@ -22,21 +22,13 @@ export default {
 
 <style lang="scss">
     .case-studies h2{
-        @extend .font-size-m;
-        @extend .color-primary;
-        @extend .text-sec-reg;
         margin-bottom: 4%;
     }
     .case-study-item{
         @extend .grid-container;
         h3{
-            @extend .font-size-m;
-            @extend .text-sec-bold;
         }
         h4{
-            @extend .font-size-s;
-            @extend .color-secondary;
-            font-weight: $priReg;
         }
         img{
             width: 100%;

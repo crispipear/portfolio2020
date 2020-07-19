@@ -1,46 +1,43 @@
-$primary: #2d2d31;
-$secondary: #676767;
-$background: #fcfcfc;
-$priFont: 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
+$dark: #121314;
+$med: #acacac;
+$light: #ffffff;
+$priFont: 'Heebo', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
 'Fira Sans', 'Droid Sans', sans-serif;
-$secFont: 'Lora', Georgia, 'Times New Roman', Times, serif;
-$priReg: 400;
-$priMed: 500;
-$priBold: 600;
-$secReg: 400;
-$secBold: 600;
 
-.color-primary{
-    color: $primary;
+.fw-b{
+    font-weight: 600;
 }
-.color-secondary{
-    color: $secondary;
+.fw-m{
+    font-weight: 400;
 }
-.text-sec-reg{
-    font-family: $secFont;
-    font-weight: $secReg;
+.fw-r{
+    font-weight: 300;
 }
-.text-sec-bold{
-    font-family: $secFont;
-    font-weight: $secBold;
-}
-.font-size-xxl{
-    font-size: 3rem;
-}
-.font-size-xl{
+
+.fs-xxl{
     font-size: 2.4rem;
 }
-.font-size-l{
-    font-size: 2em;
+.fs-xl{
+    font-size: 2rem;
 }
-.font-size-m{
-    font-size: 1.4rem;
+.fs-l{
+    font-size: 1.6em;
 }
-.font-size-s{
+.fs-m{
+    font-size: 1.3rem;
+}
+.fs-s{
     font-size: 1rem;
 }
-.font-size-xs{
+.fs-xs{
     font-size: 0.92rem;
+}
+.text-on-dark{
+    @extend .fw-r;
+    color: $med;
+    strong, b{
+        color: $light;
+    }
 }
 .grid-container{
     display: grid;
@@ -48,21 +45,33 @@ $secBold: 600;
     column-gap: 32px;
     margin: 32px 0;
 }
-.link-hover{
+.text-stroked{
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: $med;
+    @extend .fw-b;
+    display: block;
+    text-align: right;
+    line-height: 1.2;
+    font-size: 6.4rem;
+    opacity: 0.4;
+    letter-spacing: 0.3rem;
+    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', 'Arial', -apple-system, BlinkMacSystemFont, 'Oxygen',
+    'Fira Sans', 'Droid Sans', sans-serif;
+}
+.link-hover-light, .link-hover-dark{
     display: inline-block;
     text-decoration: none;
-    color: $primary;
-    font-weight: $priBold;
     position: relative;
-    transition: all 0.16s;
+    transition: all 0.1s;
+    @extend .fw-m;
     &:before, &:after{
-      transition: all 0.16s;
+      transition: all 0.1s;
       left: 0;
       width: 100%;
       position: absolute;
       z-index: -1;
       content: '';
-      background: $primary;
     }
     &:before{
       height: 1px;
@@ -70,15 +79,33 @@ $secBold: 600;
       left: 0;
     }   
     &:after{
-      top: 0;
-      height: 100%;
+      bottom: 0;
+      height: 0%;
       opacity: 0;
     }
     &:hover:after{
+      height: 100%;
       opacity: 1;
     }
     &:hover{
-      color: white;
       font-style: italic;
     }
   }
+  .link-hover-dark{
+    color: $dark;
+    &:before, &:after{
+      background: $dark;
+    }
+    &:hover{
+      color: white;
+    }
+}
+.link-hover-light{
+    color: $light;
+    &:before, &:after{
+        background: $light;
+    }
+    &:hover{
+        color: $dark;
+    }
+}

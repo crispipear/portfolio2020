@@ -25,5 +25,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  body{
+    background: $dark;
+  }
 </style>

@@ -1,18 +1,18 @@
 <template>
 <section id="about">
+    <span class="text-stroked">{{intro_header}}</span>
     <img src="/about.jpg"/>
     <div class="about-content-block">
         <div>
-            <h1>{{intro_header}}</h1>
-            <h2>{{intro_sub_header}}</h2>
+            <h1>{{intro_sub_header}}</h1>
         </div>
         <div>
-            <prismic-rich-text :field="intro_text"/>
+            <prismic-rich-text :field="intro_text" class="text-on-dark"/>
         </div>
     </div>
     <div class="about-content-block">
         <div>
-            <h2>{{skills_header}}</h2>
+            <h1>{{skills_header}}</h1>
         </div>
         <div class="about-skills">
             <span v-for="item in skills"
@@ -23,17 +23,10 @@
     </div>
     <div class="about-content-block">
         <div>
-            <h2>{{xp_header}}</h2>
+            <h1>{{connect_header}}</h1>
         </div>
         <div>
-        </div>
-    </div>
-    <div class="about-content-block">
-        <div>
-            <h2>{{connect_header}}</h2>
-        </div>
-        <div>
-            <prismic-rich-text :field="connect_text"/>
+            <prismic-rich-text :field="connect_text" class="text-on-dark"/>
         </div>
     </div>
 </section>
@@ -42,7 +35,6 @@
 export default {
   async asyncData({app}) {
     const aboutDoc = await app.$prismic.api.getSingle('about');
-    console.log(aboutDoc.data);
     return {
         ...aboutDoc.data
     }
@@ -51,36 +43,37 @@ export default {
 </script>
 <style lang="scss">
     #about{
-        h1{
-            @extend .text-sec-bold;
-            @extend .font-size-l;
+        .text-stroked{
+            margin-bottom: 4%;
         }
-        h2{
-            @extend .text-sec-reg;
-            @extend .font-size-m;
+        h1{
+            color: $light;
+            @extend .fs-m;
         }
         img{
             width: 50%;
-            filter: grayscale(100%);
+            filter: grayscale(100%) contrast(120%) brightness(60%);
         }
     }
     .about-skills{
         @extend .grid-container;
         grid-template-columns: repeat(3, 1fr);
         margin: 0;
-        column-gap: 8px;
-        row-gap: 8px;
+        column-gap: 12px;
+        row-gap: 12px;
         span{
-            background-color: lighten($secondary, 52.5%);
+            @extend .fs-xs;
+            color: $light;
+            background-color: lighten($dark, 5%);
             text-align: center;
             padding: 12px 0;
         }
     }
     .about-content-block{
         a{
-            @extend .link-hover;
+            @extend .link-hover-light;
         }
         @extend .grid-container;
-        margin: 48px 0;
+        margin: 12% 0;
     }
 </style>
