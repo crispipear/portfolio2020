@@ -15,13 +15,13 @@ $priFont: 'Heebo', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFo
 }
 
 .fs-xxl{
-    font-size: 2.4rem;
+    font-size: 3.2rem;
 }
 .fs-xl{
-    font-size: 2rem;
+    font-size: 2.4rem;
 }
 .fs-l{
-    font-size: 1.6em;
+    font-size: 2em;
 }
 .fs-m{
     font-size: 1.3rem;
@@ -39,6 +39,10 @@ $priFont: 'Heebo', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFo
         color: $light;
     }
 }
+.header-on-dark{
+    @extend .fw-m;
+    color: $light;
+}
 .grid-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -46,19 +50,20 @@ $priFont: 'Heebo', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFo
     margin: 32px 0;
 }
 .text-stroked{
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: rgba($light, 0);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: $med;
     @extend .fw-b;
     display: block;
     text-align: right;
-    line-height: 1.2;
-    font-size: 6.4rem;
     opacity: 0.4;
+    font-size: 6.4rem;
     letter-spacing: 0.3rem;
+    line-height: 1.2;
     font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', 'Arial', -apple-system, BlinkMacSystemFont, 'Oxygen',
     'Fira Sans', 'Droid Sans', sans-serif;
 }
+
 .link-hover-light, .link-hover-dark{
     display: inline-block;
     text-decoration: none;

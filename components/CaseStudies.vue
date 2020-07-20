@@ -1,12 +1,11 @@
 <template>
     <div class="case-studies wrapper" v-if="data">
-        <h2>case studies</h2>
+        <span class="text-stroked">case studies</span>
         <div class="case-study-item" v-for="item in data">
             <img :src="item.cover.url" :alt="item.name + ' image'"/>
             <div class="case-study-info">
                 <h3>{{item.name}}</h3>
                 <h4>{{item.context}}</h4>
-                <nuxt-link class="link-hover" :to="'/casestudy/' + item.ref">learn more &#10230;</nuxt-link>
             </div>
         </div>
     </div>
@@ -21,27 +20,56 @@ export default {
 </script>
 
 <style lang="scss">
-    .case-studies h2{
-        margin-bottom: 4%;
+    .case-studies{
+        span{
+           margin-bottom: 4%;
+        }
     }
     .case-study-item{
+        margin: 12% 0;
         @extend .grid-container;
+        grid-template-columns: 1.25fr 1fr;
+        align-items: center;
+        column-gap: 0;
+        .case-study-info{
+            z-index: 2;
+        }
         h3{
+            cursor: pointer;
+            @extend .link-hover-light;
+            @extend .fs-xl;
+            line-height: 1;
+            margin-bottom: 2%;
         }
         h4{
+            color: $light;
+            @extend .fw-r;
+            @extend .fs-s;
         }
         img{
+            z-index: 1;
             width: 100%;
-            height: 200px;
+            height: 32vh;
             object-fit: cover;
-            filter: grayscale(100%);
-            transition: all 0.16s;
+            filter: grayscale(100%) brightness(50%) contrast(120%);
+            transition: all 0.2s ease-in-out;
+            clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
         }
-        .link-hover{
-            margin-top: 12px;
+        &:nth-child(even){
+            .case-study-info{
+                margin: 0% 0% 0% -12%;
+            }
         }
-        &:hover img{
-            filter: none;
+        &:nth-child(odd){
+            direction: rtl;
+            .case-study-info{
+                margin: 0% -12% 0% 0%;
+            }
+        }
+        &:hover{
+            img{
+                clip-path: polygon(5% 0, 100% 0%, 95% 100%, 0% 100%);
+            }
         }
     }
 </style>
