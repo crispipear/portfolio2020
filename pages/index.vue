@@ -2,6 +2,7 @@
   <section id="home">
     <Hero :introData="introData"/>
     <CaseStudies :data="caseStudies"/>
+    <Projects :data="projects"/>
   </section>
 </template>
 
@@ -10,7 +11,8 @@ export default {
   async asyncData({app}) {
     const introDoc = await app.$prismic.api.getSingle('intro');
     const projectsDoc = await app.$prismic.api.query(
-      app.$prismic.predicates.at('document.type', 'project')
+      app.$prismic.predicates.at('document.type', 'project'),
+      {orderings: '[my.project.order_id]'}
     );
     const csDoc = await app.$prismic.api.query(
       app.$prismic.predicates.at('document.type', 'case_study'),

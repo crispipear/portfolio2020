@@ -62,10 +62,7 @@ export default {
         column-gap: 12px;
         row-gap: 12px;
         span{
-            @extend .fs-xs;
-            color: $light;
-            background-color: lighten($dark, 5%);
-            text-align: center;
+            @extend .tag-item;
             padding: 12px 0;
         }
     }

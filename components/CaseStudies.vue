@@ -20,11 +20,6 @@ export default {
 </script>
 
 <style lang="scss">
-    .case-studies{
-        span{
-           margin-bottom: 4%;
-        }
-    }
     .case-study-item{
         margin: 12% 0;
         @extend .grid-container;
