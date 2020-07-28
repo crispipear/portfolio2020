@@ -1,23 +1,23 @@
 <template>
-  <div id="content__wrapper">
-    <Nav />
+  <div id="cs__wrapper">
+    <Nav mode="on_light"/>
     <Nuxt />
   </div>
 </template>
 <script>
     export default {
-        name: 'default',
+        name: 'caseStudies',
         head() {
             return {
                 bodyAttrs: {
-                    class: 'default-layout'
+                    class: 'case-studies-layout'
                 }
             }
         }
     }
 </script>
 <style lang="scss">
-  body.default-layout{
-    background: $dark;
+  body.case-studies-layout{
+    background: $light;
   }
 </style>

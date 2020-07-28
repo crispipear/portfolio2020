@@ -1,10 +1,32 @@
 <template>
     <nav>
         <nuxt-link data-text="syl." class="nav-head" to="/">syl.</nuxt-link>
-        <nuxt-link data-text="about" to="/about">about</nuxt-link>
+        <nuxt-link v-if="currentRoute === 'index'" data-text="about" to="/about">about</nuxt-link>
+        <nuxt-link v-if="currentRoute === 'about'" data-text="work" to="/">work</nuxt-link>
     </nav>
 </template>
-
+<script>
+    export default {
+        data() {
+            return {
+                currentRoute: ''
+            }
+        },
+        watch:{
+            '$route' (to, from){
+               this.updateRouteName();
+            }
+        },
+        mounted(){
+            this.updateRouteName();
+        },
+        methods: {
+            updateRouteName: function() {
+                this.currentRoute = this.$route.name
+            }
+        }
+    }
+</script>
 <style lang="scss">
     nav{
         position: fixed;

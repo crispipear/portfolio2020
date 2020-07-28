@@ -4,7 +4,9 @@
         <div class="case-study-item" v-for="item in data">
             <img :src="item.cover.url" :alt="item.name + ' image'"/>
             <div class="case-study-info">
-                <h3>{{item.name}}</h3>
+                <nuxt-link :to="'/casestudies/' + item.ref">
+                    <h3>{{item.name}}</h3>
+                </nuxt-link>
                 <h4>{{item.context}}</h4>
             </div>
         </div>
@@ -38,7 +40,6 @@ export default {
         }
         h4{
             color: $light;
-            @extend .fw-r;
             @extend .fs-s;
         }
         img{

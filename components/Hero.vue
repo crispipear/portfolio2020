@@ -34,6 +34,7 @@ export default {
         p{
             @extend .fs-m;
             @extend .text-on-dark;
+            margin: 0 0 1rem;
         }
         span{
             @extend .text-stroked;

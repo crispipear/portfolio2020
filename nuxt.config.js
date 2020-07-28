@@ -29,9 +29,15 @@ export default {
   },
   styleResources: {
     scss: [
-        '~/assets/variables.scss',
-        '~/assets/mixins.scss',
-        '~/assets/scroller.scss'
+      '~/assets/variables.scss',
+      '~/assets/mixins.scss',
+      '~/assets/scroller.scss',
+      '~/assets/default.scss',
     ]
+  },
+  build: {
+    splitChunks: {
+      layouts: true
+    }
   }
 }

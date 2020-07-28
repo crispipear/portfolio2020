@@ -4,7 +4,7 @@
         <div class="projects-container">
             <div class="projects-item" v-for="(item, index) in data">
                 <img :src="item.cover.url" :alt="'image-' + item.name"/>
-                <h3>{{item.name}}</h3>
+                <a :href="item.link.url" target="_blank"><h3>{{item.name}}</h3></a>
                 <div class="projects-item-tags">
                     <span v-for="t in data[index].tags">
                         {{t.tag}}
@@ -20,6 +20,9 @@
 export default {
     props: {
         data: Array
+    },
+    mounted() {
+        console.log(this.$store.state)
     }
 }
 </script>

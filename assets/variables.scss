@@ -21,7 +21,7 @@ $priFont: 'Heebo', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFo
     font-size: 2.4rem;
 }
 .fs-l{
-    font-size: 2em;
+    font-size: 1.6em;
 }
 .fs-m{
     font-size: 1.3rem;
@@ -31,6 +31,9 @@ $priFont: 'Heebo', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFo
 }
 .fs-xs{
     font-size: 0.92rem;
+}
+.fs-xxs{
+    font-size: 0.84rem;
 }
 .text-on-dark{
     @extend .fw-r;
@@ -49,7 +52,7 @@ $priFont: 'Heebo', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFo
     grid-template-columns: 1fr 1fr;
 }
 .text-stroked{
-    -webkit-text-fill-color: rgba($light, 0);
+    color: transparent;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: $med;
     @extend .fw-b;
@@ -61,7 +64,10 @@ $priFont: 'Heebo', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFo
     line-height: 1.2;
     font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', 'Arial', -apple-system, BlinkMacSystemFont, 'Oxygen',
     'Fira Sans', 'Droid Sans', sans-serif;
-    margin-bottom: 4%;
+    transition: all 0.16s ease-in;
+    &:hover{
+        color: $med;
+    }
 }
 
 .link-hover-light, .link-hover-dark{
@@ -115,7 +121,7 @@ $priFont: 'Heebo', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFo
     }
 }
 .tag-item{
-    @extend .fs-xs;
+    @extend .fs-xxs;
     color: $light;
     background-color: lighten($dark, 8%);
     text-align: center;
