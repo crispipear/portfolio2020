@@ -8,6 +8,7 @@
 
 <script>
 export default {
+  transition: {name: 'slide-left', mode: 'out-in'},
   async asyncData({app}) {
     const introDoc = await app.$prismic.api.getSingle('intro');
     return {

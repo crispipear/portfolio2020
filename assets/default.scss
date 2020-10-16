@@ -9,6 +9,22 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
 }
+.slide-left-enter, .slide-right-enter,
+.slide-left-leave-active,.slide-right-leave-active{
+  transition: all .5s;
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(4%, 0);
+}
+
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  transform: translate(-4%, 0);
+}
 
 ::selection {
   background: $light;
@@ -45,10 +61,6 @@ a {
   text-decoration: none;
 }
 
-a:visited {
-  color: inherit;
-}
-
 .wrapper {
   margin: 8% 0;
 }
@@ -56,12 +68,12 @@ a:visited {
 a,
 span,
 p {
-  @extend .fw-r;
+  font-weight: $fw-r;
 }
 
 b,
 strong {
-  @extend .fw-m;
+  font-weight: $fw-m;
 }
 
 h1,
@@ -71,7 +83,7 @@ h4,
 h5,
 h6 {
   line-height: 2;
-  @extend .fw-r;
+  font-weight: $fw-r;
 }
 
 p {

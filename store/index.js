@@ -21,7 +21,6 @@ export const actions = {
             app.$prismic.predicates.at('document.type', 'case_study'),
             {orderings: '[my.case_study.order]'}
         );
-
         commit('SET_PROJECTS', projectsDoc.results.map(item => item.data));
         commit('SET_CASE_STUDIES', csDoc.results.map(item => ({...item.data, ref: item.uid})));
     }

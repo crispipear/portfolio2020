@@ -1,128 +1,119 @@
-$dark: #121314;
+$dark: #0d0e0f;
 $med: #acacac;
 $light: #ffffff;
 $priFont: 'Heebo', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
 'Fira Sans', 'Droid Sans', sans-serif;
-
-.fw-b{
-    font-weight: 600;
-}
-.fw-m{
-    font-weight: 400;
-}
-.fw-r{
-    font-weight: 300;
-}
-
-.fs-xxl{
-    font-size: 3.2rem;
-}
-.fs-xl{
-    font-size: 2.4rem;
-}
-.fs-l{
-    font-size: 1.6em;
-}
-.fs-m{
-    font-size: 1.3rem;
-}
-.fs-s{
-    font-size: 1rem;
-}
-.fs-xs{
-    font-size: 0.92rem;
-}
-.fs-xxs{
-    font-size: 0.84rem;
-}
+$fw-b: 600;
+$fw-m: 400;
+$fw-r: 300;
+$fs-xxl: 3.2rem;
+$fs-xl: 2.4rem;
+$fs-l: 1.6rem;
+$fs-m: 1.3rem;
+$fs-s: 1rem;
+$fs-xs: 0.92rem;
+$fs-xxs: 0.84rem;
 .text-on-dark{
-    @extend .fw-r;
-    color: $med;
-    strong, b{
-        color: $light;
-    }
+  font-weight: $fw-r;
+  color: $med;
+  strong, b{
+      color: $light;
+  }
 }
 .header-on-dark{
-    @extend .fw-m;
-    color: $light;
-    margin-bottom: 4%;
+  font-weight: $fw-m;
+  color: $light;
+  margin-bottom: 4%;
+}
+.text-on-light{
+  font-weight: $fw-r;
+  color: $med;
+  strong, b{
+      color: $dark;
+  }
+}
+.header-on-light{
+  font-weight: $fw-m;
+  color: $dark;
+  margin-bottom: 4%;
 }
 .grid-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 .text-stroked{
-    color: transparent;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: $med;
-    @extend .fw-b;
-    display: block;
-    text-align: right;
-    opacity: 0.4;
-    font-size: 6.4rem;
-    letter-spacing: 0.3rem;
-    line-height: 1.2;
-    font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', 'Arial', -apple-system, BlinkMacSystemFont, 'Oxygen',
-    'Fira Sans', 'Droid Sans', sans-serif;
-    transition: all 0.16s ease-in;
-    &:hover{
-        color: $med;
-    }
+  cursor: default;
+  color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: $med;
+  font-weight: $fw-b;
+  display: block;
+  text-align: right;
+  opacity: 0.4;
+  font-size: $fs-xxl * 1.4;
+  letter-spacing: 0.3rem;
+  line-height: 1.2;
+  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', 'Arial', -apple-system, BlinkMacSystemFont, 'Oxygen',
+  'Fira Sans', 'Droid Sans', sans-serif;
+  transition: all 0.16s ease-in;
+  &:hover{
+      color: $med;
+  }
 }
 
 .link-hover-light, .link-hover-dark{
-    display: inline-block;
-    text-decoration: none;
-    position: relative;
+  display: inline-block;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.1s;
+  font-weight: $fw-m;
+  &:before, &:after{
     transition: all 0.1s;
-    @extend .fw-m;
-    &:before, &:after{
-      transition: all 0.1s;
-      left: 0;
-      width: 100%;
-      position: absolute;
-      z-index: -1;
-      content: '';
-    }
-    &:before{
-      height: 1px;
-      bottom: 0;
-      left: 0;
-    }   
-    &:after{
-      bottom: 0;
-      height: 0%;
-      opacity: 0;
-    }
-    &:hover:after{
-      height: 100%;
-      opacity: 1;
-    }
-    &:hover{
-      font-style: italic;
-    }
+    left: 0;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    content: '';
   }
-  .link-hover-dark{
-    color: $dark;
-    &:before, &:after{
-      background: $dark;
-    }
-    &:hover{
-      color: white;
-    }
+  &:before{
+    height: 1px;
+    bottom: 0;
+    left: 0;
+  }   
+  &:after{
+    bottom: 0;
+    height: 0%;
+    opacity: 0;
+  }
+  &:hover:after{
+    height: 100%;
+    opacity: 1;
+  }
+  &:hover{
+    font-style: italic;
+  }
+}
+.link-hover-dark{
+  color: $dark;
+  &:before, &:after{
+    background: $dark;
+  }
+  &:hover{
+    color: white;
+  }
 }
 .link-hover-light{
-    color: $light;
-    &:before, &:after{
-        background: $light;
-    }
-    &:hover{
-        color: $dark;
-    }
+  color: $light;
+  &:before, &:after{
+      background: $light;
+  }
+  &:hover{
+      color: $dark;
+  }
 }
 .tag-item{
-    @extend .fs-xxs;
-    color: $light;
-    background-color: lighten($dark, 8%);
-    text-align: center;
+  font-size: $fs-xxs;
+  color: $light;
+  background-color: lighten($dark, 8%);
+  text-align: center;
 }
