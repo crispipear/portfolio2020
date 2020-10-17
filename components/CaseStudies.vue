@@ -4,10 +4,15 @@
       <div class="case-study-item" v-for="item in data">
           <img :src="item.cover.url" :alt="item.name + ' image'"/>
           <div class="case-study-info">
-              <nuxt-link :to="'/casestudies/' + item.ref">
-                  <h2>{{item.name}}</h2>
-              </nuxt-link>
+            <div>
+              <h2>{{item.name}}</h2>
               <h3>{{item.context}}</h3>
+            </div>
+            <div>
+              <nuxt-link :to="'/casestudies/' + item.ref" class="link-hover-light">
+                see case study &rarr;
+              </nuxt-link>
+            </div>
           </div>
       </div>
   </div>
@@ -22,56 +27,32 @@ export default {
 </script>
 
 <style lang="scss">
-  .case-study-item {
-    margin: 12% 0;
-    @extend .grid-container;
-    grid-template-columns: 1.25fr 1fr;
-    align-items: center;
-    column-gap: 0;
-
-    .case-study-info {
-      z-index: 2;
-    }
-
-    h2 {
-      cursor: pointer;
-      @extend .link-hover-light;
-      font-size: $fs-xl;
-      line-height: 1;
-      margin-bottom: 2%;
-    }
-
-    h3 {
+  .case-study{
+    &-item{
+      margin: $spacing-xxl 0;
       color: $light;
-      font-size: $fs-s;
-    }
-
-    img {
-      z-index: 1;
-      width: 100%;
-      height: 32vh;
-      object-fit: cover;
-      transition: all 0.16s ease-in-out;
-      opacity: 0.4;
-    }
-
-    &:nth-child(even) {
-      .case-study-info {
-        margin: 0% 0% 0% -12%;
+      h2 {
+        font-size: $fs-l;
+        font-weight: $fw-m;
+        line-height: 1.2;
       }
-    }
 
-    &:nth-child(odd) {
-      direction: rtl;
-
-      .case-study-info {
-        margin: 0% -12% 0% 0%;
+      h3, a {
+        font-size: $fs-s;
       }
-    }
 
-    &:hover {
       img {
-        opacity: 1;
+        width: 100%;
+        height: 40vh;
+        object-position: 50% 50%;
+        object-fit: cover;
+      }
+    }
+    &-info{
+      margin-top: $spacing-xs;
+      @extend .grid-container;
+      div:last-child{
+        text-align: right;
       }
     }
   }

@@ -10,6 +10,7 @@
         <span>createExperiences();</span>
         <prismic-rich-text :field="introData.intro_header" @mouseover="mouseOver" @mouseleave="mouseLeave"/>
         <prismic-rich-text :field="introData.content_primary" />
+        <prismic-rich-text :field="introData.content_secondary" />
       </div>
     </div>
 </template>
@@ -51,28 +52,30 @@ export default {
       opacity: 0;
       bottom: -12px;
     }
-    em {
+    strong:first-child {
       cursor: pointer;
       @extend .link-hover-light;
     }
-    h1{
-      font-size: $fs-l;
+    h1, h2{
       line-height: 1.6;
       @extend .text-on-dark;
-      margin: 0 0 1rem;
+    }
+    h1{
+      font-size: $fs-l;
+      margin-bottom: $spacing-s;
+    }
+    h2{
+      font-size: $fs-m;
     }
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 82vh;
+    height: 100vh;
     position: relative;
-    .hero-intro{
-      margin-top: -12%;
-    }
     span{
       @extend .text-stroked;
       text-align: left;
-      margin-bottom: 4%;
+      margin-bottom: $spacing-m;
     }
   }
 </style>

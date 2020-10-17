@@ -1,11 +1,15 @@
 $dark: #0d0e0f;
-$med: #acacac;
+$med: #b1b1b1;
 $light: #ffffff;
 $priFont: 'Heebo', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
 'Fira Sans', 'Droid Sans', sans-serif;
+
+$content-width: 75%;
+
 $fw-b: 600;
 $fw-m: 400;
 $fw-r: 300;
+
 $fs-xxl: 3.2rem;
 $fs-xl: 2.4rem;
 $fs-l: 1.6rem;
@@ -13,6 +17,15 @@ $fs-m: 1.3rem;
 $fs-s: 1rem;
 $fs-xs: 0.92rem;
 $fs-xxs: 0.84rem;
+
+$spacing-xxl: 6rem;
+$spacing-xl: 4rem;
+$spacing-l: 2rem;
+$spacing-m: 1.6rem;
+$spacing-s: 1.2rem;
+$spacing-xs: 0.8rem;
+$spacing-xxs: 0.4rem;
+
 .text-on-dark{
   font-weight: $fw-r;
   color: $med;
@@ -23,7 +36,7 @@ $fs-xxs: 0.84rem;
 .header-on-dark{
   font-weight: $fw-m;
   color: $light;
-  margin-bottom: 4%;
+  margin-bottom: $spacing-m;
 }
 .text-on-light{
   font-weight: $fw-r;
@@ -35,7 +48,7 @@ $fs-xxs: 0.84rem;
 .header-on-light{
   font-weight: $fw-m;
   color: $dark;
-  margin-bottom: 4%;
+  margin-bottom: $spacing-m;
 }
 .grid-container{
   display: grid;
@@ -49,7 +62,7 @@ $fs-xxs: 0.84rem;
   font-weight: $fw-b;
   display: block;
   text-align: right;
-  opacity: 0.4;
+  opacity: 0.5;
   font-size: $fs-xxl * 1.4;
   letter-spacing: 0.3rem;
   line-height: 1.2;
@@ -57,7 +70,7 @@ $fs-xxs: 0.84rem;
   'Fira Sans', 'Droid Sans', sans-serif;
   transition: all 0.16s ease-in;
   &:hover{
-      color: $med;
+    color: $med;
   }
 }
 

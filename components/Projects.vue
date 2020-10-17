@@ -1,19 +1,19 @@
 <template>
-    <div class="projects wrapper" v-if="data">
-        <span class="text-stroked">more projects</span>
-        <div class="projects-container">
-            <div class="projects-item" v-for="(item, index) in data">
-                <img :src="item.cover.url" :alt="'image-' + item.name"/>
-                <a :href="item.link.url" target="_blank"><h2>{{item.name}}</h2></a>
-                <div class="projects-item-tags">
-                    <span v-for="t in data[index].tags">
-                        {{t.tag}}
-                    </span>
-                </div>
-                <h3>{{item.description}}</h3>
-            </div>
-        </div>
-    </div>
+  <div class="projects wrapper" v-if="data">
+      <span class="text-stroked">more projects</span>
+      <div class="projects-container">
+          <div class="projects-item" v-for="(item, index) in data">
+              <img :src="item.cover.url" :alt="'image-' + item.name"/>
+              <a :href="item.link.url" target="_blank"><h2>{{item.name}}</h2></a>
+              <div class="projects-item-tags">
+                  <span v-for="t in data[index].tags">
+                      {{t.tag}}
+                  </span>
+              </div>
+              <h3>{{item.description}}</h3>
+          </div>
+      </div>
+  </div>
 </template>
 
 <script>
@@ -25,9 +25,15 @@ export default {
 </script>
 
 <style lang="scss">
+
+  .projects{
+    .text-stroked{
+      margin-bottom: $spacing-xl;
+    }
+  }
   .projects-container {
     @extend .grid-container;
-    margin: 8% 0;
+    margin: $spacing-l 0;
     column-gap: 52px;
     row-gap: 48px;
   }
@@ -51,7 +57,7 @@ export default {
       cursor: pointer;
       @extend .link-hover-light;
       font-size: $fs-m;
-      line-height: 1;
+      line-height: 1.2;
     }
 
     h3 {
@@ -61,12 +67,12 @@ export default {
     }
 
     .projects-item-tags {
-      margin: 4% 0;
+      margin: $spacing-s 0;
 
       span {
         @extend .tag-item;
         padding: 8px 12px;
-        margin-right: 8px;
+        margin-right: $spacing-xxs;
       }
     }
 

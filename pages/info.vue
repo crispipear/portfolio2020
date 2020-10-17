@@ -39,33 +39,34 @@ export default {
 <style lang="scss">
   .about{
     &-img{
+      margin-top: $spacing-xl;
       text-align: right;
       img{
         width: 60%;
-        filter: grayscale(100%) contrast(120%) brightness(60%);
+        filter: grayscale(100%) contrast(120%) brightness(70%);
       }
     }
     &-connect-links{
       a{
-        margin-right: 0.5rem;
+        margin-right: $spacing-xs;
       }
     }
     &-content-block{
-      width: 80%;
+      width: $content-width;
       a{
         @extend .link-hover-light;
       }
-      font-size: $fs-m;
-      margin: 8% 0;
+      font-size: $fs-s;
+      margin: $spacing-m 0;
     }
   }
   #about{
     .text-stroked{
-        margin-bottom: 4%;
+        margin-bottom: $spacing-xl;
     }
     h1{
       color: $light;
-      margin-bottom: 1.2rem;
+      margin-bottom: $spacing-m;
       font-size: $fs-l;
     }
   }
