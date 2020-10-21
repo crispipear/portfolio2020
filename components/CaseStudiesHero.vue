@@ -35,8 +35,6 @@ export default {
 </script>
 <style lang="scss">
   .cs-hero {
-    color: $med;
-    background: $dark;
     height: 100vh;
     width: 100%;
     @extend .grid-container;
@@ -46,11 +44,6 @@ export default {
     img {
       width: 90%;
     }
-
-    strong {
-      color: $light;
-    }
-
     .cs-hero-info {
       div {
         margin-bottom: $spacing-l;
@@ -68,7 +61,6 @@ export default {
 
     h1 {
       margin: $spacing-m 0 0;
-      color: $light;
       font-size: $fs-xl;
     }
   }

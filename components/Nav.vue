@@ -2,9 +2,9 @@
   <nav>
     <div>
       <nuxt-link data-text="syl." class="nav-head" to="/">syl.</nuxt-link>
-      <div>
-        <nuxt-link v-if="currentRoute === 'index'" data-text="info" to="/info">info</nuxt-link>
-        <nuxt-link v-if="currentRoute === 'info'" data-text="work" to="/">work</nuxt-link>
+      <div class="nav-links">
+        <nuxt-link v-if="currentRoute !== 'info'" data-text="info" to="/info">info</nuxt-link>
+        <nuxt-link v-if="currentRoute !== 'index'" data-text="work" to="/">work</nuxt-link>
       </div>
     </div>
   </nav>
@@ -26,6 +26,7 @@
     },
     methods: {
       updateRouteName: function () {
+        console.log(this.$route.name);
         this.currentRoute = this.$route.name
       }
     }
@@ -46,7 +47,6 @@
     align-items: center;
     width: $content-width;
     padding: $spacing-l 0;
-    color: $light;
     margin: auto;
   }
 
@@ -57,7 +57,8 @@
     transform-style: preserve-3d;
     position: relative;
     display: inline-block;
-
+    font-weight: $fw-m;
+    color: $textStrongColor;
     &:before {
       position: absolute;
       content: attr(data-text);
@@ -74,8 +75,11 @@
     }
   }
 
-  .nav-head {
+  .nav-links a {
+    margin-left: $spacing-s;
+  }
+
+  .nav-head{
     font-size: $fs-m;
-    font-weight: $fw-m;
   }
 </style>

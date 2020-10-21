@@ -1,5 +1,5 @@
 <template>
-	<div class="cs__wrapper" id="content__wrapper">
+	<div class="cs__wrapper">
 		{{JSON.stringify(body)}}
 	</div>
 </template>

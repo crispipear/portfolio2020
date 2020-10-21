@@ -1,19 +1,23 @@
 $dark: #0d0e0f;
-$med: #b1b1b1;
+$med: #303030;
 $light: #ffffff;
-$priFont: 'Heebo', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Roboto', 'Oxygen',
+$border: #8a8a8a;
+$priFont: 'Inter', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont,'Roboto', 'Oxygen',
 'Fira Sans', 'Droid Sans', sans-serif;
-
+$secFont: 'Playfair Display', Georgia, serif;
+$textColor: $med;
+$textStrongColor: $dark;
+$backgroundColor: $light;
 $content-width: 75%;
 
 $fw-b: 600;
-$fw-m: 400;
+$fw-m: 500;
 $fw-r: 300;
 
 $fs-xxl: 3.2rem;
-$fs-xl: 2.4rem;
+$fs-xl: 2.2rem;
 $fs-l: 1.6rem;
-$fs-m: 1.3rem;
+$fs-m: 1.2rem;
 $fs-s: 1rem;
 $fs-xs: 0.92rem;
 $fs-xxs: 0.84rem;
@@ -26,67 +30,50 @@ $spacing-s: 1.2rem;
 $spacing-xs: 0.8rem;
 $spacing-xxs: 0.4rem;
 
-.text-on-dark{
+.text-body{
+  line-height: 1.8;
   font-weight: $fw-r;
-  color: $med;
+  color: $textColor;
   strong, b{
-      color: $light;
+    color: $textStrongColor;
   }
 }
-.header-on-dark{
+.text-header{
   font-weight: $fw-m;
-  color: $light;
-  margin-bottom: $spacing-m;
-}
-.text-on-light{
-  font-weight: $fw-r;
-  color: $med;
-  strong, b{
-      color: $dark;
-  }
-}
-.header-on-light{
-  font-weight: $fw-m;
-  color: $dark;
-  margin-bottom: $spacing-m;
+  color: $textStrongColor;
+  margin-bottom: $spacing-xs;
+  line-height: 1.6;
 }
 .grid-container{
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.text-stroked{
+.styled-title{
   cursor: default;
-  color: transparent;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: $med;
+  color: $textStrongColor;
   font-weight: $fw-b;
-  display: block;
-  text-align: right;
-  opacity: 0.5;
-  font-size: $fs-xxl * 1.4;
-  letter-spacing: 0.3rem;
-  line-height: 1.2;
-  font-family: 'Roboto', 'Segoe UI', 'Helvetica Neue', 'Arial', -apple-system, BlinkMacSystemFont, 'Oxygen',
-  'Fira Sans', 'Droid Sans', sans-serif;
-  transition: all 0.16s ease-in;
-  &:hover{
-    color: $med;
-  }
+  display: inline-block;
+  font-size: $fs-xxl;
+  letter-spacing: 0.1rem;
+  line-height: 1;
+  font-family: $secFont;
 }
 
-.link-hover-light, .link-hover-dark{
+.link-hover{
   display: inline-block;
   text-decoration: none;
   position: relative;
   transition: all 0.1s;
   font-weight: $fw-m;
+  line-height: 1.4;
   &:before, &:after{
+    content: '';
+    background: $dark;
     transition: all 0.1s;
     left: 0;
     width: 100%;
     position: absolute;
     z-index: -1;
-    content: '';
   }
   &:before{
     height: 1px;
@@ -104,29 +91,15 @@ $spacing-xxs: 0.4rem;
   }
   &:hover{
     font-style: italic;
+    color: $light;
   }
 }
-.link-hover-dark{
-  color: $dark;
-  &:before, &:after{
-    background: $dark;
-  }
-  &:hover{
-    color: white;
-  }
-}
-.link-hover-light{
-  color: $light;
-  &:before, &:after{
-      background: $light;
-  }
-  &:hover{
-      color: $dark;
-  }
-}
+
 .tag-item{
+  display: inline-block;
   font-size: $fs-xxs;
-  color: $light;
-  background-color: lighten($dark, 8%);
+  color: $textColor;
+  font-weight: $fw-m;
+  background-color: lighten($textColor, 75%);
   text-align: center;
 }

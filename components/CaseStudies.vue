@@ -1,15 +1,17 @@
 <template>
   <div class="case-studies wrapper" v-if="data">
-      <span class="text-stroked">case studies</span>
+      <span class="styled-title">case studies</span>
       <div class="case-study-item" v-for="item in data">
-          <img :src="item.cover.url" :alt="item.name + ' image'"/>
+          <nuxt-link :to="'/casestudies/' + item.ref">
+            <img :src="item.cover.url" :alt="item.name + ' image'"/>
+          </nuxt-link>
           <div class="case-study-info">
             <div>
               <h2>{{item.name}}</h2>
               <h3>{{item.context}}</h3>
             </div>
             <div>
-              <nuxt-link :to="'/casestudies/' + item.ref" class="link-hover-light">
+              <nuxt-link :to="'/casestudies/' + item.ref" class="link-hover">
                 see case study &rarr;
               </nuxt-link>
             </div>
@@ -27,16 +29,29 @@ export default {
 </script>
 
 <style lang="scss">
+  .case-studies{
+    .styled-title{
+      width: 100%;
+      text-align: right;
+      margin-bottom: $spacing-xl;
+    }
+  }
   .case-study{
     &-item{
-      margin: $spacing-xxl 0;
-      color: $light;
-      h2 {
-        font-size: $fs-l;
-        font-weight: $fw-m;
-        line-height: 1.2;
+      &:nth-child(odd){
+        margin-left: 20%;
       }
-
+      margin-bottom: $spacing-xxl;
+      width: 80%;
+      h2 {
+        @extend .text-header;
+      }
+      h3{
+        @extend .text-body;
+      }
+      h2,h3{
+        margin: 0;
+      }
       h3, a {
         font-size: $fs-s;
       }
@@ -46,6 +61,13 @@ export default {
         height: 40vh;
         object-position: 50% 50%;
         object-fit: cover;
+        filter: grayscale(100%) brightness(110%);
+        transition: filter 0.2s;
+      }
+      &:hover{
+        img{
+          filter: none;
+        }
       }
     }
     &-info{

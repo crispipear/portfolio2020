@@ -1,16 +1,19 @@
 <template>
     <div class="hero" v-if="introData">
-      <img src="/hero.png" id="hero_img" :class="heroImgClass">
+      <img src="/hero.png" id="hero_img" :class="heroImgClass" />
       <div class="scroll-indicator">
         <div class="scroll">
           <div class="scroll-line"></div>
         </div>
       </div>
       <div class="hero-intro">
-        <span>createExperiences();</span>
-        <prismic-rich-text :field="introData.intro_header" @mouseover="mouseOver" @mouseleave="mouseLeave"/>
-        <prismic-rich-text :field="introData.content_primary" />
-        <prismic-rich-text :field="introData.content_secondary" />
+        <prismic-rich-text :field="introData.intro_header"/>
+        <div class="grid-container">
+          <div>
+            <span class="styled-title" @mouseover="mouseOver" @mouseleave="mouseLeave">syl.</span>
+          </div>
+          <prismic-rich-text :field="introData.content_primary"/>
+        </div>
       </div>
     </div>
 </template>
@@ -52,30 +55,39 @@ export default {
       opacity: 0;
       bottom: -12px;
     }
-    strong:first-child {
-      cursor: pointer;
-      @extend .link-hover-light;
-    }
-    h1, h2{
-      line-height: 1.6;
-      @extend .text-on-dark;
-    }
     h1{
-      font-size: $fs-l;
+      font-size: $fs-xl;
+      font-weight: $fw-m;
       margin-bottom: $spacing-s;
+      width: 60%;
+      line-height: 1.6;
     }
     h2{
+      @extend .text-body;
       font-size: $fs-m;
+    }
+    a{
+      @extend .link-hover;
     }
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 100vh;
     position: relative;
-    span{
-      @extend .text-stroked;
-      text-align: left;
-      margin-bottom: $spacing-m;
+    .styled-title{
+      font-size: $fs-xxl * 3;
+      cursor: pointer;
+      opacity: 1;
+      transition: all 0.16s;
+      &:hover{
+        opacity: 0.6;
+      }
+    }
+    .grid-container{
+      border-top: 1px $border solid;
+      margin-top: $spacing-l;
+      padding-top: $spacing-l;
+      grid-template-columns: 60% 40%;
     }
   }
 </style>

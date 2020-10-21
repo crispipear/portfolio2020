@@ -1,13 +1,16 @@
 html {
-  font-family: $priFont;
-  font-size: 1rem;
-  line-height: 1.6;
-  letter-spacing: 0.02rem;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+}
+body{
+  font-family: $priFont;
+  font-size: 1rem;
+  line-height: 1.6;
+  letter-spacing: 0.02rem;
   box-sizing: border-box;
+  color: $textColor;
 }
 .slide-left-enter, .slide-right-enter,
 .slide-left-leave-active,.slide-right-leave-active{
@@ -27,15 +30,15 @@ html {
 }
 
 ::selection {
-  background: $light;
-  color: $dark;
-  -webkit-text-stroke-color: $dark;
+  background: $textColor;
+  color: $backgroundColor;
+  -webkit-text-stroke-color: $backgroundColor;
 }
 
 ::-moz-selection {
-  background: $light;
-  color: $dark;
-  -webkit-text-stroke-color: $dark;
+  background: $textColor;
+  color: $backgroundColor;
+  -webkit-text-stroke-color: $backgroundColor;
 }
 
 *,
@@ -64,12 +67,17 @@ a {
 a,
 span,
 p {
-  font-weight: $fw-r;
+  @extend .text-body;
+}
+
+p {
+  margin: 0 0 $spacing-s;
 }
 
 b,
 strong {
   font-weight: $fw-m;
+  color: $textStrongColor;
 }
 
 h1,
@@ -78,12 +86,5 @@ h3,
 h4,
 h5,
 h6 {
-  line-height: 1.8;
-  font-weight: $fw-r;
-}
-
-p {
-  margin: 0 0 $spacing-s;
-  color: $med;
-  line-height: 1.8;
+  @extend .text-header;
 }

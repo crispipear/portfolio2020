@@ -1,102 +1,30 @@
 <template>
   <div class="projects wrapper" v-if="data">
-      <span class="text-stroked">more projects</span>
+      <span class="styled-title">more projects</span>
       <div class="projects-container">
-          <div class="projects-item" v-for="(item, index) in data">
-              <img :src="item.cover.url" :alt="'image-' + item.name"/>
-              <a :href="item.link.url" target="_blank"><h2>{{item.name}}</h2></a>
-              <div class="projects-item-tags">
-                  <span v-for="t in data[index].tags">
-                      {{t.tag}}
-                  </span>
-              </div>
-              <h3>{{item.description}}</h3>
-          </div>
+         <ProjectItem v-for="(item, index) in data" :item="item" :key="'item'+index" />
       </div>
   </div>
 </template>
 
 <script>
 export default {
-    props: {
-        data: Array
-    }
+  props: {
+    data: Array
+  }
 }
 </script>
 
 <style lang="scss">
 
   .projects{
-    .text-stroked{
-      margin-bottom: $spacing-xl;
+    .styled-title{
+      width: 100%;
+      text-align: right;
+      margin-bottom: $spacing-l;
     }
   }
   .projects-container {
-    @extend .grid-container;
     margin: $spacing-l 0;
-    column-gap: 52px;
-    row-gap: 48px;
-  }
-
-  .projects-item {
-    position: relative;
-
-    h2,
-    h3,
-    .projects-item-tags {
-      position: relative;
-      z-index: 1;
-    }
-
-    h3,
-    img {
-      transition: all 0.2s;
-    }
-
-    h2 {
-      cursor: pointer;
-      @extend .link-hover-light;
-      font-size: $fs-m;
-      line-height: 1.2;
-    }
-
-    h3 {
-      @extend .text-on-dark;
-      font-size: $fs-xs;
-
-    }
-
-    .projects-item-tags {
-      margin: $spacing-s 0;
-
-      span {
-        @extend .tag-item;
-        padding: 8px 12px;
-        margin-right: $spacing-xxs;
-      }
-    }
-
-    img {
-      width: 240px;
-      height: 150px;
-      object-fit: cover;
-      filter: grayscale(100%) brightness(70%);
-      position: absolute;
-      top: -12%;
-      right: 0%;
-      opacity: 0;
-      z-index: 2;
-    }
-
-    &:hover {
-      img {
-        opacity: 0.9;
-        filter: none;
-      }
-
-      h3 {
-        color: $light;
-      }
-    }
   }
 </style>

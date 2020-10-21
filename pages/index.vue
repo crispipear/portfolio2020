@@ -1,8 +1,11 @@
 <template>
   <section id="home">
-    <Hero :introData="introData"/>
+    <Hero :introData="introData" />
     <CaseStudies :data="$store.state.caseStudies"/>
     <Projects :data="$store.state.projects"/>
+    <div id="home-end">
+      <h4 class="styled-title">Thanks for visiting!</h4>
+    </div>
   </section>
 </template>
 
@@ -19,6 +22,12 @@ export default {
 </script>
 <style lang="scss">
 #home{
-  padding-top: 0;
+  padding: 0;
+}
+#home-end{
+  .styled-title{
+    font-size: $fs-xl;
+    margin: 0;
+  }
 }
 </style>
