@@ -26,7 +26,6 @@
     },
     methods: {
       updateRouteName: function () {
-        console.log(this.$route.name);
         this.currentRoute = this.$route.name
       }
     }
@@ -46,7 +45,7 @@
     justify-content: space-between;
     align-items: center;
     width: $content-width;
-    padding: $spacing-l 0;
+    padding: $spacing-m 0;
     margin: auto;
   }
 
@@ -68,6 +67,7 @@
       left: 0;
       width: 100%;
       height: 100%;
+      font-size: $fs-s;
     }
 
     &:hover {
@@ -77,9 +77,5 @@
 
   .nav-links a {
     margin-left: $spacing-s;
-  }
-
-  .nav-head{
-    font-size: $fs-m;
   }
 </style>

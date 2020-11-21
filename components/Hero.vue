@@ -1,19 +1,21 @@
 <template>
     <div class="hero" v-if="introData">
-      <img src="/hero.png" id="hero_img" :class="heroImgClass" />
+      <img src="/hero.png" id="hero_img_bLeft" :class="heroImgClass" />
+      <img src="/hero.png" id="hero_img_bRight" :class="heroImgClass" />
+      <img src="/hero.png" id="hero_img_tLeft" :class="heroImgClass" />
+      <img src="/hero.png" id="hero_img_tRight" :class="heroImgClass" />
       <div class="scroll-indicator">
         <div class="scroll">
           <div class="scroll-line"></div>
         </div>
       </div>
+      <div class="emoticon">
+        <span @mouseover="mouseOver" @mouseleave="mouseLeave">(ㆆ◡ㆆ)</span>
+        <span>hi</span>
+      </div>
       <div class="hero-intro">
         <prismic-rich-text :field="introData.intro_header"/>
-        <div class="grid-container">
-          <div>
-            <span class="styled-title" @mouseover="mouseOver" @mouseleave="mouseLeave">syl.</span>
-          </div>
-          <prismic-rich-text :field="introData.content_primary"/>
-        </div>
+        <prismic-rich-text :field="introData.content_primary"/>
       </div>
     </div>
 </template>
@@ -24,69 +26,88 @@ export default {
   },
   data() {
     return{
-      heroImgClass: 'hero-img-hidden'
+      heroImgClass: 'hero-img hero-img-hidden'
     }
   },
   methods: {
     mouseOver: function(){
-      this.heroImgClass = 'hero-img-show';  
+      this.heroImgClass = 'hero-img hero-img-show';  
     },
     mouseLeave: function(){
-      this.heroImgClass = 'hero-img-hidden';
+      this.heroImgClass = 'hero-img hero-img-hidden';
     }
   }
 }
 </script>
 <style lang="scss">
   .hero{
-    #hero_img{
+    .hero-img{
       position: fixed;
-      left: 0;
       width: 100px;
-      z-index: 10;
+      z-index: 100;
       pointer-events: none;
       transition: 0.16s all ease-in-out;
     }
+    #hero_img_bLeft,#hero_img_bRight{
+      bottom: 0;
+    } 
+    #hero_img_tLeft,#hero_img_tRight{
+      transform: scaleY(-1);
+      top: 0;
+    } 
+    #hero_img_bLeft, #hero_img_tLeft{
+      left: 0;
+    }
+    #hero_img_bRight, #hero_img_tRight{
+      transform: scaleX(-1);
+      right: 0;
+    }
+    #hero_img_tRight{
+      transform: scaleY(-1) scaleX(-1);
+    }
     .hero-img-show{
       opacity: 1;
-      bottom: 0px;
     }
     .hero-img-hidden{
       opacity: 0;
-      bottom: -12px;
     }
     h1{
-      font-size: $fs-xl;
-      font-weight: $fw-m;
+      font-size: $fs-l;
       margin-bottom: $spacing-s;
-      width: 60%;
       line-height: 1.6;
+      font-family: $secFont;
     }
     h2{
       @extend .text-body;
-      font-size: $fs-m;
+      font-size: $fs-s;
     }
     a{
       @extend .link-hover;
     }
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    padding: $spacing-xxl*1.4 0;
     height: 100vh;
     position: relative;
-    .styled-title{
-      font-size: $fs-xxl * 3;
-      cursor: pointer;
+    .emoticon{
+      text-align: right;
       opacity: 1;
       transition: all 0.16s;
+      cursor: pointer;
       &:hover{
-        opacity: 0.6;
+        opacity: 0.8;
+      }
+      span {
+        font-size: $fs-xs;
+        font-weight: $fw-m;
+      }
+      span:first-child {
+        font-size: $fs-xxl;
+        font-weight: $fw-b;
       }
     }
     .grid-container{
-      border-top: 1px $border solid;
-      margin-top: $spacing-l;
-      padding-top: $spacing-l;
       grid-template-columns: 60% 40%;
     }
   }

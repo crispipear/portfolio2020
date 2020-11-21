@@ -6,12 +6,12 @@
         <h2>{{item.name}}</h2>
       </a>
       <div class="projects-item-tags">
-        <span v-for="t in item.tags">
+        <span v-for="t in item.tags" :key="t.name">
           {{t.tag}}
         </span>
       </div>
     </div>
-    <h3>{{item.description}}</h3>
+    <p>{{item.description}}</p>
   </div>
 </template>
 
@@ -38,23 +38,20 @@ export default {
 
 <style lang="scss">
   .projects-item {
-    @extend .grid-container;
-    column-gap: $spacing-m;
-    grid-template-columns: 1fr 3fr;
     position: relative;
     border-bottom: 1px solid $border;
     padding: $spacing-l 0;
-    &:first-child{
+    &:first-child, &:nth-child(2){
       border-top: 1px solid $border;
     }
     h2,
-    h3,
+    p,
     .projects-item-tags {
       position: relative;
       z-index: 1;
     }
 
-    h3,
+    p,
     img {
       transition: all 0.2s;
     }
@@ -64,12 +61,13 @@ export default {
       @extend .link-hover;
       font-size: $fs-m;
       line-height: 1.2;
+      margin: 0;
     }
 
-    h3 {
+    p {
       @extend .text-body;
       font-size: $fs-xs;
-
+      margin: $spacing-xs 0 0 0;
     }
 
     .projects-item-tags {
@@ -83,19 +81,21 @@ export default {
     }
 
     img {
-      width: 30%;
+      width: 40%;
+      right: 0;
       object-fit: cover;
       position: absolute;
+      pointer-events: none;
       z-index: 2;
     }
     
   }
   .project-img-show{
     opacity: 1;
-    right: 0;
+    top: 0;
   }
   .project-img-hidden{
     opacity: 0;
-    right: -12px;
+    top: 12px;
   }
 </style>

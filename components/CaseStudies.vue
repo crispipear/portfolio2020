@@ -1,7 +1,7 @@
 <template>
   <div class="case-studies wrapper" v-if="data">
-      <span class="styled-title">case studies</span>
-      <div class="case-study-item" v-for="item in data">
+      <span class="styled-title">featured.</span>
+      <div class="case-study-item" v-for="item in data" :key="item.name">
           <nuxt-link :to="'/casestudies/' + item.ref">
             <img :src="item.cover.url" :alt="item.name + ' image'"/>
           </nuxt-link>
@@ -38,11 +38,11 @@ export default {
   }
   .case-study{
     &-item{
-      &:nth-child(odd){
-        margin-left: 20%;
+      &:nth-child(even){
+        margin-left: 40%;
       }
       margin-bottom: $spacing-xxl;
-      width: 80%;
+      width: 60%;
       h2 {
         @extend .text-header;
       }
@@ -71,11 +71,9 @@ export default {
       }
     }
     &-info{
+      display: flex;
       margin-top: $spacing-xs;
-      @extend .grid-container;
-      div:last-child{
-        text-align: right;
-      }
+      justify-content: space-between;
     }
   }
 </style>

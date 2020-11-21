@@ -3,7 +3,7 @@
         <CaseStudiesHero
             :coverUrl="cs_data.cover.url"
             :name="cs_data.name"
-            :time="cs_data.year"
+            :timeframe="cs_data.timeframe"
             :context="cs_data.context"
             :role="cs_data.role"
             :tools="cs_data.tools"

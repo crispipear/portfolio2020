@@ -26,7 +26,7 @@ export default {
 }
 #home-end{
   .styled-title{
-    font-size: $fs-xl;
+    font-size: $fs-l;
     margin: 0;
   }
 }

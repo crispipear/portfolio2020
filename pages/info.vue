@@ -1,21 +1,21 @@
 <template>
   <section id="about" class="about">
-    <div class="about-img"><img src="/about.jpg" /></div>
     <div class="about-intro-block">
       <span class="styled-title">{{intro_header}}</span>
       <h1>{{intro_sub_header}}</h1>
     </div>
+    <div class="about-img"><img src="/about.jpg" /></div>
     <div class="about-content-block">
+      <prismic-rich-text :field="intro_text" class="text-body" />
       <div>
         <h1>{{connect_header}}</h1>
         <prismic-rich-text :field="connect_text" class="text-body" />
         <div class="about-connect-links">
-          <a v-for="item in links" :href="item.link" target="_blank">
+          <a v-for="item in links" :key="item.link_name" :href="item.link" target="_blank">
             {{ item.link_name }}
           </a>
         </div>
       </div>
-      <prismic-rich-text :field="intro_text" class="text-body" />
     </div>
   </section>
 </template>
@@ -33,15 +33,16 @@ export default {
 <style lang="scss">
   .about{
     .styled-title{
-      margin-bottom: $spacing-m;
+      margin-bottom: $spacing-s;
+      font-size: $fs-xl;
     }
     &-img{
-      margin-top: $spacing-xl;
       text-align: right;
+      margin-right: -12.5%;
       img{
-        width: 45%;
+        width: 51.25%;
         transition: filter 0.2s;
-        filter: grayscale(100%) contrast(120%) brightness(70%);
+        filter: grayscale(100%) contrast(120%) brightness(90%);
         &:hover{
           filter: none;
         }
@@ -49,16 +50,18 @@ export default {
     }
     &-connect-links{
       a{
-        margin-right: $spacing-xs;
+        margin-right: $spacing-xxs;
       }
     }
     &-intro-block{
-      border-bottom: 1px $med solid;
-      padding-bottom: $spacing-l;
+      padding-top: $spacing-xl;
+      margin-bottom: -$spacing-xxl;
       h1 {
-        width: 55%;
+        width: 50%;
+        color: $med;
         line-height: 1.8;
-        font-size: $fs-l;
+        font-size: $fs-m;
+        font-weight: $fw-r;
       }
     }
     &-content-block, &-intro-block{
@@ -70,8 +73,9 @@ export default {
         font-family: $secFont;
       }
       padding-top: $spacing-l;
+      gap: $spacing-xxl;
       @extend .grid-container;
-      grid-template-columns: 55% 45%;
+      grid-template-columns: 1fr 1fr;
       a{
         @extend .link-hover;
       }
