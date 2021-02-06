@@ -1,21 +1,61 @@
+<style lang="scss" scoped>
+  .case-studies{
+    .styled-title{
+      width: 100%;
+      text-align: right;
+      margin-bottom: $spacing-xl;
+    }
+  }
+  .case-study{
+    &-container{
+      column-count: 2;
+      column-gap: $spacing-xxl;
+      position: relative;
+    }
+    &-item{
+      img{
+        transition: transform 0.4s;
+        height: auto;
+        width: 100%;
+        cursor: pointer;
+      }
+      &:hover img{
+        transform: scale(1.04);
+      }
+        break-inside: avoid;
+        margin: 0 0 $spacing-xxl;
+      h2 {
+        font-size: $fs-l;
+        margin: 0 0 $spacing-xxs;
+        font-family: $secFont;
+        letter-spacing: 0;
+        @extend .text-header;
+      }
+      h3{
+        margin: 0;
+       @extend .text-body;
+      }
+    }
+    &-info{
+      margin-top: $spacing-xs;
+    }
+  }
+</style>
 <template>
   <div class="case-studies wrapper" v-if="data">
-      <span class="styled-title">featured.</span>
-      <div class="case-study-item" v-for="item in data" :key="item.name">
-          <nuxt-link :to="'/casestudies/' + item.ref">
-            <img :src="item.cover.url" :alt="item.name + ' image'"/>
-          </nuxt-link>
-          <div class="case-study-info">
-            <div>
-              <h2>{{item.name}}</h2>
-              <h3>{{item.context}}</h3>
+      <span class="styled-title">featured work.</span>
+      <div class="case-study-container">
+        <div class="case-study-item" v-for="item in data" :key="item.name">
+            <nuxt-link :to="'/casestudies/' + item.ref" class="case-study-img">
+              <img :src="item.cover.url" :alt="item.name + ' image'"/>
+            </nuxt-link>
+            <div class="case-study-info">
+                <nuxt-link :to="'/casestudies/' + item.ref">
+                  <h2 class="link-hover">{{item.name}} &rarr;</h2>
+                </nuxt-link>
+                <h3>{{item.context}}</h3>
             </div>
-            <div>
-              <nuxt-link :to="'/casestudies/' + item.ref" class="link-hover">
-                see case study &rarr;
-              </nuxt-link>
-            </div>
-          </div>
+        </div>
       </div>
   </div>
 </template>
@@ -27,53 +67,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-  .case-studies{
-    .styled-title{
-      width: 100%;
-      text-align: right;
-      margin-bottom: $spacing-xl;
-    }
-  }
-  .case-study{
-    &-item{
-      &:nth-child(even){
-        margin-left: 40%;
-      }
-      margin-bottom: $spacing-xxl;
-      width: 60%;
-      h2 {
-        @extend .text-header;
-      }
-      h3{
-        @extend .text-body;
-      }
-      h2,h3{
-        margin: 0;
-      }
-      h3, a {
-        font-size: $fs-s;
-      }
-
-      img {
-        width: 100%;
-        height: 40vh;
-        object-position: 50% 50%;
-        object-fit: cover;
-        filter: grayscale(100%) brightness(110%);
-        transition: filter 0.2s;
-      }
-      &:hover{
-        img{
-          filter: none;
-        }
-      }
-    }
-    &-info{
-      display: flex;
-      margin-top: $spacing-xs;
-      justify-content: space-between;
-    }
-  }
-</style>

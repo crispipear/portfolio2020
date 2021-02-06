@@ -1,25 +1,22 @@
 <style lang="scss" scoped>
-  .cs__single-text{
-    div{
-      width: 80%;
-      margin-bottom: $spacing-l;
-    }
+  .cs__tri-grid{
+    @extend .grid-container;
+    grid-template-columns: 1.5fr 1.5fr 1fr;
+    column-gap: $spacing-xl;
+    align-items: end;
     img{
       width: 100%;
     }
   }
 </style>
 <template>
-  <div class="cs__single-text">
+  <div class="cs__tri-grid">
+    <prismic-image :field="image_left"/>
     <div>
       <h4 class="header">{{header}}</h4>
       <prismic-rich-text :field="text" class="text"/>
     </div>
-    <prismic-image 
-      v-for="(item, key) in items"
-      :key="'img'+key"
-      :field="item.image"
-    />
+    <prismic-image :field="image_right"/>
   </div>
 </template>
 <script>
@@ -27,7 +24,8 @@ export default {
   props: {
     header: String,
     text: Array,
-    items: Array
+    image_left: Object,
+    image_right: Object,
   }
 }
 </script>

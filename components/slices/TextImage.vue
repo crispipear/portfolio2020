@@ -18,7 +18,7 @@
 <template>
   <div :class="reverse ? 'cs__text-image grid-container reverse' : 'cs__text-image grid-container'">
     <div>
-      <prismic-rich-text :field="header" class="header"/>
+      <h4 class="header">{{header}}</h4>
       <prismic-rich-text :field="text" class="text"/>
     </div>
     <div>
@@ -30,7 +30,7 @@
 export default {
   props: {
     reverse: Boolean,
-    header: Array,
+    header: String,
     text: Array,
     image: Object,
   }

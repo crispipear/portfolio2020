@@ -6,11 +6,11 @@
 <template>
   <div class="cs__double-text grid-container">
     <div>
-      <prismic-rich-text :field="header_left" class="header" />
+      <h4 class="header">{{header_left}}</h4>
       <prismic-rich-text :field="text_left" class="text" />
     </div>
     <div>
-      <prismic-rich-text :field="header_right" class="header" />
+      <h4 class="header">{{header_right}}</h4>
       <prismic-rich-text :field="text_right" class="text" />
     </div>
   </div>
@@ -18,9 +18,9 @@
 <script>
 export default {
   props: {
-    header_left: Array,
+    header_left: String,
     text_left: Array,
-    header_right: Array,
+    header_right: String,
     text_right: Array,
   }
 }

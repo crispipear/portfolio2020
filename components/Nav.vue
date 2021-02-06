@@ -1,37 +1,4 @@
-<template>
-  <nav>
-    <div>
-      <nuxt-link data-text="syl." class="nav-head" to="/">syl.</nuxt-link>
-      <div class="nav-links">
-        <nuxt-link v-if="currentRoute !== 'info'" data-text="info" to="/info">info</nuxt-link>
-        <nuxt-link v-if="currentRoute !== 'index'" data-text="work" to="/">work</nuxt-link>
-      </div>
-    </div>
-  </nav>
-</template>
-<script>
-  export default {
-    data() {
-      return {
-        currentRoute: ''
-      }
-    },
-    watch: {
-      '$route'(to, from) {
-        this.updateRouteName();
-      }
-    },
-    mounted() {
-      this.updateRouteName();
-    },
-    methods: {
-      updateRouteName: function () {
-        this.currentRoute = this.$route.name
-      }
-    }
-  }
-</script>
-<style lang="scss">
+<style lang="scss" scoped>
   nav {
     position: fixed;
     top: 0;
@@ -48,7 +15,7 @@
     padding: $spacing-m 0;
     margin: auto;
   }
-
+  
   nav a {
     text-decoration: none;
     transition: transform 0.3s;
@@ -79,3 +46,36 @@
     margin-left: $spacing-s;
   }
 </style>
+<template>
+  <nav>
+    <div>
+      <nuxt-link data-text="syl." class="nav-head" to="/">syl.</nuxt-link>
+      <div class="nav-links">
+        <nuxt-link v-if="currentRoute !== 'about'" data-text="about" to="/about">about</nuxt-link>
+        <nuxt-link v-if="currentRoute !== 'index'" data-text="work" to="/">work</nuxt-link>
+      </div>
+    </div>
+  </nav>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        currentRoute: ''
+      }
+    },
+    watch: {
+      '$route'(to, from) {
+        this.updateRouteName();
+      }
+    },
+    mounted() {
+      this.updateRouteName();
+    },
+    methods: {
+      updateRouteName: function () {
+        this.currentRoute = this.$route.name
+      }
+    }
+  }
+</script>

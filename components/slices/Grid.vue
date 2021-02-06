@@ -6,6 +6,7 @@
     .grid-container{
       column-gap: $spacing-xxl;
       row-gap: $spacing-l;
+      margin-top: $spacing-l;
     }
     &__item {
       b{
@@ -20,7 +21,7 @@
 </style>
 <template>
   <div class="cs__grid">
-    <prismic-rich-text :field="title" class="header"/>
+    <h4 class="header">{{header}}</h4>
     <prismic-rich-text :field="content" class="text"/>
     <div class="grid-container">
       <div
@@ -38,7 +39,7 @@
 <script>
 export default {
   props: {
-    title: Array,
+    header: String,
     content: Array,
     items: Array
   }

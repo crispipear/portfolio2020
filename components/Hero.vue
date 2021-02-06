@@ -1,21 +1,22 @@
 <template>
     <div class="hero" v-if="introData">
-      <img src="/hero.png" id="hero_img_bLeft" :class="heroImgClass" />
-      <img src="/hero.png" id="hero_img_bRight" :class="heroImgClass" />
-      <img src="/hero.png" id="hero_img_tLeft" :class="heroImgClass" />
-      <img src="/hero.png" id="hero_img_tRight" :class="heroImgClass" />
-      <div class="scroll-indicator">
-        <div class="scroll">
-          <div class="scroll-line"></div>
-        </div>
+      <div id="hero_img_b" :class="heroImgClassBottom">
+        <img src="/hero.png" id="hero_img_bLeft" />
+        <img src="/hero.png" id="hero_img_bRight" />
+      </div>
+      <div id="hero_img_t" :class="heroImgClassTop">
+        <img src="/hero.png" id="hero_img_tLeft" />
+        <img src="/hero.png" id="hero_img_tRight"/>
       </div>
       <div class="emoticon">
-        <span @mouseover="mouseOver" @mouseleave="mouseLeave">(ㆆ◡ㆆ)</span>
-        <span>hi</span>
+        <div @mouseover="mouseOver" @mouseleave="mouseLeave">
+          <span>✨(ㆆ◡ㆆ)✌️</span>
+          <span class="link-hover styled-title">ni hao</span>
+        </div>
       </div>
       <div class="hero-intro">
-        <prismic-rich-text :field="introData.intro_header"/>
-        <prismic-rich-text :field="introData.content_primary"/>
+        <prismic-rich-text class="styled-title" :field="introData.intro_header"/>
+        <prismic-rich-text class="hero-intro__content" :field="introData.content_primary"/>
       </div>
     </div>
 </template>
@@ -26,15 +27,18 @@ export default {
   },
   data() {
     return{
-      heroImgClass: 'hero-img hero-img-hidden'
+      heroImgClassTop: 'hero-img hero-img-hidden-t',
+      heroImgClassBottom: 'hero-img hero-img-hidden-b',
     }
   },
   methods: {
     mouseOver: function(){
-      this.heroImgClass = 'hero-img hero-img-show';  
+      this.heroImgClassTop = 'hero-img hero-img-show-t';  
+      this.heroImgClassBottom = 'hero-img hero-img-show-b';
     },
     mouseLeave: function(){
-      this.heroImgClass = 'hero-img hero-img-hidden';
+      this.heroImgClassTop = 'hero-img';  
+      this.heroImgClassBottom = 'hero-img';
     }
   }
 }
@@ -43,10 +47,27 @@ export default {
   .hero{
     .hero-img{
       position: fixed;
-      width: 100px;
+      width: 100%;
+      left: 0;
       z-index: 100;
       pointer-events: none;
-      transition: 0.16s all ease-in-out;
+      transition: 0.28s all ease-in-out;
+      img{
+        position: absolute;
+        width: 100px;
+      }
+    }
+    #hero_img_t{
+      top: -100px;
+    }
+    #hero_img_b{
+      bottom: -100px;
+    }
+    .hero-img-show-t{
+      top: 0!important;
+    }
+    .hero-img-show-b{
+      bottom: 0!important;
     }
     #hero_img_bLeft,#hero_img_bRight{
       bottom: 0;
@@ -65,45 +86,48 @@ export default {
     #hero_img_tRight{
       transform: scaleY(-1) scaleX(-1);
     }
-    .hero-img-show{
-      opacity: 1;
-    }
-    .hero-img-hidden{
-      opacity: 0;
-    }
-    h1{
-      font-size: $fs-l;
-      margin-bottom: $spacing-s;
-      line-height: 1.6;
-      font-family: $secFont;
-    }
     h2{
-      @extend .text-body;
-      font-size: $fs-s;
+      margin: 0;
     }
-    a{
-      @extend .link-hover;
+    &-intro{
+      .styled-title h2{
+        line-height: 1.4;
+        font-size: $fs-xxl*1.2;
+      }
+      &__content{
+        margin-top: $spacing-l;
+        width: 60%;
+      }
+      &__content h2{
+        @extend .text-body;
+        font-size: $fs-m;
+      }
     }
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: $spacing-xxl*1.4 0;
-    height: 100vh;
+    padding: $spacing-xxl*1.2 0;
     position: relative;
+    min-height: 100vh;
     .emoticon{
+      position: absolute;
+      bottom: $spacing-l;
+      right: 0;
+      div {
+        display: inline-block;
+      }
       text-align: right;
       opacity: 1;
       transition: all 0.16s;
-      cursor: pointer;
-      &:hover{
+      &:hover span{
         opacity: 0.8;
       }
       span {
-        font-size: $fs-xs;
+        font-size: $fs-m;
+        cursor: pointer;
         font-weight: $fw-m;
       }
       span:first-child {
-        font-size: $fs-xxl;
         font-weight: $fw-b;
       }
     }

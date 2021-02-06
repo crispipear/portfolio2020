@@ -1,10 +1,10 @@
 $dark: #0d0e0f;
-$med: #303030;
-$light: #ffffff;
-$border: #8a8a8a;
+$med: #585858;
+$light: #fdfdfd;
+$border: #d4d4d4;
 $priFont: 'Inter', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont,'Roboto', 'Oxygen',
 'Fira Sans', 'Droid Sans', sans-serif;
-$secFont: 'Merriweather', Georgia, serif;
+$secFont: 'Lexend Mega', 'Montserrat', 'Georgia', 'Times New Roman';
 $textColor: $med;
 $textStrongColor: $dark;
 $backgroundColor: $light;
@@ -31,7 +31,7 @@ $spacing-xs: 0.8rem;
 $spacing-xxs: 0.4rem;
 
 .text-body{
-  line-height: 1.8;
+  line-height: 2;
   font-weight: $fw-r;
   color: $textColor;
   strong, b{
@@ -49,12 +49,14 @@ $spacing-xxs: 0.4rem;
   grid-template-columns: 1fr 1fr;
 }
 .styled-title{
+  font-family: $secFont;
+  letter-spacing: 0;
   cursor: default;
+  font-weight: $fw-b;
   color: $textStrongColor;
   display: inline-block;
   font-size: $fs-xl;
   line-height: 1;
-  font-family: $secFont;
 }
 
 .link-hover{
@@ -64,13 +66,14 @@ $spacing-xxs: 0.4rem;
   transition: all 0.1s;
   font-weight: $fw-m;
   line-height: 1.4;
-  background-image: linear-gradient($dark, $dark);
+  background-image: linear-gradient($textStrongColor, $textStrongColor);
   background-position: 100% 95%;
   background-repeat: no-repeat;
   background-size: 100% 1px;
+  color: $textStrongColor;
   &:after{
     content: '';
-    background: $dark;
+    background: $textStrongColor;
     transition: all 0.1s;
     left: 0;
     width: 100%;
@@ -88,15 +91,6 @@ $spacing-xxs: 0.4rem;
   }
   &:hover{
     font-style: italic;
-    color: $light;
+    color: $backgroundColor;
   }
-}
-
-.tag-item{
-  display: inline-block;
-  font-size: $fs-xxs;
-  color: $textColor;
-  font-weight: $fw-m;
-  background-color: lighten($textColor, 75%);
-  text-align: center;
 }

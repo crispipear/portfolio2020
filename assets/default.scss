@@ -30,13 +30,13 @@ body{
 }
 
 ::selection {
-  background: $textColor;
+  background: $textStrongColor;
   color: $backgroundColor;
   -webkit-text-stroke-color: $backgroundColor;
 }
 
 ::-moz-selection {
-  background: $textColor;
+  background: $textStrongColor;
   color: $backgroundColor;
   -webkit-text-stroke-color: $backgroundColor;
 }
@@ -71,7 +71,7 @@ p {
 }
 
 p {
-  margin: 0 0 $spacing-s;
+  margin: 0 0 $spacing-m;
 }
 
 b,

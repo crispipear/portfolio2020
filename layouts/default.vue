@@ -4,7 +4,7 @@
     <Nuxt />
     <footer>
       <div/>
-      <span>Su Li &copy; 2020</span>
+      <span>Su Li &copy; 2021</span>
     </footer>
   </div>
 </template>

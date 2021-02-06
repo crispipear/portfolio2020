@@ -1,16 +1,16 @@
 <style lang="scss" scoped>
-  .cs__row-text{
-    width: 60%;
+  .cs__text-row{
+    width: 80%;
     margin: auto;
-    .text{
+    padding: $spacing-xxl 0;
+    &-content{
       font-size: $fs-l;
-      font-family: $secFont;
     }
   }
 </style>
 <template>
-  <div class="cs__row-text">
-    <prismic-rich-text :field="text" class="text"/>
+  <div class="cs__text-row">
+    <prismic-rich-text :field="text" class="cs__text-row-content"/>
   </div>
 </template>
 <script>

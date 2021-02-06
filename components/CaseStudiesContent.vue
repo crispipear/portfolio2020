@@ -15,6 +15,8 @@ import ImagesList from './slices/ImagesList';
 import Grid from './slices/Grid';
 import SingleText from './slices/SingleText';
 import DoubleText from './slices/DoubleText';
+import HeaderText from './slices/HeaderText';
+import TriGrid from './slices/TriGrid';
 import TextRow from './slices/TextRow';
 import TextImage from './slices/TextImage';
 import VideoIntro from './slices/VideoIntro';
@@ -29,6 +31,8 @@ export default {
     Grid,
     SingleText,
     DoubleText,
+    HeaderText,
+    TriGrid,
     TextRow,
     TextImage,
     VideoIntro,
@@ -41,6 +45,8 @@ export default {
         grid: "Grid",
         single_text: "SingleText",
         double_text: "DoubleText",
+        header_text: "HeaderText",
+        tri_grid: "TriGrid",
         text_row: "TextRow",
         text_image: "TextImage",
         video_intro: "VideoIntro",
@@ -57,7 +63,8 @@ export default {
   }
   .cs__slice{
     padding: $spacing-xl 0;
-    .header *{
+    .header{
+      @extend .text-header;
       font-size: $fs-m;
     }
     .text{
@@ -70,6 +77,9 @@ export default {
     }
     a {
       @extend .link-hover;
+    }
+    p:last-child{
+      margin-bottom: 0;
     }
   }
 </style>
