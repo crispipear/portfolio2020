@@ -1,7 +1,7 @@
 <style lang="scss" scoped>
   .cs__header-text{
     padding: $spacing-xxl 10%;
-    width: 100%;
+    width: 70%;
     margin: auto;
     @extend .grid-container;
     grid-template-columns: 1fr 2.5fr;

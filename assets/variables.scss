@@ -1,14 +1,14 @@
 $dark: #0d0e0f;
-$med: #585858;
+$med: #424242;
 $light: #fdfdfd;
-$border: #d4d4d4;
+$border: $dark;
 $priFont: 'Inter', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont,'Roboto', 'Oxygen',
 'Fira Sans', 'Droid Sans', sans-serif;
 $secFont: 'Lexend Mega', 'Montserrat', 'Georgia', 'Times New Roman';
 $textColor: $med;
 $textStrongColor: $dark;
 $backgroundColor: $light;
-$content-width: 80%;
+$content-width: 85%;
 
 $fw-b: 600;
 $fw-m: 500;
@@ -30,67 +30,5 @@ $spacing-s: 1.2rem;
 $spacing-xs: 0.8rem;
 $spacing-xxs: 0.4rem;
 
-.text-body{
-  line-height: 2;
-  font-weight: $fw-r;
-  color: $textColor;
-  strong, b{
-    color: $textStrongColor;
-  }
-}
-.text-header{
-  font-weight: $fw-m;
-  color: $textStrongColor;
-  margin-bottom: $spacing-xs;
-  line-height: 1.6;
-}
-.grid-container{
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-.styled-title{
-  font-family: $secFont;
-  letter-spacing: 0;
-  cursor: default;
-  font-weight: $fw-b;
-  color: $textStrongColor;
-  display: inline-block;
-  font-size: $fs-xl;
-  line-height: 1;
-}
-
-.link-hover{
-  display: inline-block;
-  text-decoration: none;
-  position: relative;
-  transition: all 0.1s;
-  font-weight: $fw-m;
-  line-height: 1.4;
-  background-image: linear-gradient($textStrongColor, $textStrongColor);
-  background-position: 100% 95%;
-  background-repeat: no-repeat;
-  background-size: 100% 1px;
-  color: $textStrongColor;
-  &:after{
-    content: '';
-    background: $textStrongColor;
-    transition: all 0.1s;
-    left: 0;
-    width: 100%;
-    position: absolute;
-    z-index: -1;
-  } 
-  &:after{
-    bottom: 0;
-    height: 100%;
-    opacity: 0;
-  }
-  &:hover:after{
-    height: 100%;
-    opacity: 1;
-  }
-  &:hover{
-    font-style: italic;
-    color: $backgroundColor;
-  }
-}
+$cursor-pointer: url("~@/static/cursor_pointer_32.png"), pointer;
+$cursor-default: url("~@/static/cursor_default_32.png"), default;

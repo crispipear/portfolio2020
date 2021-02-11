@@ -1,30 +1,39 @@
 <style lang="scss" scoped>
   .projects{
+    border-top: 1px solid $border;
+    margin: $spacing-xxl 0;
     .styled-title{
       width: 100%;
       text-align: right;
-      margin-bottom: $spacing-l;
+      margin: $spacing-xxl 0 $spacing-xl;
     }
   }
-  .projects-container {
-    grid-template-columns: 1fr 1fr 1fr;
+  .projects-items-container {
+    grid-template-columns: 1fr 1fr;
+    margin: 0 auto;
     column-gap: $spacing-xl;
-    margin: $spacing-l 0;
+    row-gap: $spacing-xl;
   }
 </style>
 <template>
-  <div class="projects wrapper" v-if="data">
-      <span class="styled-title">more projects.</span>
-      <div class="projects-container grid-container">
-         <ProjectItem v-for="(item, index) in data" :item="item" :key="'item'+index" />
+  <div class="projects" v-if="data">
+      <div class="wrapper">
+        <span class="styled-title">more projects.</span>
+      </div>
+      <div class="projects-container">
+        <div class="wrapper grid-container projects-items-container">
+          <ProjectItem v-for="(item, index) in data" :item="item" :key="'item'+index" />
+         </div>
       </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    data: Array
+  data() {
+    return {
+      data: this.$store.state.projects,
+    }
   }
 }
 </script>

@@ -31,7 +31,6 @@ export default {
     scss: [
       '~/assets/variables.scss',
       '~/assets/mixins.scss',
-      '~/assets/scroller.scss',
       '~/assets/default.scss',
     ]
   },

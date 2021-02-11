@@ -1,5 +1,5 @@
 <template>
-	<div class="cs__wrapper">
+	<div class="cs__wrapper wrapper">
     <component
         :key="slice.slice_type+index"
         v-for="(slice, index) in body"
@@ -55,31 +55,31 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 	.cs{
-		&__wrapper{
-			padding: 12vh 0;
-		}
-  }
-  .cs__slice{
-    padding: $spacing-xl 0;
-    .header{
-      @extend .text-header;
-      font-size: $fs-m;
+		/deep/ &__wrapper{
+			padding: $spacing-xxl 0;
     }
-    .text{
-      @extend .text-body;
-      font-size: $fs-xs;
-    }
-    ul, ol {
-      padding: 0 0 $spacing-xs;
-      list-style: none;
-    }
-    a {
-      @extend .link-hover;
-    }
-    p:last-child{
-      margin-bottom: 0;
+    /deep/ &__slice{
+      padding: $spacing-xl 0;
+      .header{
+        @extend .text-header;
+        font-size: $fs-m;
+      }
+      .text{
+        @extend .text-body;
+        font-size: $fs-xs;
+      }
+      ul, ol {
+        padding: 0 0 $spacing-xs;
+        list-style: none;
+      }
+      a {
+        @extend .link-hover;
+      }
+      p:last-child{
+        margin-bottom: 0;
+      }
     }
   }
 </style>

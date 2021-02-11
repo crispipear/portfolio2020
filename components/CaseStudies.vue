@@ -3,27 +3,24 @@
     .styled-title{
       width: 100%;
       text-align: right;
-      margin-bottom: $spacing-xl;
+      margin: $spacing-xxl 0 $spacing-xl;
     }
   }
   .case-study{
     &-container{
       column-count: 2;
       column-gap: $spacing-xxl;
-      position: relative;
     }
     &-item{
+      transition: all 0.1s;
+      break-inside: avoid;
+      margin: 0 0 $spacing-xxl;
       img{
-        transition: transform 0.4s;
         height: auto;
         width: 100%;
-        cursor: pointer;
+        cursor: $cursor-pointer;
+        border-bottom: 1px solid $border;
       }
-      &:hover img{
-        transform: scale(1.04);
-      }
-        break-inside: avoid;
-        margin: 0 0 $spacing-xxl;
       h2 {
         font-size: $fs-l;
         margin: 0 0 $spacing-xxs;
@@ -33,11 +30,12 @@
       }
       h3{
         margin: 0;
-       @extend .text-body;
+        line-height: 1.8;
+        @extend .text-body;
       }
     }
     &-info{
-      margin-top: $spacing-xs;
+      padding: $spacing-xs $spacing-m $spacing-m;
     }
   }
 </style>
@@ -45,7 +43,7 @@
   <div class="case-studies wrapper" v-if="data">
       <span class="styled-title">featured work.</span>
       <div class="case-study-container">
-        <div class="case-study-item" v-for="item in data" :key="item.name">
+        <div class="case-study-item outline-hover" v-for="item in data" :key="item.name">
             <nuxt-link :to="'/casestudies/' + item.ref" class="case-study-img">
               <img :src="item.cover.url" :alt="item.name + ' image'"/>
             </nuxt-link>
@@ -62,8 +60,10 @@
 
 <script>
 export default {
-  props: {
-    data: Array
+  data() {
+    return {
+      data: this.$store.state.caseStudies,
+    }
   }
 }
 </script>

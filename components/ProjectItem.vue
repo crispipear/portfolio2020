@@ -1,11 +1,7 @@
 <style lang="scss" scoped>
   .projects-item {
     position: relative;
-    border-bottom: 1px solid $border;
-    padding: $spacing-l 0;
-    &:first-child, &:nth-child(2), &:nth-child(3){
-      border-top: 1px solid $border;
-    }
+    padding: $spacing-l;
     h2,
     p,
     .projects-item-tags {
@@ -19,7 +15,7 @@
     }
 
     h2 {
-      cursor: pointer;
+      cursor: $cursor-pointer;
       margin: 0;
       font-family: $secFont;
       font-size: $fs-m;
@@ -48,7 +44,7 @@
     }
 
     img {
-      width: 100%;
+      height: 60%;
       right: 0;
       object-fit: cover;
       position: absolute;
@@ -67,7 +63,7 @@
   }
 </style>
 <template>
-  <div class="projects-item" v-if="item">
+  <div class="projects-item outline-hover" v-if="item">
     <img :src="item.cover.url" :alt="'image-' + item.name" :class="projImgClass" />
     <div>
       <prismic-link :field="item.link" @mouseover="mouseOver" @mouseleave="mouseLeave">

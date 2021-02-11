@@ -1,19 +1,18 @@
 <template>
   <section id="about" class="about">
     <div class="about-intro-block">
-      <span class="styled-title">{{intro_header}}</span>
-      <h1>{{intro_sub_header}}</h1>
+      <div class="wrapper">
+        <span class="styled-title">{{data.intro_header}}</span>
+        <h1>{{data.intro_sub_header}}</h1>
+      </div>
     </div>
     <div class="about-content-block">
-      <prismic-rich-text :field="intro_text" class="text-body" />
-      <div class="about-contact-block">
-        <img src="/about.jpg" />
-        <h2>{{connect_header}}</h2>
-        <prismic-rich-text :field="connect_text"/>
-        <div class="about-connect-links">
-          <a v-for="item in links" :key="item.link_name" :href="item.link" target="_blank">
-            {{ item.link_name }}
-          </a>
+      <div class="wrapper grid-container">
+        <prismic-rich-text :field="data.intro_text" class="text-body" />
+        <div class="about-contact-block">
+          <img src="/about.jpg" />
+          <h3>{{data.connect_header}}</h3>
+          <prismic-rich-text :field="data.connect_text" class="connect-text"/>
         </div>
       </div>
     </div>
@@ -22,15 +21,14 @@
 <script>
 export default {
   transition: {name: 'slide-right', mode: 'out-in'},
-  async asyncData({app}) {
-    const aboutDoc = await app.$prismic.api.getSingle('about');
+  data() {
     return {
-        ...aboutDoc.data
+      data: this.$store.state.about
     }
-  }
+  },
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   .about{
     .styled-title{
       margin-bottom: $spacing-l;
@@ -41,29 +39,32 @@ export default {
       margin-bottom: $spacing-m;
     }
     &-intro-block{
-      padding-top: $spacing-xl;
+      border-bottom: 1px solid $border;
+      padding: $spacing-xl 0;
+      h1{
+        width: 60%;
+      }
     }
     &-content-block{
-      @extend .grid-container;
-      grid-template-columns: 1.2fr 1fr;
-      margin-top: $spacing-xl;
-      column-gap: $spacing-xxl;
+      .grid-container{
+        .text-body{
+          border-right: 1px solid $border;
+          padding: $spacing-xl $spacing-xl $spacing-xl 0;
+        }
+        > div:last-child{
+          padding: $spacing-xl 0 $spacing-xl $spacing-xl;
+        }
+      }
       h1{
         margin-top: 0;
       }
     }
     &-contact-block{
-      p{
-        margin-bottom: $spacing-xs;
+      h3{
+        margin: 0;
       }
-      a{
+      /deep/ .connect-text a{
         @extend .link-hover;
-      }
-      font-size: $fs-s;
-    }
-    &-connect-links{
-      a{
-        margin-right: $spacing-xxs;
       }
     }
   }

@@ -1,59 +1,46 @@
 <style lang="scss" scoped>
   .cs-hero {
-    padding-top: $spacing-xxl * 1.2;
-    height: 100vh;
-    width: 100%;
-    position: relative;
-  }
-  img{
-    margin-left: -12.5%;
-    width: 52.5%;
-    max-height: 80%;
-    object-fit: contain;
-    object-position: left;
-    position: absolute;
-    left: 0;
-    top: 20%;
-  }
-  .cs-hero-info div{
-    margin-bottom: $spacing-s; 
-  }
-  .cs-hero-right{
-    .styled-title{
-      text-align: left;
+    &-left, &-right{
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
-    strong.styled-title{
-      margin-bottom: $spacing-xxs;
+    &-left {
+      padding: $spacing-xl 0;
+      align-items: center;
+      border-right: 1px solid $border;
+      img {
+        width: 60%;
+        max-height: 50vh;
+        object-fit: contain;
+      }
     }
-    h1{
-      margin-bottom: $spacing-s;
+    &-right{
+      padding: $spacing-xl;
+      h2{
+        font-size: $fs-m;
+        line-height: 1.6;
+        margin-bottom: $spacing-m;
+      }
+      div{
+        font-size: $fs-xs;
+        strong{
+          display: block;
+          font-family: $secFont;
+          margin-bottom: 0;
+        }
+        margin-bottom: $spacing-xxs;
+      }
     }
-    h2{
-      margin: 0;
-      font-size: $fs-m;
-    }
-    .cs-hero-line{
-      height: 1px;
-      background: $border;
-      width: 100%;
-      margin: $spacing-s 0;
-    }
-    strong, span{
-      font-size: $fs-xs;
-      display: block;
-    }
+    border-bottom: 1px solid $border;
   }
 </style>
 <template>
   <div class="cs-hero">
-    <div class="scroll-indicator">
-      <div class="scroll">
-        <div class="scroll-line"></div>
-      </div>
-    </div>
     <div class="grid-container">
       <div class="cs-hero-left">
-        <img :src="coverUrl" />
+        <img :src="coverUrl" :alt="name + ' cover'" />
       </div>
       <div class="cs-hero-right">
         <h1 class="styled-title">{{ name }}</h1>
@@ -61,15 +48,15 @@
         <div class="cs-hero-line" />
         <div class="cs-hero-info">
           <div>
-            <strong class="styled-title">timeframe</strong>
+            <strong>timeframe</strong>
             <span>{{timeframe}}</span>
           </div>
           <div>
-            <strong class="styled-title">my role</strong>
+            <strong>my role</strong>
             <span>{{role}}</span>
           </div>
           <div>
-            <strong class="styled-title">tools</strong>
+            <strong>tools</strong>
             <span>{{tools}}</span>
           </div>
         </div>

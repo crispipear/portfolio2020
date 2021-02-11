@@ -8,25 +8,27 @@
         <img src="/hero.png" id="hero_img_tLeft" />
         <img src="/hero.png" id="hero_img_tRight"/>
       </div>
-      <div class="emoticon">
-        <div @mouseover="mouseOver" @mouseleave="mouseLeave">
-          <span>✨(ㆆ◡ㆆ)✌️</span>
-          <span class="link-hover styled-title">ni hao</span>
+      <div class="hero-intro wrapper grid-container">
+        <div>
+          <prismic-rich-text class="styled-title" :field="introData.intro_header"/>
         </div>
-      </div>
-      <div class="hero-intro">
-        <prismic-rich-text class="styled-title" :field="introData.intro_header"/>
-        <prismic-rich-text class="hero-intro__content" :field="introData.content_primary"/>
+        <div>
+          <div class="emoticon link-hover">
+            <div @mouseover="mouseOver" @mouseleave="mouseLeave">
+              <span>✨(ㆆ◡ㆆ)✌️</span>
+              <span class="styled-title">ni hao!</span>
+            </div>
+          </div>
+          <prismic-rich-text class="hero-intro__content" :field="introData.content_primary"/>
+        </div>
       </div>
     </div>
 </template>
 <script>
 export default {
-  props: {
-    introData: Object
-  },
   data() {
     return{
+      introData: this.$store.state.intro,
       heroImgClassTop: 'hero-img hero-img-hidden-t',
       heroImgClassBottom: 'hero-img hero-img-hidden-b',
     }
@@ -45,6 +47,8 @@ export default {
 </script>
 <style lang="scss">
   .hero{
+    border-bottom: 1px solid $border;
+    position: relative;
     .hero-img{
       position: fixed;
       width: 100%;
@@ -86,53 +90,53 @@ export default {
     #hero_img_tRight{
       transform: scaleY(-1) scaleX(-1);
     }
-    h2{
-      margin: 0;
+    .grid-container{
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
     }
     &-intro{
+      > div {
+        padding: $spacing-xl 0;
+      }
+      > div:first-child{
+        padding-right: $spacing-l;
+        border-right: 1px solid $border;
+      }
+      > div:last-child{
+        padding-left: $spacing-l;
+      }
       .styled-title h2{
         line-height: 1.4;
-        font-size: $fs-xxl*1.2;
+        font-size: $fs-xl;
       }
       &__content{
-        margin-top: $spacing-l;
-        width: 60%;
-      }
-      &__content h2{
-        @extend .text-body;
-        font-size: $fs-m;
+        h2{
+          @extend .text-body;
+          font-size: $fs-s;
+        }
       }
     }
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: $spacing-xxl*1.2 0;
-    position: relative;
-    min-height: 100vh;
     .emoticon{
-      position: absolute;
-      bottom: $spacing-l;
-      right: 0;
+      margin-bottom: $spacing-xxs;
       div {
         display: inline-block;
       }
-      text-align: right;
-      opacity: 1;
-      transition: all 0.16s;
-      &:hover span{
-        opacity: 0.8;
-      }
       span {
         font-size: $fs-m;
-        cursor: pointer;
+        cursor: $cursor-pointer;
         font-weight: $fw-m;
       }
       span:first-child {
         font-weight: $fw-b;
       }
     }
-    .grid-container{
-      grid-template-columns: 60% 40%;
+    .link-hover{
+      *{
+        transition: all 0.1s;
+      }
+      &:hover * {
+        color: white
+      }
     }
   }
 </style>
