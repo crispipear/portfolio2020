@@ -6,6 +6,10 @@
     &-content{
       font-size: $fs-l;
     }
+    @include tablet{
+      padding: $spacing-l!important;
+      width: 100%;
+    }
   }
 </style>
 <template>

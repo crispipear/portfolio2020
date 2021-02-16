@@ -33,20 +33,35 @@
 </script>
 <style lang="scss" scoped>
   .footer{
-    border: 1px solid $border;
+    border-top: 1px solid $border;
     .grid-container{
       align-items: center;
       div{
         padding: $spacing-s 0;
+        @include tablet{
+          padding: $spacing-xxs 0;
+        }
       }
       div:last-child{
         justify-self: flex-end;
+        @include tablet{
+          justify-self: center;
+        }
+      }
+      @include tablet{
+        padding: $spacing-m 0;
+        justify-items: center;
       }
     }
     &__links{
       a{
         margin-left: $spacing-xs;
         font-size: $fs-xs;
+        @include tablet{
+          &:first-of-type{
+            margin: 0;
+          }
+        }
       }
     }
     span{

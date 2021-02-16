@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <div>
+    <div class="wrapper">
       <nuxt-link data-text="syl." class="nav-head" to="/">syl.</nuxt-link>
       <div class="nav-links">
         <nuxt-link data-text="work" to="/">work</nuxt-link>
@@ -46,9 +46,10 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: $content-width;
     padding: $spacing-xxs 0;
-    margin: auto;
+    @include tablet {
+      padding: $spacing-xxs $spacing-l;
+    }
   }
   
   nav a {

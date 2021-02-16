@@ -5,6 +5,10 @@
     }
     span{
       font-size: $fs-xxs;
+      @include tablet{
+        padding: 0 $spacing-l;
+        text-align: center;
+      }
     }
   }
 </style>

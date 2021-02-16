@@ -1,23 +1,17 @@
 <style lang="scss" scoped>
   .cs-hero {
-    &-left, &-right{
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
     &-left {
-      padding: $spacing-xl 0;
       align-items: center;
-      border-right: 1px solid $border;
       img {
-        width: 60%;
+        width: 100%;
         max-height: 50vh;
         object-fit: contain;
+        @include tablet{
+          width: 100%;
+        }
       }
     }
     &-right{
-      padding: $spacing-xl;
       h2{
         font-size: $fs-m;
         line-height: 1.6;
@@ -32,6 +26,21 @@
         }
         margin-bottom: $spacing-xxs;
       }
+      @include tablet{
+        h1{
+          line-height: 1.2;
+        }
+      }
+    }
+    &-left, &-right{
+      height: 100%;
+      padding: $spacing-xl;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      @include tablet{
+        padding: $spacing-l;
+      }
     }
     border-bottom: 1px solid $border;
   }
@@ -39,10 +48,10 @@
 <template>
   <div class="cs-hero">
     <div class="grid-container">
-      <div class="cs-hero-left">
+      <div class="cs-hero-left grid-first">
         <img :src="coverUrl" :alt="name + ' cover'" />
       </div>
-      <div class="cs-hero-right">
+      <div class="cs-hero-right grid-sec border">
         <h1 class="styled-title">{{ name }}</h1>
         <h2 class="text-body">{{ context }}</h2>
         <div class="cs-hero-line" />

@@ -2,10 +2,16 @@
   .cs__single-text{
     div{
       width: 80%;
-      margin-bottom: $spacing-l;
     }
     img{
       width: 100%;
+      margin-top: $spacing-s;
+    }
+    @include tablet{
+      div{
+        width: 100%;
+      }
+      padding: $spacing-l!important;
     }
   }
 </style>

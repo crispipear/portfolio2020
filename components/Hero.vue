@@ -1,20 +1,20 @@
 <template>
     <div class="hero" v-if="introData">
-      <div id="hero_img_b" :class="heroImgClassBottom">
+      <div id="hero_img_b" :class="hidden ? 'hero-img' :'hero-img hero-img-show-b'">
         <img src="/hero.png" id="hero_img_bLeft" />
         <img src="/hero.png" id="hero_img_bRight" />
       </div>
-      <div id="hero_img_t" :class="heroImgClassTop">
+      <div id="hero_img_t" :class="hidden ? 'hero-img' :'hero-img hero-img-show-t'">
         <img src="/hero.png" id="hero_img_tLeft" />
         <img src="/hero.png" id="hero_img_tRight"/>
       </div>
       <div class="hero-intro wrapper grid-container">
-        <div>
+        <div class="grid-first border">
           <prismic-rich-text class="styled-title" :field="introData.intro_header"/>
         </div>
-        <div>
+        <div class="grid-sec">
           <div class="emoticon link-hover">
-            <div @mouseover="mouseOver" @mouseleave="mouseLeave">
+            <div @mouseover="mouseOver" @mouseleave="mouseLeave" @click="toggle">
               <span>✨(ㆆ◡ㆆ)✌️</span>
               <span class="styled-title">ni hao!</span>
             </div>
@@ -29,18 +29,20 @@ export default {
   data() {
     return{
       introData: this.$store.state.intro,
+      hidden: true,
       heroImgClassTop: 'hero-img hero-img-hidden-t',
       heroImgClassBottom: 'hero-img hero-img-hidden-b',
     }
   },
   methods: {
+    toggle: function(){
+      this.hidden = !this.hidden;
+    },
     mouseOver: function(){
-      this.heroImgClassTop = 'hero-img hero-img-show-t';  
-      this.heroImgClassBottom = 'hero-img hero-img-show-b';
+      this.hidden = false;
     },
     mouseLeave: function(){
-      this.heroImgClassTop = 'hero-img';  
-      this.heroImgClassBottom = 'hero-img';
+      this.hidden = true;
     }
   }
 }
@@ -96,14 +98,8 @@ export default {
     }
     &-intro{
       > div {
-        padding: $spacing-xl 0;
-      }
-      > div:first-child{
-        padding-right: $spacing-l;
-        border-right: 1px solid $border;
-      }
-      > div:last-child{
-        padding-left: $spacing-l;
+        padding-top: $spacing-xl;
+        padding-bottom: $spacing-xl;
       }
       .styled-title h2{
         line-height: 1.4;

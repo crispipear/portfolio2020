@@ -17,6 +17,15 @@
         width: 100%;
       }
     }
+    @include tablet{
+      >.text{
+        width:100%;
+      }
+      &__item img{
+        margin-top: $spacing-xs;
+      }
+      padding: $spacing-l!important;
+    }
   }
 </style>
 <template>

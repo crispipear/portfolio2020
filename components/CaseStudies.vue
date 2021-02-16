@@ -4,12 +4,17 @@
       width: 100%;
       text-align: right;
       margin: $spacing-xxl 0 $spacing-xl;
+      padding: 0 $spacing-l;
     }
   }
   .case-study{
     &-container{
       column-count: 2;
       column-gap: $spacing-xxl;
+      @include tablet {
+        column-count: 1;
+        padding: 0 $spacing-l;
+      }
     }
     &-item{
       transition: all 0.1s;
@@ -32,6 +37,9 @@
         margin: 0;
         line-height: 1.8;
         @extend .text-body;
+      }
+      @include tablet{
+        margin: 0 0 $spacing-xl;
       }
     }
     &-info{

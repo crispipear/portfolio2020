@@ -1,4 +1,11 @@
 <style lang="scss" scoped>
+  .cs{
+    .wrapper{
+      @include tablet{
+        overflow-x: hidden;
+      }
+    }
+  }
   .cs__footer{
     padding: $spacing-xl 0;
     border-top: 1px $border solid;
@@ -13,6 +20,16 @@
     }
     .text-body{
       font-size: $fs-s;
+    }
+    @include tablet{
+      padding: $spacing-xl $spacing-l;
+      .text-header{
+        display: block;
+        margin-right: 0;
+      }
+      .text-body{
+        margin-top: $spacing-s;
+      }
     }
   }
 </style>

@@ -6,13 +6,18 @@
       width: 100%;
       text-align: right;
       margin: $spacing-xxl 0 $spacing-xl;
+      @include tablet{
+        padding: 0 $spacing-l;
+      }
     }
   }
   .projects-items-container {
-    grid-template-columns: 1fr 1fr;
     margin: 0 auto;
     column-gap: $spacing-xl;
     row-gap: $spacing-xl;
+    @include tablet{
+      padding: 0 $spacing-l;
+    }
   }
 </style>
 <template>

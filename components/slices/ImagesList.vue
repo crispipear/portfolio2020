@@ -4,8 +4,15 @@
       width: 75%;
       margin-bottom: $spacing-l;
       &:nth-child(odd){
-        width: 75%;
         margin-left: 25%;
+      }
+    }
+    @include tablet{
+      img{
+        width: 90%;
+        &:nth-child(odd){
+          margin-left: 10%;
+        }
       }
     }
   }

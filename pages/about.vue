@@ -8,8 +8,8 @@
     </div>
     <div class="about-content-block">
       <div class="wrapper grid-container">
-        <prismic-rich-text :field="data.intro_text" class="text-body" />
-        <div class="about-contact-block">
+        <prismic-rich-text :field="data.intro_text" class="text-body grid-first border" />
+        <div class="about-contact-block grid-sec">
           <img src="/about.jpg" />
           <h3>{{data.connect_header}}</h3>
           <prismic-rich-text :field="data.connect_text" class="connect-text"/>
@@ -44,15 +44,18 @@ export default {
       h1{
         width: 60%;
       }
+      @include tablet{
+        padding: $spacing-xl $spacing-l;
+        h1{
+          width: 100%;
+        }
+      }
     }
     &-content-block{
       .grid-container{
-        .text-body{
-          border-right: 1px solid $border;
-          padding: $spacing-xl $spacing-xl $spacing-xl 0;
-        }
-        > div:last-child{
-          padding: $spacing-xl 0 $spacing-xl $spacing-xl;
+        .grid-first, .grid-sec{
+          padding-top: $spacing-xl;
+          padding-bottom: $spacing-xl;
         }
       }
       h1{
@@ -61,7 +64,7 @@ export default {
     }
     &-contact-block{
       h3{
-        margin: 0;
+        margin: 0 0 $spacing-xs;
       }
       /deep/ .connect-text a{
         @extend .link-hover;

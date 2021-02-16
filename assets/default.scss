@@ -57,6 +57,9 @@ body{
   width: $content-width;
   max-width: 1600px;
   position: relative;
+  @include tablet{
+    width: 100%;
+  }
 }
 
 section {
@@ -76,7 +79,7 @@ p {
 }
 
 p {
-  margin: 0 0 $spacing-m;
+  margin: 0 0 $spacing-s;
 }
 
 b,
@@ -111,7 +114,41 @@ h6 {
 .grid-container{
   display: grid;
   grid-template-columns: 1fr 1fr;
+  @include tablet{
+    grid-template-columns: 1fr!important;
+  }
 }
+
+.grid-first{
+  padding-right: $spacing-xl;
+  @include tablet{
+    padding: $spacing-l!important;
+  }
+}
+
+.grid-sec{
+  padding-left: $spacing-xl;
+  @include tablet{
+    padding: $spacing-l!important;
+  }
+}
+
+.grid-first.border{
+  border-right: 1px solid $border;
+  @include tablet{
+    border-right: none;
+    border-bottom: 1px solid $border;
+  }
+}
+
+.grid-sec.border{
+  border-left: 1px solid $border;
+  @include tablet{
+    border-left: none;
+    border-top: 1px solid $border;
+  }
+}
+
 .styled-title{
   font-family: $secFont;
   letter-spacing: 0;
@@ -127,35 +164,40 @@ h6 {
   display: inline-block;
   text-decoration: none;
   position: relative;
-  transition: all 0.1s;
   font-weight: $fw-m;
   line-height: 1.4;
-  background-image: linear-gradient($textStrongColor, $textStrongColor);
-  background-position: 100% 95%;
-  background-repeat: no-repeat;
-  background-size: 100% 1px;
   color: $textStrongColor;
-  &:after{
-    content: '';
-    background: $textStrongColor;
+  @include laptop{
     transition: all 0.1s;
-    left: 0;
-    width: 100%;
-    position: absolute;
-    z-index: -1;
-  } 
-  &:after{
-    bottom: 0;
-    height: 100%;
-    opacity: 0;
+    background-image: linear-gradient($textStrongColor, $textStrongColor);
+    background-position: 100% 95%;
+    background-repeat: no-repeat;
+    background-size: 100% 1px;
+    &:after{
+      content: '';
+      background: $textStrongColor;
+      transition: all 0.1s;
+      left: 0;
+      width: 100%;
+      position: absolute;
+      z-index: -1;
+    } 
+    &:after{
+      bottom: 0;
+      height: 100%;
+      opacity: 0;
+    }
+    &:hover:after{
+      height: 100%;
+      opacity: 1;
+    }
+    &:hover{
+      font-style: italic;
+      color: $backgroundColor;
+    }
   }
-  &:hover:after{
-    height: 100%;
-    opacity: 1;
-  }
-  &:hover{
-    font-style: italic;
-    color: $backgroundColor;
+  @include tablet{
+    text-decoration: underline;
   }
 }
 
@@ -166,7 +208,9 @@ h6 {
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
   transform: translateZ(0);
-  &:hover, &:focus{
-    outline-width: 8px;
+  @include laptop{
+    &:hover, &:focus{
+      outline-width: 12px;
+    }
   }
 }

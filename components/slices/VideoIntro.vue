@@ -16,6 +16,13 @@
         height: 100%;
       }
     }
+    @include tablet{
+      width: 100%;
+      padding: $spacing-l!important;
+      &-video{
+        margin-top: $spacing-l;
+      }
+    }
   }
 </style>
 <template>
