@@ -9,10 +9,7 @@
         <img src="/hero.png" id="hero_img_tRight"/>
       </div>
       <div class="hero-intro wrapper grid-container">
-        <div class="grid-first border">
-          <prismic-rich-text class="styled-title" :field="introData.intro_header"/>
-        </div>
-        <div class="grid-sec">
+        <div class="grid-first">
           <div class="emoticon link-hover">
             <div @mouseover="mouseOver" @mouseleave="mouseLeave" @click="toggle">
               <span>✨(ㆆ◡ㆆ)✌️</span>
@@ -20,6 +17,9 @@
             </div>
           </div>
           <prismic-rich-text class="hero-intro__content" :field="introData.content_primary"/>
+        </div>
+        <div class="grid-sec border">
+          <prismic-rich-text class="styled-title" :field="introData.intro_header"/>
         </div>
       </div>
     </div>
@@ -93,7 +93,7 @@ export default {
       transform: scaleY(-1) scaleX(-1);
     }
     .grid-container{
-      grid-template-columns: 1.2fr 1fr;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
     }
     &-intro{
@@ -102,7 +102,7 @@ export default {
         padding-bottom: $spacing-xl;
       }
       .styled-title h2{
-        line-height: 1.4;
+        line-height: 1.6;
         font-size: $fs-xl;
       }
       &__content{

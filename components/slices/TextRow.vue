@@ -7,7 +7,6 @@
       font-size: $fs-l;
     }
     @include tablet{
-      padding: $spacing-l!important;
       width: 100%;
     }
   }

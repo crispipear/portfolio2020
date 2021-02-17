@@ -7,7 +7,6 @@
     grid-template-columns: 1fr 2.5fr;
     @include tablet{
       width: 100%;
-      padding: $spacing-l!important;
     }
   }
 </style>

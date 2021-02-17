@@ -2,7 +2,8 @@
     <footer class="footer">
       <div class="grid-container wrapper">
         <div>
-          <span>&copy; Su Li 2021 | built with nuxt.js</span>
+          <span>&copy; Su Li 2021 </span>
+          <span>| built with nuxt.js </span>
         </div>
         <div class="footer__links">
           <a 
@@ -39,6 +40,7 @@
       div{
         padding: $spacing-s 0;
         @include tablet{
+          text-align: center;
           padding: $spacing-xxs 0;
         }
       }
@@ -64,7 +66,7 @@
         }
       }
     }
-    span{
+    span:first-of-type{
       font-family: $secFont;
       color: $dark;
     }

@@ -61,7 +61,7 @@ export default {
 			padding: $spacing-xxl 0;
     }
     /deep/ &__slice{
-      padding: $spacing-xl 0;
+      padding: $spacing-xxl 0;
       .header{
         @extend .text-header;
         font-size: $fs-m;
@@ -79,6 +79,9 @@ export default {
       }
       p:last-child{
         margin-bottom: 0;
+      }
+      @include tablet{
+        padding: $spacing-l;
       }
     }
   }

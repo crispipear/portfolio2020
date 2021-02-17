@@ -133,6 +133,12 @@ h6 {
   }
 }
 
+.grid{
+  &-first, &-second{
+    box-sizing: border-box;
+  }
+}
+
 .grid-first.border{
   border-right: 1px solid $border;
   @include tablet{

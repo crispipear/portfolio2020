@@ -8,7 +8,6 @@
       width: 100%;
     }
     @include tablet{
-      padding: $spacing-l!important;
       > img:first-of-type{
         margin-bottom: $spacing-s;
       }

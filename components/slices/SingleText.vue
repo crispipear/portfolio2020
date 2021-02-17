@@ -11,7 +11,6 @@
       div{
         width: 100%;
       }
-      padding: $spacing-l!important;
     }
   }
 </style>

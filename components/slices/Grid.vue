@@ -24,7 +24,6 @@
       &__item img{
         margin-top: $spacing-xs;
       }
-      padding: $spacing-l!important;
     }
   }
 </style>

@@ -20,7 +20,6 @@
       }
     }
     @include tablet{
-      padding: $spacing-l!important;
       > div:last-of-type{
         margin-top: $spacing-l;
       }

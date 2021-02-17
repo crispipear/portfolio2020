@@ -2,7 +2,6 @@
   .cs__double-text{
     column-gap: $spacing-xxl;
     @include tablet{
-      padding: $spacing-l!important;
       row-gap: $spacing-l;
     }
   }

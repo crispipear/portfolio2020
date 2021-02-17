@@ -42,12 +42,15 @@ export default {
       border-bottom: 1px solid $border;
       padding: $spacing-xl 0;
       h1{
-        width: 60%;
+        font-family: $secFont;
+        font-size: $fs-xl;
       }
       @include tablet{
         padding: $spacing-xl $spacing-l;
+      }
+      @include mobile{
         h1{
-          width: 100%;
+          font-size: $fs-l;
         }
       }
     }
