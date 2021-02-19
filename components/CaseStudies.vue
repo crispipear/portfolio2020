@@ -4,7 +4,9 @@
       width: 100%;
       text-align: right;
       margin: $spacing-xxl 0 $spacing-xl;
-      padding: 0 $spacing-l;
+      @include tablet{
+        padding: 0 $spacing-l;
+      }
     }
   }
   .case-study{

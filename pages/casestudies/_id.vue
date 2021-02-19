@@ -7,7 +7,7 @@
     }
   }
   .cs__footer{
-    padding: $spacing-xl 0;
+    padding: $spacing-xxl 0;
     border-top: 1px $border solid;
     text-align: center;
     width: 100%;

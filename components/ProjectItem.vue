@@ -28,19 +28,8 @@
       margin: $spacing-xs 0 0 0;
     }
 
-    .projects-item-tags {
+    .projects-item.tags {
       margin-top: $spacing-xxs;
-      span {
-        display: inline-block;
-        font-size: $fs-xxs;
-        color: $textColor;
-        border: $border 1px solid;
-        font-weight: $fw-m;
-        text-align: center;
-        padding: 0 $spacing-xxs*1.2;
-        margin-top: $spacing-xxs;
-        margin-right: $spacing-xxs;
-      }
     }
 
     img {
@@ -70,7 +59,7 @@
         <h2 class="link-hover text-header">{{item.name}} &rarr;</h2>
       </prismic-link>
       <div class="projects-item-tags">
-        <span v-for="t in item.tags" :key="t.name">
+        <span v-for="t in item.tags" :key="t.name" class="tag">
           {{t.tag}}
         </span>
       </div>

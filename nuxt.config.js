@@ -10,7 +10,9 @@ export default {
       { name: 'description', content: CONFIG.description },
       { name: 'keywords', content: CONFIG.keywords},
       { property: 'og:title', content: CONFIG.siteTitle },
-      { property: 'og:description', content: CONFIG.description}
+      { property: 'og:url', content: CONFIG.siteUrl },
+      { property: 'og:image', content: CONFIG.metaImageUrl },
+      { property: 'og:description', content: CONFIG.description},
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=2' },

@@ -4,7 +4,7 @@
       align-items: center;
       img {
         width: 100%;
-        max-height: 50vh;
+        max-height: 60vh;
         object-fit: contain;
         @include tablet{
           width: 100%;
@@ -15,7 +15,7 @@
       h2{
         font-size: $fs-m;
         line-height: 1.6;
-        margin-bottom: $spacing-m;
+        margin-bottom: $spacing-xxs;
       }
       div{
         font-size: $fs-xs;
@@ -24,7 +24,7 @@
           font-family: $secFont;
           margin-bottom: 0;
         }
-        margin-bottom: $spacing-xxs;
+        margin-bottom: $spacing-xs;
       }
       @include tablet{
         h1{
@@ -61,12 +61,14 @@
             <span>{{timeframe}}</span>
           </div>
           <div>
-            <strong>my role</strong>
+            <strong>what I did</strong>
             <span>{{role}}</span>
           </div>
           <div>
-            <strong>tools</strong>
-            <span>{{tools}}</span>
+            <strong>tech/tools</strong>
+              <span v-for="t in tools.split(',')" :key="t.name" class="tag">
+                {{t}}
+              </span>
           </div>
         </div>
       </div>

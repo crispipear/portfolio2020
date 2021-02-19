@@ -38,7 +38,7 @@
     .grid-container{
       align-items: center;
       div{
-        padding: $spacing-s 0;
+        padding: $spacing-l 0;
         @include tablet{
           text-align: center;
           padding: $spacing-xxs 0;
