@@ -21,7 +21,6 @@
         font-size: $fs-xs;
         strong{
           display: block;
-          font-family: $secFont;
           margin-bottom: 0;
         }
         margin-bottom: $spacing-xs;
@@ -57,15 +56,15 @@
         <div class="cs-hero-line" />
         <div class="cs-hero-info">
           <div>
-            <strong>timeframe</strong>
+            <strong class="styled-text">timeframe</strong>
             <span>{{timeframe}}</span>
           </div>
           <div>
-            <strong>what I did</strong>
+            <strong class="styled-text">what I did</strong>
             <span>{{role}}</span>
           </div>
           <div>
-            <strong>tech/tools</strong>
+            <strong class="styled-text">tech/tools</strong>
               <span v-for="t in tools.split(',')" :key="t.name" class="tag">
                 {{t}}
               </span>

@@ -31,7 +31,6 @@
       h2 {
         font-size: $fs-l;
         margin: 0 0 $spacing-xxs;
-        font-family: $secFont;
         letter-spacing: 0;
         @extend .text-header;
       }
@@ -59,7 +58,7 @@
             </nuxt-link>
             <div class="case-study-info">
                 <nuxt-link :to="'/casestudies/' + item.ref">
-                  <h2 class="link-hover">{{item.name}} &rarr;</h2>
+                  <h2 class="link-hover styled-text">{{item.name}} &rarr;</h2>
                 </nuxt-link>
                 <h3>{{item.context}}</h3>
             </div>

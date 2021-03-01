@@ -45,6 +45,9 @@ body{
   -webkit-text-stroke-color: $backgroundColor;
 }
 
+::-webkit-scrollbar{width:2px;height:2px;}
+::-webkit-scrollbar-button{width:2px;height:2px;}
+
 *,
 *::before,
 *::after {
@@ -153,6 +156,10 @@ h6 {
     border-left: none;
     border-top: 1px solid $border;
   }
+}
+
+.styled-text{
+  font-family: $secFont;
 }
 
 .styled-title{

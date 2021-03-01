@@ -17,7 +17,6 @@
     h2 {
       cursor: $cursor-pointer;
       margin: 0;
-      font-family: $secFont;
       font-size: $fs-m;
       letter-spacing: 0;
     }
@@ -56,7 +55,7 @@
     <img :src="item.cover.url" :alt="'image-' + item.name" :class="projImgClass" />
     <div>
       <prismic-link :field="item.link" @mouseover="mouseOver" @mouseleave="mouseLeave">
-        <h2 class="link-hover text-header">{{item.name}} &rarr;</h2>
+        <h2 class="link-hover text-header styled-text">{{item.name}} &rarr;</h2>
       </prismic-link>
       <div class="projects-item-tags">
         <span v-for="t in item.tags" :key="t.name" class="tag">

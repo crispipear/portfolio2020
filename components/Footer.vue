@@ -2,8 +2,7 @@
     <footer class="footer">
       <div class="grid-container wrapper">
         <div>
-          <span>&copy; Su Li 2021 </span>
-          <span>| built with nuxt.js </span>
+          <span>&copy; Su Li 2021</span>
         </div>
         <div class="footer__links">
           <a 
