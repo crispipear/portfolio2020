@@ -9,16 +9,19 @@
   export default {
     name: 'default',
     head() {
-        return {
-            bodyAttrs: {
-                class: 'default-layout'
-            }
+      return {
+        bodyAttrs: {
+          class: 'default-layout',
+        },
+        htmlAttrs: {
+          "data-theme": 'dark'
         }
+      }
     }
   }
 </script>
 <style lang="scss">
   body.default-layout{
-    background: $backgroundColor;
+    background: var(--background-color);
   }
 </style>

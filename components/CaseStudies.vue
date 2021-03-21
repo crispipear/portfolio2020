@@ -25,8 +25,8 @@
       img{
         height: auto;
         width: 100%;
-        cursor: $cursor-pointer;
-        border-bottom: 1px solid $border;
+        cursor: var(--cursor-pointer);
+        border-bottom: 1px solid var(--border-color);
       }
       h2 {
         font-size: $fs-l;

@@ -49,7 +49,7 @@ export default {
 </script>
 <style lang="scss">
   .hero{
-    border-bottom: 1px solid $border;
+    border-bottom: 1px solid var(--border-color);
     position: relative;
     .hero-img{
       position: fixed;
@@ -119,7 +119,7 @@ export default {
       }
       span {
         font-size: $fs-m;
-        cursor: $cursor-pointer;
+        cursor: var(--cursor-pointer);
         font-weight: $fw-m;
       }
       span:first-child {
@@ -131,7 +131,7 @@ export default {
         transition: all 0.1s;
       }
       &:hover * {
-        color: white
+        color: var(--background-color)
       }
     }
   }

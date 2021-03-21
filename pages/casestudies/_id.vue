@@ -8,7 +8,7 @@
   }
   .cs__footer{
     padding: $spacing-xxl 0;
-    border-top: 1px $border solid;
+    border-top: 1px var(--border-color) solid;
     text-align: center;
     width: 100%;
     position: relative;

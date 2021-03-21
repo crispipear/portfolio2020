@@ -15,7 +15,7 @@
     }
 
     h2 {
-      cursor: $cursor-pointer;
+      cursor: var(--cursor-pointer);
       margin: 0;
       font-size: $fs-m;
       letter-spacing: 0;

@@ -1,17 +1,10 @@
 <template>
   <section id="about" class="about">
-    <div class="about-intro-block">
-      <div class="wrapper">
-        <span class="styled-title">{{data.intro_header}}</span>
-        <h1 class="styled-text">{{data.intro_sub_header}}</h1>
-      </div>
-    </div>
     <div class="about-content-block">
       <div class="wrapper grid-container">
         <prismic-rich-text :field="data.intro_text" class="text-body grid-first border" />
         <div class="about-contact-block grid-sec">
           <img src="/about.jpg" />
-          <h3>{{data.connect_header}}</h3>
           <prismic-rich-text :field="data.connect_text" class="connect-text" />
         </div>
       </div>
@@ -19,11 +12,11 @@
     <div class="about-content-block experience">
       <div class="wrapper">
         <h2 class="styled-text">experience</h2>
-        <div class="exp-wrapper grid-container">
-          <div v-for="exp in data.experience" :key="exp.org" class="exp-item">
-            <strong>{{exp.org}}</strong><br/>
-            <span>{{exp.role}}</span><br/>
-            <span>{{exp.duration}}</span>
+        <div class="exp-wrapper">
+          <div v-for="exp in data.experience" :key="exp.org" class="exp-item grid-container">
+            <strong class="styled-text">{{exp.org}}</strong>
+            <span>{{exp.role}}</span>
+            <span class="styled-text">{{exp.duration}}</span>
           </div>
         </div>
       </div>
@@ -71,29 +64,9 @@ export default {
       margin-bottom: $spacing-m;
     }
 
-    &-intro-block {
-      padding: $spacing-xl 0;
-
-      h1 {
-        font-size: $fs-xl;
-      }
-
-      @include tablet {
-        padding: $spacing-xl $spacing-l;
-      }
-
-      @include mobile {
-        h1 {
-          font-size: $fs-l;
-        }
-      }
-    }
-
     &-content-block {
-      border-top: 1px solid $border;
-
+      border-top: 1px solid var(--border-color);
       .grid-container {
-
         .grid-first,
         .grid-sec {
           padding-top: $spacing-xl;
@@ -103,6 +76,9 @@ export default {
 
       h1 {
         margin-top: 0;
+      }
+      h2{
+        margin-bottom: $spacing-m;
       }
     }
 
@@ -125,26 +101,34 @@ export default {
       }
     }
 
-    .exp-wrapper,
     .skills-wrapper {
       row-gap: $spacing-m;
       column-gap: $spacing-m;
     }
 
-    .exp-wrapper {
-      grid-template-columns: repeat(4, 1fr);
+    .exp-item{
+      grid-template-columns: 1.5fr 1.5fr 1fr;
+      border-bottom: 1px solid var(--border-color);
+      align-items: center;
+      margin-bottom: $spacing-s;
+      span:last-child {
+        justify-self: end;
+      }
     }
 
     .skills-wrapper {
+      row-gap: $spacing-m;
+      column-gap: $spacing-m;
       grid-template-columns: repeat(3, 1fr);
     }
 
-    .exp-item,
     .skill-item {
-      font-size: $fs-xs;
+      span{
+        font-size: $fs-xxs;
+      }
       display: inline-block;
       padding: $spacing-m;
-      border: 1px solid $border;
+      border: 1px solid var(--border-color);
       .styled-text{
         display: block;
         margin-bottom: $spacing-xxs;

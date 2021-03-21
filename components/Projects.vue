@@ -1,6 +1,6 @@
 <style lang="scss" scoped>
   .projects{
-    border-top: 1px solid $border;
+    border-top: 1px solid var(--border-color);
     margin: $spacing-xxl 0;
     .styled-title{
       width: 100%;

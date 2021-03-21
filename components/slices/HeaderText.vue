@@ -1,19 +1,25 @@
 <style lang="scss" scoped>
   .cs__header-text{
-    padding: $spacing-xxl 10%;
-    width: 70%;
-    margin: auto;
-    @extend .grid-container;
-    grid-template-columns: 1fr 2.5fr;
+    border: 1px solid var(--border-color);
+    width: 100%;
+    .grid-container{
+      width: 70%;
+      margin: auto;
+      grid-template-columns: 1fr 2.5fr;
+    }
     @include tablet{
-      width: 100%;
+      .grid-container{
+        width: 100%;
+      }
     }
   }
 </style>
 <template>
   <div class="cs__header-text">
-    <h4 class="header">{{header}}</h4>
-    <prismic-rich-text :field="text" class="text"/>
+    <div class="grid-container">
+      <h4 class="header">{{header}}</h4>
+      <prismic-rich-text :field="text" class="text"/>
+    </div>
   </div>
 </template>
 <script>

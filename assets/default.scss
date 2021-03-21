@@ -6,13 +6,13 @@ html {
 }
 body{
   font-family: $priFont;
-  font-size: 1rem;
+  font-size: $fs-xs;
   line-height: 1.6;
   letter-spacing: 0.02rem;
   box-sizing: border-box;
-  color: $textColor;
+  color: var(--text-color);
   *{
-    cursor: $cursor-default;
+    cursor: var(--cursor-default);
   }
 }
 
@@ -34,15 +34,15 @@ body{
 }
 
 ::selection {
-  background: $textStrongColor;
-  color: $backgroundColor;
-  -webkit-text-stroke-color: $backgroundColor;
+  background: var(--text-strong-color);
+  color: var(--background-color);
+  -webkit-text-stroke-color: var(--background-color);
 }
 
 ::-moz-selection {
-  background: $textStrongColor;
-  color: $backgroundColor;
-  -webkit-text-stroke-color: $backgroundColor;
+  background: var(--text-strong-color);
+  color: var(--background-color);
+  -webkit-text-stroke-color: var(--background-color);
 }
 
 ::-webkit-scrollbar{width:2px;height:2px;}
@@ -72,7 +72,7 @@ section {
 a {
   color: inherit;
   text-decoration: none;
-  cursor: $cursor-pointer;
+  cursor: var(--cursor-pointer);
 }
 
 a,
@@ -88,7 +88,7 @@ p {
 b,
 strong {
   font-weight: $fw-m;
-  color: $textStrongColor;
+  color: var(--text-strong-color);
 }
 
 h1,
@@ -103,14 +103,14 @@ h6 {
 .text-body{
   line-height: 2;
   font-weight: $fw-r;
-  color: $textColor;
+  color: var(--text-color);
   strong, b{
-    color: $textStrongColor;
+    color: var(--text-strong-color);
   }
 }
 .text-header{
   font-weight: $fw-m;
-  color: $textStrongColor;
+  color: var(--text-strong-color);
   margin-bottom: $spacing-xs;
   line-height: 1.6;
 }
@@ -143,18 +143,18 @@ h6 {
 }
 
 .grid-first.border{
-  border-right: 1px solid $border;
+  border-right: 1px solid var(--border-color);
   @include tablet{
     border-right: none;
-    border-bottom: 1px solid $border;
+    border-bottom: 1px solid var(--border-color);
   }
 }
 
 .grid-sec.border{
-  border-left: 1px solid $border;
+  border-left: 1px solid var(--border-color);
   @include tablet{
     border-left: none;
-    border-top: 1px solid $border;
+    border-top: 1px solid var(--border-color);
   }
 }
 
@@ -166,29 +166,29 @@ h6 {
   font-family: $secFont;
   letter-spacing: 0;
   font-weight: $fw-b;
-  color: $textStrongColor;
+  color: var(--text-strong-color);
   display: inline-block;
   font-size: $fs-xl;
   line-height: 1;
 }
 
 .link-hover{
-  cursor: $cursor-pointer;
+  cursor: var(--cursor-pointer);
   display: inline-block;
   text-decoration: none;
   position: relative;
   font-weight: $fw-m;
   line-height: 1.4;
-  color: $textStrongColor;
+  color: var(--text-strong-color);
   @include laptop{
     transition: all 0.1s;
-    background-image: linear-gradient($textStrongColor, $textStrongColor);
+    background-image: linear-gradient(var(--text-strong-color), var(--text-strong-color));
     background-position: 100% 95%;
     background-repeat: no-repeat;
     background-size: 100% 1px;
     &:after{
       content: '';
-      background: $textStrongColor;
+      background: var(--text-strong-color);
       transition: all 0.1s;
       left: 0;
       width: 100%;
@@ -206,7 +206,7 @@ h6 {
     }
     &:hover{
       font-style: italic;
-      color: $backgroundColor;
+      color: var(--background-color);
     }
   }
   @include tablet{
@@ -215,8 +215,8 @@ h6 {
 }
 
 .outline-hover{
-  cursor: $cursor-pointer;
-  outline: 1px solid $border;
+  cursor: var(--cursor-pointer);
+  outline: 1px solid var(--border-color);
   transition: outline 0.1s;
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
@@ -231,8 +231,8 @@ h6 {
 .tag {
   display: inline-block;
   font-size: $fs-xxs;
-  color: $textColor;
-  border: $border 1px solid;
+  color: var(--text-color);
+  border: var(--border-color) 1px solid;
   font-weight: $fw-m;
   text-align: center;
   padding: 0 $spacing-xxs*1.2;

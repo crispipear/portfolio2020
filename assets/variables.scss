@@ -1,14 +1,25 @@
-$dark: #0d0e0f;
-$med: #424242;
-$light: #fdfdfd;
-$border: $dark;
 $priFont: 'Inter', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont,'Roboto', 'Oxygen',
 'Fira Sans', 'Droid Sans', sans-serif;
 $secFont: 'Lexend Mega', 'Montserrat', 'Georgia', 'Times New Roman';
-$textColor: $med;
-$textStrongColor: $dark;
-$backgroundColor: $light;
 $content-width: 85%;
+
+html {
+  --background-color: #fdfdfd;
+  --text-color: #3a3a3a;
+  --text-strong-color: #0d0e0f;
+  --border-color: #0d0e0f;
+  --cursor-pointer: url("~@/static/cursor_pointer_36.png"), pointer;
+  --cursor-default: url("~@/static/cursor_default_36.png"), default;
+}
+html[data-theme="dark"] {
+  --background-color: #0d0e0f;
+  --text-color: #dadada;
+  --text-strong-color: #fdfdfd;
+  --border-color: #fdfdfd;
+  --cursor-pointer: url("~@/static/cursor_pointer_36_dark.png"), pointer;
+  --cursor-default: url("~@/static/cursor_default_36_dark.png"), default;
+}
+
 
 $fw-b: 600;
 $fw-m: 500;
@@ -29,6 +40,3 @@ $spacing-m: 1.6rem;
 $spacing-s: 1.2rem;
 $spacing-xs: 0.8rem;
 $spacing-xxs: 0.4rem;
-
-$cursor-pointer: url("~@/static/cursor_pointer_32.png"), pointer;
-$cursor-default: url("~@/static/cursor_default_32.png"), default;

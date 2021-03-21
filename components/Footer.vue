@@ -33,7 +33,7 @@
 </script>
 <style lang="scss" scoped>
   .footer{
-    border-top: 1px solid $border;
+    border-top: 1px solid var(--border-color);
     .grid-container{
       align-items: center;
       div{
@@ -67,7 +67,7 @@
     }
     span:first-of-type{
       font-family: $secFont;
-      color: $dark;
+      color: var(--text-strong-color);
     }
   }
 </style>
