@@ -12,9 +12,6 @@
       return {
         bodyAttrs: {
           class: 'default-layout',
-        },
-        htmlAttrs: {
-          "data-theme": 'dark'
         }
       }
     }
