@@ -7,6 +7,7 @@ html {
 body{
   font-family: $priFont;
   font-size: $fs-xs;
+  font-weight: $fw-r;
   line-height: 1.6;
   letter-spacing: 0.02rem;
   box-sizing: border-box;
@@ -238,4 +239,10 @@ h6 {
   padding: 0 $spacing-xxs*1.2;
   margin-top: $spacing-xxs;
   margin-right: $spacing-xxs;
+}
+
+ul {
+  margin-top: -$spacing-xs;
+  padding: 0;
+  list-style: none;
 }

@@ -3,7 +3,6 @@
     h2 {
       font-size: $fs-m;
       line-height: 1.6;
-      margin-bottom: $spacing-l;
     }
 
     &-info{
@@ -16,18 +15,19 @@
           display: block;
           margin-bottom: 0;
         }
-
+        margin-top: $spacing-l;
         margin-bottom: $spacing-xs;
-      }
-    }
-
-    @include tablet {
-      h1 {
-        line-height: 1.2;
       }
     }
     padding: $spacing-xl 0;
     border-bottom: 1px solid var(--border-color);
+    @include tablet {
+      padding: $spacing-l $spacing-m;
+      h1 {
+        line-height: 1.2;
+        font-size: $fs-l;
+      }
+    }
 }
 </style>
 <template>

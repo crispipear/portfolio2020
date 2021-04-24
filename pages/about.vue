@@ -2,11 +2,11 @@
   <section id="about" class="about">
     <div class="about-content-block">
       <div class="wrapper grid-container">
-        <prismic-rich-text :field="data.intro_text" class="text-body grid-first border" />
-        <div class="about-contact-block grid-sec">
+        <div class="about-contact-block grid-first border">
           <img src="/about.jpg" />
           <prismic-rich-text :field="data.connect_text" class="connect-text" />
         </div>
+        <prismic-rich-text :field="data.intro_text" class="text-body grid-sec" />
       </div>
     </div>
     <div class="about-content-block experience">
@@ -23,7 +23,7 @@
     </div>
     <div class="about-content-block skills">
       <div class="wrapper">
-        <h2 class="styled-text">tech skills</h2>
+        <h2 class="styled-text">what I've worked with</h2>
         <div class="skills-wrapper grid-container">
           <div class="skill-item">
             <strong class="styled-text">languages</strong>
@@ -32,6 +32,10 @@
           <div class="skill-item">
             <strong class="styled-text">frameworks/libraries</strong>
             <div class="skill-text tag" v-for="l in data.frameworks.split(', ')" :key="l">{{l}}</div>
+          </div>
+          <div class="skill-item">
+            <strong class="styled-text">tools</strong>
+            <div class="skill-text tag" v-for="l in data.tools.split(', ')" :key="l">{{l}}</div>
           </div>
           <div class="skill-item">
             <strong class="styled-text">design</strong>
@@ -54,6 +58,9 @@ export default {
 </script>
 <style lang="scss" scoped>
   .about {
+    /deep/ a {
+      @extend .link-hover;
+    }
     .styled-title {
       margin-bottom: $spacing-l;
       font-size: $fs-xl;
@@ -86,10 +93,6 @@ export default {
       h3 {
         margin: 0 0 $spacing-xs;
       }
-
-      /deep/ .connect-text a {
-        @extend .link-hover;
-      }
     }
 
     .experience,
@@ -119,7 +122,7 @@ export default {
     .skills-wrapper {
       row-gap: $spacing-m;
       column-gap: $spacing-m;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
 
     .skill-item {

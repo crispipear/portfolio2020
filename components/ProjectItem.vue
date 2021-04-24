@@ -32,7 +32,7 @@
     }
 
     img {
-      height: 60%;
+      width: 100%;
       right: 0;
       object-fit: cover;
       position: absolute;
@@ -55,7 +55,7 @@
     <img :src="item.cover.url" :alt="'image-' + item.name" :class="projImgClass" />
     <div>
       <prismic-link :field="item.link" @mouseover="mouseOver" @mouseleave="mouseLeave">
-        <h2 class="link-hover text-header styled-text">{{item.name}} &rarr;</h2>
+        <h2 class="link-hover text-header styled-text">{{item.name}} &#8599;</h2>
       </prismic-link>
       <div class="projects-item-tags">
         <span v-for="t in item.tags" :key="t.name" class="tag">

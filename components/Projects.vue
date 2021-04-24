@@ -13,8 +13,9 @@
   }
   .projects-items-container {
     margin: 0 auto;
-    column-gap: $spacing-xl;
-    row-gap: $spacing-xl;
+    column-gap: $spacing-l;
+    row-gap: $spacing-l;
+    grid-template-columns: repeat(3, 1fr);
     @include tablet{
       padding: 0 $spacing-l;
     }

@@ -8,8 +8,11 @@
         <img src="/hero.png" id="hero_img_tLeft" />
         <img src="/hero.png" id="hero_img_tRight"/>
       </div>
-      <div class="hero-intro wrapper grid-container">
-        <div class="grid-first">
+      <div class="hero-intro wrapper">
+        <div class="border">
+          <prismic-rich-text class="styled-title" :field="introData.intro_header"/>
+        </div>
+        <div>
           <div class="emoticon link-hover">
             <div @mouseover="mouseOver" @mouseleave="mouseLeave" @click="toggle">
               <span>✨(ㆆ◡ㆆ)✌️</span>
@@ -17,9 +20,6 @@
             </div>
           </div>
           <prismic-rich-text class="hero-intro__content" :field="introData.content_primary"/>
-        </div>
-        <div class="grid-sec border">
-          <prismic-rich-text class="styled-title" :field="introData.intro_header"/>
         </div>
       </div>
     </div>
@@ -49,6 +49,9 @@ export default {
 </script>
 <style lang="scss">
   .hero{
+    a {
+      @extend .link-hover;
+    }
     border-bottom: 1px solid var(--border-color);
     position: relative;
     .hero-img{
@@ -98,17 +101,26 @@ export default {
     }
     &-intro{
       > div {
-        padding-top: $spacing-xl;
-        padding-bottom: $spacing-xl;
+        padding: $spacing-xl 0;
       }
       .styled-title h2{
         line-height: 1.6;
-        font-size: $fs-xl;
+        font-size: $fs-xxl * 1.1;
+        @include tablet{
+          font-size: $fs-xl;
+        }
       }
       &__content{
+        width: 50%;
         h2{
           @extend .text-body;
-          font-size: $fs-s;
+          font-size: $fs-m;
+        }
+        @include tablet{
+          width: 100%;
+          h2{
+            font-size: $fs-s;
+          }
         }
       }
     }
@@ -118,12 +130,17 @@ export default {
         display: inline-block;
       }
       span {
-        font-size: $fs-m;
+        font-size: $fs-l;
         cursor: var(--cursor-pointer);
         font-weight: $fw-m;
       }
       span:first-child {
         font-weight: $fw-b;
+      }
+      @include tablet {
+        span {
+          font-size: $fs-m;
+        }
       }
     }
     .link-hover{
@@ -132,6 +149,14 @@ export default {
       }
       &:hover * {
         color: var(--background-color)
+      }
+    }
+    @include tablet {
+      padding: $spacing-m;
+      &-intro{
+        > div {
+          padding: $spacing-l 0;
+        }
       }
     }
   }
