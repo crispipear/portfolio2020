@@ -100,15 +100,17 @@ export default {
       align-items: center;
     }
     &-intro{
-      > div {
-        padding: $spacing-xl 0;
-      }
+      padding: $spacing-xl 0;
       .styled-title h2{
-        line-height: 1.6;
-        font-size: $fs-xxl * 1.1;
+        font-size: $fs-xl * 1.2;
         @include tablet{
+          width: 100%;
           font-size: $fs-xl;
+          margin: 0%;
         }
+      }
+      > div:first-child {
+        margin-bottom: $spacing-xl;
       }
       &__content{
         width: 50%;
@@ -143,21 +145,18 @@ export default {
         }
       }
     }
-    .link-hover{
-      *{
-        transition: all 0.1s;
-      }
-      &:hover * {
-        color: var(--background-color)
+    @include laptop {
+      .link-hover{
+        *{
+          transition: all 0.1s;
+        }
+        &:hover * {
+          color: var(--background-color)
+        }
       }
     }
     @include tablet {
       padding: $spacing-m;
-      &-intro{
-        > div {
-          padding: $spacing-l 0;
-        }
-      }
     }
   }
 </style>
