@@ -245,4 +245,7 @@ ul {
   margin-top: -$spacing-xs;
   padding: 0;
   list-style: none;
+  li {
+    margin-top: $spacing-xxs;
+  }
 }

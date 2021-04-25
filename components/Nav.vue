@@ -31,21 +31,10 @@
     },
     mounted() {
       this.updateRouteName();
-      this.getStoredTheme();
     },
     methods: {
       updateRouteName: function () {
         this.currentRoute = this.$route.name
-      },
-      getStoredTheme: function (){
-          try {
-            const storedTheme = localStorage.getItem('theme');
-          if (storedTheme) {
-            this.changeTheme(storedTheme);
-          }
-        }catch{
-          // use default light theme
-        }
       },
       changeTheme: function (theme){
         this.currentTheme = theme;
