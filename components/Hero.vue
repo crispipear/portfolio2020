@@ -1,28 +1,26 @@
 <template>
-    <div class="hero" v-if="introData">
-      <div id="hero_img_b" :class="hidden ? 'hero-img' :'hero-img hero-img-show-b'">
-        <img src="/hero.png" id="hero_img_bLeft" />
-        <img src="/hero.png" id="hero_img_bRight" />
-      </div>
-      <div id="hero_img_t" :class="hidden ? 'hero-img' :'hero-img hero-img-show-t'">
-        <img src="/hero.png" id="hero_img_tLeft" />
-        <img src="/hero.png" id="hero_img_tRight"/>
-      </div>
-      <div class="hero-intro wrapper">
-        <div class="border">
-          <prismic-rich-text class="styled-title" :field="introData.intro_header"/>
-        </div>
-        <div>
-          <div class="emoticon link-hover">
-            <div @mouseover="mouseOver" @mouseleave="mouseLeave" @click="toggle">
-              <span>✨(ㆆ◡ㆆ)✌️</span>
-              <span class="styled-title">ni hao!</span>
-            </div>
+  <div class="hero" v-if="introData">
+    <div id="hero_img_b" :class="hidden ? 'hero-img' :'hero-img hero-img-show-b'">
+      <img src="/hero.png" id="hero_img_bLeft" />
+      <img src="/hero.png" id="hero_img_bRight" />
+    </div>
+    <div id="hero_img_t" :class="hidden ? 'hero-img' :'hero-img hero-img-show-t'">
+      <img src="/hero.png" id="hero_img_tLeft" />
+      <img src="/hero.png" id="hero_img_tRight" />
+    </div>
+    <div class="hero-intro wrapper">
+      <div>
+        <div class="emoticon link-hover">
+        <div @mouseover="mouseOver" @mouseleave="mouseLeave" @click="toggle">
+            <span>✨(ㆆ◡ㆆ)✌️</span>
+            <span class="styled-title">ni hao!</span>
           </div>
-          <prismic-rich-text class="hero-intro__content" :field="introData.content_primary"/>
         </div>
+        <prismic-rich-text class="hero-intro__content" :field="introData.content_primary" />
+        <prismic-rich-text class="styled-title" :field="introData.intro_header" />
       </div>
     </div>
+  </div>
 </template>
 <script>
 export default {
@@ -100,29 +98,27 @@ export default {
       align-items: center;
     }
     &-intro{
-      padding: $spacing-xl 0;
-      .styled-title h2{
-        font-size: $fs-xl * 1.2;
-        @include tablet{
-          width: 100%;
-          font-size: $fs-xl;
-          margin: 0%;
-        }
+      > div {
+        width: 80%;
       }
-      > div:first-child {
-        margin-bottom: $spacing-xl;
+      padding: $spacing-xl 0;
+      .styled-title h2 {
+        margin-top: $spacing-xs;
+        font-size: $fs-xl;
       }
       &__content{
-        width: 50%;
         h2{
           @extend .text-body;
           font-size: $fs-m;
         }
-        @include tablet{
+      }
+      @include tablet{
+        > div {
           width: 100%;
-          h2{
-            font-size: $fs-s;
-          }
+          margin: 0;
+        }
+        h2{
+          font-size: $fs-s;
         }
       }
     }
@@ -138,11 +134,6 @@ export default {
       }
       span:first-child {
         font-weight: $fw-b;
-      }
-      @include tablet {
-        span {
-          font-size: $fs-m;
-        }
       }
     }
     @include laptop {

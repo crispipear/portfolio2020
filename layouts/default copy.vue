@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <SideNav />
+  <div id="content__wrapper">
+    <Nav />
     <Nuxt />
+    <Footer />
   </div>
 </template>
 <script>

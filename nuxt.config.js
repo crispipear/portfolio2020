@@ -8,7 +8,6 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'description', content: CONFIG.description },
-      { name: 'keywords', content: CONFIG.keywords},
       { property: 'og:title', content: CONFIG.siteTitle },
       { property: 'og:url', content: CONFIG.siteUrl },
       { property: 'og:image', content: CONFIG.metaImageUrl },

@@ -2,6 +2,8 @@ $priFont: 'Inter', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFo
 'Fira Sans', 'Droid Sans', sans-serif;
 $secFont: 'Lexend Mega', 'Montserrat', 'Georgia', 'Times New Roman';
 $content-width: 85%;
+$width-nav: 12%;
+$width-main: 88%;
 
 html {
   --background-color: #fdfdfd;
@@ -10,6 +12,7 @@ html {
   --border-color: #0d0e0f;
   --cursor-pointer: url("~@/static/cursor_pointer_36.png"), pointer;
   --cursor-default: url("~@/static/cursor_default_36.png"), default;
+  --icon-folder: url("~@/static/icon_folder.png");
 }
 html[data-theme="dark"] {
   --background-color: #0d0e0f;
@@ -18,6 +21,7 @@ html[data-theme="dark"] {
   --border-color: #fdfdfd;
   --cursor-pointer: url("~@/static/cursor_pointer_36_dark.png"), pointer;
   --cursor-default: url("~@/static/cursor_default_36_dark.png"), default;
+  --icon-folder: url("~@/static/icon_folder_dark.png");
 }
 
 

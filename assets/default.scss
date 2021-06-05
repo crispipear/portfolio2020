@@ -17,6 +17,15 @@ body{
   }
 }
 
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
 .slide-left-enter, .slide-right-enter,
 .slide-left-leave-active,.slide-right-leave-active{
   transition: all .5s;
@@ -218,13 +227,18 @@ h6 {
 .outline-hover{
   cursor: var(--cursor-pointer);
   outline: 1px solid var(--border-color);
-  transition: outline 0.1s;
+  transition: outline 0.05s;
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
   transform: translateZ(0);
   @include laptop{
-    &:hover, &:focus{
-      outline-width: 12px;
+    &:hover{
+      outline-width: 4px;
+    }
+  }
+  @include tablet{
+    &:focus {
+      outline-width: 4px;
     }
   }
 }
@@ -247,5 +261,26 @@ ul {
   list-style: none;
   li {
     margin-top: $spacing-xxs;
+  }
+}
+
+.icon-folder{
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-size: contain;
+  background-image: var(--icon-folder);
+}
+
+
+button {
+  background: transparent;
+  border: none;
+  font-family: $secFont;
+  font-size: $fs-s;
+  padding: $spacing-xxs $spacing-s;
+  @extend .outline-hover;
+  @include mobile {
+    outline: unset;
   }
 }
