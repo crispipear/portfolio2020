@@ -8,7 +8,7 @@
   }
   .cs__footer{
     padding: $spacing-xxl 0;
-    border-top: 1px var(--border-color) solid;
+    border-top: $border;
     text-align: center;
     width: 100%;
     position: relative;
@@ -42,6 +42,7 @@
         :context="cs_data.context"
         :role="cs_data.role"
         :tools="cs_data.tools"
+        :tags="cs_data.tags"
       />
       <CaseStudiesContent
         :body="cs_data.body"

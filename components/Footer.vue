@@ -33,7 +33,7 @@
 </script>
 <style lang="scss" scoped>
   .footer{
-    border-top: 1px solid var(--border-color);
+    border-top: $border;
     .grid-container{
       align-items: center;
       div{

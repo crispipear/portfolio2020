@@ -1,8 +1,8 @@
 <template>
   <div class="window" :style="style">
-    <div class="window__top-bar">
+    <BackgroundGradient class="window__top-bar">
       {{ topBarText }}
-    </div>
+    </BackgroundGradient>
     <div class="window__content">
       <slot />
     </div>
@@ -18,21 +18,24 @@ export default {
   computed: {
     style () {
       return {
-        'width': this.width + '%'
+        width: this.width ? this.width + '%' : 'auto',
+        'vertical-align': this.alignTop ? 'top' : 'middle'
       }
     }
   },
   props: {
     topBarText: String,
-    width: Number
+    width: String || Number,
+    alignTop: Boolean
   },
 }
 </script>
 <style lang="scss" scoped>
   .window {
-    border: var(--border-color) 1px solid;
+    box-sizing: border-box;
+    border: $border;
     display: inline-block;
-    margin: 2%;
+    height: fit-content;
   }
   .window__content{
     padding: $spacing-m;
@@ -41,7 +44,7 @@ export default {
     padding: $spacing-xxs $spacing-m;
     font-family: $secFont;
     font-size: $fs-xxs;
-    color: var(--background-color);
-    background-color: var(--text-strong-color);
+    color: var(--text-strong-color);
+    border-bottom: $border;
   }
 </style>

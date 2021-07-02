@@ -17,7 +17,7 @@
 <template>
   <div class="cs__single-text">
     <div>
-      <h4 class="header">{{header}}</h4>
+      <Header>{{header}}</Header>
       <prismic-rich-text :field="text" class="text"/>
     </div>
     <prismic-image 

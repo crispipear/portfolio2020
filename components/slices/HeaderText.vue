@@ -1,6 +1,6 @@
 <style lang="scss" scoped>
   .cs__header-text{
-    border: 1px solid var(--border-color);
+    border: $border;
     width: 100%;
     .grid-container{
       width: 70%;
@@ -17,7 +17,7 @@
 <template>
   <div class="cs__header-text">
     <div class="grid-container">
-      <h4 class="header">{{header}}</h4>
+      <Header>{{header}}</Header>
       <prismic-rich-text :field="text" class="text"/>
     </div>
   </div>

@@ -58,13 +58,13 @@ export default {
 <style lang="scss" scoped>
 	.cs{
 		/deep/ &__wrapper{
-			padding: $spacing-xxl 0;
+			padding: $spacing-xl 0;
     }
     /deep/ &__slice{
-      padding: $spacing-xxl 0;
-      .header{
-        @extend .text-header;
+      padding: $spacing-xl 0;
+      .header span{
         font-size: $fs-m;
+        line-height: 1.6;
       }
       .text{
         @extend .text-body;

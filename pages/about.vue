@@ -1,59 +1,80 @@
 <template>
-  <section id="about" class="about">
-    <div class="about-content-block">
-      <div class="wrapper grid-container">
-        <div class="about-contact-block grid-first border">
-          <img src="/about.jpg" />
-          <prismic-rich-text :field="data.connect_text" class="connect-text" />
-        </div>
-        <prismic-rich-text :field="data.intro_text" class="text-body grid-sec" />
+  <section class="about">
+    <div class="about-info">
+      <Window topBarText="info.docx" alignTop width="50">
+        <prismic-rich-text v-if="!funFacts" :field="data.intro_text" class="text-body" />
+        <prismic-rich-text v-if="funFacts" :field="data.intro_facts" />
+        <Chart :data="data.games" v-if="funFacts"/>
+      </Window>
+      <div class="about-info__other">
+        <Window topBarText="info_controlls.exe">
+          <button @click="setFunFacts(false)" :class="!funFacts && 'outline-hover__hovered'">
+              what I do
+          </button>
+          <button @click="setFunFacts(true)" :class="funFacts && 'outline-hover__hovered'">
+              fun facts
+          </button>
+        </Window>
+        <WindowCluster colTemplate="1fr 1fr">
+          <Window class="about-img" topBarText="me.jpg">
+            <img src="/me.jpg" alt="picture" />
+          </Window>
+           <Window class="about-img" topBarText="me_again.jpg">
+            <img src="/hero.png" alt="picture" />
+          </Window>
+        </WindowCluster>
       </div>
     </div>
-    <div class="about-content-block experience">
-      <div class="wrapper">
-        <h2 class="styled-text">experience</h2>
-        <div class="exp-wrapper">
-          <div v-for="exp in data.experience" :key="exp.org" class="exp-item grid-container">
-            <strong class="styled-text">{{exp.org}}</strong>
-            <span>{{exp.role}}</span>
-            <span class="styled-text">{{exp.duration}}</span>
-          </div>
+    <Header>experience</Header>
+    <WindowCluster colTemplate="1fr 1fr 1fr">
+      <Window class="exp-item" v-for="(exp, index) in data.experience" :topBarText="`work_exp_${index+1}.docx`"
+        :key="exp.org">
+        <strong class="styled-text">{{exp.org}}</strong>
+        <span>{{exp.role}}</span>
+        <span class="exp-item-time styled-text">{{exp.duration}}</span>
+        <div class="about-exp-tech">
+          <span v-for="t in exp.key_tech.split(', ')" :key="t.name" class="tag">
+            {{t}}
+          </span>
         </div>
-      </div>
-    </div>
-    <div class="about-content-block skills">
-      <div class="wrapper">
-        <h2 class="styled-text">what I've worked with</h2>
-        <div class="skills-wrapper grid-container">
-          <div class="skill-item">
-            <strong class="styled-text">languages</strong>
-            <div class="skill-text tag" v-for="l in data.languages.split(', ')" :key="l">{{l}}</div>
-          </div>
-          <div class="skill-item">
-            <strong class="styled-text">frameworks/libraries</strong>
-            <div class="skill-text tag" v-for="l in data.frameworks.split(', ')" :key="l">{{l}}</div>
-          </div>
-          <div class="skill-item">
-            <strong class="styled-text">tools</strong>
-            <div class="skill-text tag" v-for="l in data.tools.split(', ')" :key="l">{{l}}</div>
-          </div>
-          <div class="skill-item">
-            <strong class="styled-text">design</strong>
-            <div class="skill-text tag" v-for="l in data.ux.split(', ')" :key="l">{{l}}</div>
-          </div>
-        </div>
-      </div>
-    </div>
+        <prismic-rich-text :field="exp.description" />
+      </Window>
+    </WindowCluster>
+    <Header>what_I_have_worked_with</Header>
+    <WindowCluster colTemplate="1fr 1fr">
+      <Window topBarText="programming.docx" class="skill-item">
+        <div class="skill-text tag" v-for="l in data.languages.split(', ')" :key="l">{{l}}</div>
+      </Window>
+      <Window topBarText="libraries.docx" class="skill-item">
+        <div class="skill-text tag" v-for="l in data.frameworks.split(', ')" :key="l">{{l}}</div>
+      </Window>
+      <Window topBarText="tools_and_platforms.docx" class="skill-item">
+        <div class="skill-text tag" v-for="l in data.tools.split(', ')" :key="l">{{l}}</div>
+      </Window>
+      <Window topBarText="ux_skills.docx" class="skill-item">
+        <div class="skill-text tag" v-for="l in data.ux.split(', ')" :key="l">{{l}}</div>
+      </Window>
+    </WindowCluster>
   </section>
 </template>
+
 <script>
 export default {
-  transition: {name: 'slide-right', mode: 'out-in'},
+  transition (to, from) {},
   data() {
     return {
-      data: this.$store.state.about
+      data: this.$store.state.about,
+      funFacts: false
     }
   },
+  created() {
+    console.log(this.$store.state.about.intro_secondary)
+  },
+  methods: {
+    setFunFacts: function (setting) {
+      this.funFacts = setting;
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -61,81 +82,47 @@ export default {
     /deep/ a {
       @extend .link-hover;
     }
-    .styled-title {
-      margin-bottom: $spacing-l;
-      font-size: $fs-xl;
-    }
-
-    img {
-      width: 100%;
-      margin-bottom: $spacing-m;
-    }
-
-    &-content-block {
-      border-top: 1px solid var(--border-color);
-      .grid-container {
-        .grid-first,
-        .grid-sec {
-          padding-top: $spacing-xl;
-          padding-bottom: $spacing-xl;
+    .about-info {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: row;
+      > .window:first-of-type {
+        margin-right: calc(100vw*0.02);
+      }
+      &__other{
+        width: 50%;
+        > .window:first-of-type {
+          margin-bottom: calc(100vw*0.02);
         }
       }
-
-      h1 {
-        margin-top: 0;
-      }
-      h2{
-        margin-bottom: $spacing-m;
-      }
     }
-
-    &-contact-block {
-      h3 {
-        margin: 0 0 $spacing-xs;
-      }
-    }
-
-    .experience,
-    .skills {
-      padding: $spacing-xl 0;
-
-      @include tablet {
-        padding: $spacing-xl $spacing-l;
-      }
-    }
-
-    .skills-wrapper {
-      row-gap: $spacing-m;
-      column-gap: $spacing-m;
-    }
-
-    .exp-item{
-      grid-template-columns: 1.5fr 1.5fr 1fr;
-      border-bottom: 1px solid var(--border-color);
-      align-items: center;
-      margin-bottom: $spacing-s;
-      span:last-child {
-        justify-self: end;
-      }
-    }
-
-    .skills-wrapper {
-      row-gap: $spacing-m;
-      column-gap: $spacing-m;
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .skill-item {
-      span{
+    .exp-item /deep/ p, .exp-item-time{
         font-size: $fs-xxs;
+    }
+    .window button{
+      &:first-of-type {
+        margin-right: $spacing-s;
       }
-      display: inline-block;
-      padding: $spacing-m;
-      border: 1px solid var(--border-color);
-      .styled-text{
-        display: block;
+    }
+    .exp-item{
+      width: 100%;
+      /deep/ .window__content {
+        flex-direction: column;
+        display: flex;
+      }
+      strong {
+        &:first-of-type {
+          margin-bottom: $spacing-xxs;
+          font-size: $fs-xs;
+        }
+      }
+      .exp-item-time{
         margin-bottom: $spacing-xxs;
       }
+    }
+    .grid-container {
+      grid-template-columns: 1fr 1.2fr;
+      column-gap: calc(100vw*0.02);
     }
   }
 </style>

@@ -10,20 +10,27 @@ html {
   --text-color: #3a3a3a;
   --text-strong-color: #0d0e0f;
   --border-color: #0d0e0f;
+  --button-color: #0d0e0f;
   --cursor-pointer: url("~@/static/cursor_pointer_36.png"), pointer;
   --cursor-default: url("~@/static/cursor_default_36.png"), default;
   --icon-folder: url("~@/static/icon_folder.png");
+  --gradient-one: #E5FDF9;
+  --gradient-two: #FFF3D9;
 }
 html[data-theme="dark"] {
   --background-color: #0d0e0f;
   --text-color: #dadada;
   --text-strong-color: #fdfdfd;
-  --border-color: #fdfdfd;
+  --border-color: #bbbbbb;
+  --button-color: #fdfdfd;
   --cursor-pointer: url("~@/static/cursor_pointer_36_dark.png"), pointer;
   --cursor-default: url("~@/static/cursor_default_36_dark.png"), default;
   --icon-folder: url("~@/static/icon_folder_dark.png");
+  --gradient-one: #1D2221;
+  --gradient-two: #292213;
 }
 
+$border: 1px solid var(--border-color);
 
 $fw-b: 600;
 $fw-m: 500;
@@ -35,10 +42,10 @@ $fs-l: 1.6rem;
 $fs-m: 1.3rem;
 $fs-s: 1rem;
 $fs-xs: 0.92rem;
-$fs-xxs: 0.84rem;
+$fs-xxs: 0.8rem;
 
 $spacing-xxl: 6rem;
-$spacing-xl: 4rem;
+$spacing-xl: 3.6rem;
 $spacing-l: 2rem;
 $spacing-m: 1.6rem;
 $spacing-s: 1.2rem;
