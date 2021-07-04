@@ -29,7 +29,7 @@
 </style>
 <template>
   <div class="cs__grid">
-    <h4 class="header">{{header}}</h4>
+    <Header>{{header}}</Header>
     <prismic-rich-text :field="content" class="text"/>
     <div class="grid-container">
       <div

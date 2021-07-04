@@ -2,13 +2,15 @@ import CONFIG from './site-config';
 export default {
   mode: 'universal',
   target: 'static',
+  htmlAttrs: {
+    lang: 'en'
+  },
   head: {
     title: CONFIG.siteTitle,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'description', content: CONFIG.description },
-      { name: 'keywords', content: CONFIG.keywords},
       { property: 'og:title', content: CONFIG.siteTitle },
       { property: 'og:url', content: CONFIG.siteUrl },
       { property: 'og:image', content: CONFIG.metaImageUrl },
@@ -31,8 +33,8 @@ export default {
   },
   styleResources: {
     scss: [
-      '~/assets/variables.scss',
       '~/assets/mixins.scss',
+      '~/assets/variables.scss',
       '~/assets/default.scss',
     ]
   },

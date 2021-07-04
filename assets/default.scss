@@ -17,21 +17,13 @@ body{
   }
 }
 
-.slide-left-enter, .slide-right-enter,
-.slide-left-leave-active,.slide-right-leave-active{
-  transition: all .5s;
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.16s;
 }
-
-.slide-left-enter,
-.slide-right-leave-active {
+.page-enter,
+.page-leave-to {
   opacity: 0;
-  transform: translate(4%, 0);
-}
-
-.slide-left-leave-active,
-.slide-right-enter {
-  opacity: 0;
-  transform: translate(-4%, 0);
 }
 
 ::selection {
@@ -57,9 +49,6 @@ body{
 }
 
 .wrapper{
-  margin: auto;
-  width: $content-width;
-  max-width: 1440px;
   position: relative;
   @include tablet{
     width: 100%;
@@ -67,7 +56,20 @@ body{
 }
 
 section {
-  margin-top: calc(#{$spacing-xxs} * 2 + #{$fs-s * 2});
+  margin-left: calc(100% - #{$width-main});
+  padding: $spacing-xl;
+  width: $width-main;
+  @include tablet {
+    margin-left: calc(100% - #{$width-main__tablet});
+    width: $width-main__tablet;
+  }
+  @include mobile {
+    padding: $spacing-m;
+    margin-left: 0;
+    margin-top: 52px;
+    width: 100%;
+    overflow-x: hidden;
+  }
 }
 
 a {
@@ -84,6 +86,9 @@ p {
 
 p {
   margin: 0 0 $spacing-s;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 b,
@@ -99,6 +104,10 @@ h4,
 h5,
 h6 {
   @extend .text-header;
+}
+
+img {
+  max-width: 100%;
 }
 
 .text-body{
@@ -123,39 +132,9 @@ h6 {
   }
 }
 
-.grid-first{
-  padding-right: $spacing-xl;
-  @include tablet{
-    padding: $spacing-l!important;
-  }
-}
-
-.grid-sec{
-  padding-left: $spacing-xl;
-  @include tablet{
-    padding: $spacing-l!important;
-  }
-}
-
 .grid{
   &-first, &-second{
     box-sizing: border-box;
-  }
-}
-
-.grid-first.border{
-  border-right: 1px solid var(--border-color);
-  @include tablet{
-    border-right: none;
-    border-bottom: 1px solid var(--border-color);
-  }
-}
-
-.grid-sec.border{
-  border-left: 1px solid var(--border-color);
-  @include tablet{
-    border-left: none;
-    border-top: 1px solid var(--border-color);
   }
 }
 
@@ -217,35 +196,67 @@ h6 {
 
 .outline-hover{
   cursor: var(--cursor-pointer);
-  outline: 1px solid var(--border-color);
-  transition: outline 0.1s;
+  outline: 1px var(--button-color) solid;
+  transition: outline 0.05s;
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
   transform: translateZ(0);
   @include laptop{
-    &:hover, &:focus{
-      outline-width: 12px;
+    &:hover{
+      outline-width: 4px;
     }
   }
+  @include tablet{
+    &:focus {
+      outline-width: 4px;
+    }
+  }
+}
+
+.outline-hover__hovered {
+  outline-width: 4px;
 }
 
 .tag {
   display: inline-block;
   font-size: $fs-xxs;
   color: var(--text-color);
-  border: var(--border-color) 1px solid;
+  border: $border;
   font-weight: $fw-m;
   text-align: center;
-  padding: 0 $spacing-xxs*1.2;
-  margin-top: $spacing-xxs;
-  margin-right: $spacing-xxs;
+  padding: 0 $spacing-xxs;
+  margin-bottom: $spacing-xxs*1.2;
+  margin-right: $spacing-xxs*1.2;
+  line-height: 1.8;
 }
 
 ul {
-  margin-top: -$spacing-xs;
+  margin-top: -$spacing-xxs;
   padding: 0;
   list-style: none;
   li {
     margin-top: $spacing-xxs;
+  }
+}
+
+.icon-folder{
+  width: 40px;
+  height: 40px;
+  background-position: center;
+  background-size: contain;
+  background-image: var(--icon-folder);
+}
+
+
+button, .button {
+  color: var(--text-strong-color);
+  background: transparent;
+  border: none;
+  font-family: $secFont;
+  font-size: $fs-xs;
+  padding: $spacing-xxs $spacing-s;
+  @extend .outline-hover;
+  @include mobile {
+    font-size: $fs-xxs;
   }
 }

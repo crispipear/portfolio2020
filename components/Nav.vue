@@ -1,17 +1,50 @@
 <template>
   <nav>
-    <div class="wrapper">
-      <div class="nav-title">
-        <nuxt-link data-text="syl." class="nav-head" to="/">syl.</nuxt-link>
-        <div class="icon" @click="toggleTheme">
+    <BackgroundGradient class="nav-bar">
+      <span class="styled-text">syl</span>
+      <div class="nav-bar__right">
+        <div v-if="isMobileViewPort" class="nav-bar__mobile-menu" @click="toggleMobileMenu()">
+          <span class="styled-text">
+            {{
+              showMobileMenu ? 'close' : 'menu'
+            }}
+          </span>
+        </div>
+        <div class="nav-toggle" @click="toggleTheme()">
           {{
-            currentTheme === 'light' ? "&#x1F31A;" : "&#x1F31E;"
+            currentTheme === 'light' ? "&#x1F31E;" : "&#x1F31A;"
           }}
         </div>
       </div>
+    </BackgroundGradient>
+    <div v-if="showMobileMenu || !isMobileViewPort" class="nav-main">
+      <div class="nav-routes">
+        <div class="nav-route-item">
+          <nuxt-link data-text="home" to="/">
+            <div class="icon-folder"/>
+            home
+          </nuxt-link>
+        </div>
+        <div class="nav-route-item">
+          <nuxt-link data-text="about" to="/about">
+            <div class="icon-folder"/>
+            about
+          </nuxt-link>
+        </div>
+      </div>
       <div class="nav-links">
-        <nuxt-link data-text="work" to="/">work</nuxt-link>
-        <nuxt-link data-text="about" to="/about">about</nuxt-link>
+        <a 
+          class="link-hover styled-text"
+          v-for="item in links"
+          :key="item.link_name"
+          :href="item.link"
+          target="_blank"
+        >
+          {{ item.link_name }} &#8599;
+        </a>
+        <div class="nav-copy">
+          <span class="styled-text">&copy; Su Li 2021</span>
+        </div>
       </div>
     </div>
   </nav>
@@ -20,17 +53,33 @@
   export default {
     data() {
       return {
+        showMobileMenu: false,
+        isMobileViewPort: false,
         currentTheme: 'light',
-        currentRoute: ''
+        currentRoute: '',
+        links: Array
       }
+    },
+    created() {
+      this.links = this.$store.state.about.links;
     },
     watch: {
       '$route'(to, from) {
         this.updateRouteName();
-      }
+        this.showMobileMenu = false;
+      },
+    },
+    beforeMount() {
+      this.setMobileViewPort();
     },
     mounted() {
+      this.$nextTick(() => {
+        window.addEventListener('resize', this.setMobileViewPort);
+      });
       this.updateRouteName();
+    },
+    beforeUnmount() { 
+      window.removeEventListener('resize', this.setMobileViewPort); 
     },
     methods: {
       updateRouteName: function () {
@@ -52,6 +101,16 @@
         }else{
           this.changeTheme('light');
         }
+      },
+      setMobileViewPort: function (){
+        if (window.innerWidth <= 700) {
+          this.isMobileViewPort = true;
+        } else {
+          this.isMobileViewPort = false;
+        }
+      },
+      toggleMobileMenu() {
+        this.showMobileMenu = !this.showMobileMenu;
       }
     }
   }
@@ -61,66 +120,96 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    z-index: 100;
-    border-bottom: 1px solid var(--border-color);
+    width: $width-nav;
+    height: 100vh;
+    z-index: 10;
+    border-right: $border;
     background-color: var(--background-color);
+    .styled-text{
+      font-size: $fs-xxs;
+    }
+    @include tablet {
+      width: $width-nav__tablet;
+    }
+    @include mobile {
+      width: 100vw;
+      height: auto;
+    }
   }
-  nav > div {
+  .nav-bar{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: $spacing-xxs 0;
-    @include tablet {
-      padding: $spacing-xxs $spacing-l;
+    padding: $spacing-xs;
+    width: 100%;
+    height: 10%;
+    border-bottom: $border;
+    span {
+      font-size: $fs-xs;
+      color: var(--text-strong-color);
+    }
+    .nav-toggle {
+      font-size: $fs-m;
+      cursor: var(--cursor-pointer);
+    }
+    &__right{
+      display: flex;
+      flex-direction: row;
+    }
+    &__mobile-menu{
+      margin-right: $spacing-xs;
     }
   }
-  
-  nav a {
-    text-decoration: none;
-    transition: transform 0.3s;
-    transform-origin: 50% 0;
-    transform-style: preserve-3d;
-    position: relative;
-    display: inline-block;
-    font-weight: $fw-m;
-    color: var(--text-strong-color);
-    &:before {
-      position: absolute;
-      content: attr(data-text);
-      transform: rotateX(-90deg);
-      transform-origin: 50% 0;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      font-size: $fs-s;
-    }
-
-    &:hover {
-      transform: rotateX(90deg);
-    }
-  }
-
-  .nav-links a {
-    margin-left: $spacing-s;
-  }
-  .nav-title{
+  .nav-main{
+    padding: $spacing-s $spacing-xs;
+    height: 90%;
     display: flex;
-    align-items: center;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
   }
-  .icon{
-    font-size: $fs-m;
-    width: $fs-xl;
-    text-align: center;
-    cursor: var(--cursor-pointer);
-    margin: 2px 0 0 $spacing-xxs;
-    border: 1px solid transparent;
-    transition: border 0.1s;
-    &:hover{
-      border-color: var(--border-color);
+  .nav-routes{
+    .icon-folder{
+      cursor: var(--cursor-pointer);
+    }
+    a {
+      font-family: $secFont;
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .nav-route-item{
+      margin-bottom: $spacing-s;
+      transition: transform 0.12s;
+      &:hover{
+        transform: translateY(-4px);
+      }
     }
   }
+  .nav-links{
+    a {
+      margin-top: $spacing-xs;
+    }
+    .nav-copy{
+      margin-top: $spacing-m;
+    }
+  }
+  @include mobile {
+    .nav-bar {
+      height: 52px;
+    }
+    .nav-main {
+      border-bottom: $border;
+    }
+    .nav-routes {
+      display: flex;
+      flex-direction: row;
+    }
+    a { 
+      margin-right: $spacing-xs;
+    }
+  }
+
 </style>

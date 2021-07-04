@@ -7,28 +7,34 @@
     }
   }
   .cs__footer{
-    padding: $spacing-xxl 0;
-    border-top: 1px var(--border-color) solid;
-    text-align: center;
-    width: 100%;
-    position: relative;
-    .text-header, .link-hover {
+    margin-top: $spacing-xl;
+    &-container {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    .styled-text {
       font-size: $fs-l;
     }
-    .text-header{
-      margin-right: $spacing-m;
+    .button {
+      margin-top: $spacing-s;
+      display: inline-block;
     }
-    .text-body{
-      font-size: $fs-s;
+    &-content {
+      flex: 1;
+      display: inline-block;
+      margin-left: $spacing-xl;
     }
-    @include tablet{
-      padding: $spacing-xl $spacing-l;
-      .text-header{
-        display: block;
-        margin-right: 0;
+    img{
+      max-height: 30vh;
+    }
+    @include mobile {
+      width: 100%!important;
+      &-container {
+        flex-direction: column;
       }
-      .text-body{
-        margin-top: $spacing-s;
+      &-content {
+        margin-left: 0;
       }
     }
   }
@@ -36,30 +42,28 @@
 <template>
   <section class="case-studies cs" v-if="cs_data">
       <CaseStudiesHero
-        :coverUrl="cs_data.cover.url"
-        :name="cs_data.name"
-        :timeframe="cs_data.timeframe"
-        :context="cs_data.context"
-        :role="cs_data.role"
-        :tools="cs_data.tools"
+        v-bind="cs_data"
       />
       <CaseStudiesContent
         :body="cs_data.body"
       />
-      <div class="cs__footer">
-        <div class="wrapper">
-          <span class="text-header">next case study</span>
-          <nuxt-link :to="'/casestudies/' + next_data.ref">
-            <div class="link-hover">{{next_data.name}} &rarr;</div>
-          </nuxt-link>
-          <div class="text-body">{{next_data.context}}</div>
+      <Window class="cs__footer" topBarText="next_project.exe" width="80">
+        <div class="cs__footer-container">
+          <prismic-image :field="next_data.cover" />
+          <div class="cs__footer-content">
+            <span class="styled-text">{{next_data.name}}</span>
+            <div class="text-body">{{next_data.context}}</div>
+            <nuxt-link class="button" :to="'/casestudies/' + next_data.ref">
+              read more
+            </nuxt-link>
+          </div>
         </div>
-      </div>
+      </Window>
   </section>
 </template>
 <script>
   export default {
-    transition: {name: 'slide-right', mode: 'out-in'},
+    transition (to, from) {},
     data() {
       return {
         cs_data: null,

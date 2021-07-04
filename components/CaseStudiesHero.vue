@@ -1,69 +1,91 @@
 <style lang="scss" scoped>
 .cs-hero {
-    h2 {
-      font-size: $fs-m;
-      line-height: 1.6;
-    }
+  margin-bottom: $spacing-xxl;
+  h2 {
+    font-size: $fs-m;
+    line-height: 1.6;
+  }
+  .grid-container {
+    column-gap: $spacing-xl;
+    grid-template-columns: 1fr 2fr;
+  }
+  &-info{
+    grid-template-columns: 1.5fr 1.5fr 1fr!important;
+    column-gap: $spacing-l;
+    div {
+      font-size: $fs-xs;
 
-    &-info{
-      grid-template-columns: 2fr 2fr 1fr;
-      column-gap: $spacing-l;
-      div {
-        font-size: $fs-xs;
-
-        strong {
-          display: block;
-          margin-bottom: 0;
-        }
-        margin-top: $spacing-l;
+      strong {
+        display: block;
         margin-bottom: $spacing-xs;
       }
+      margin-top: $spacing-l;
+      margin-bottom: $spacing-xs;
     }
-    padding: $spacing-xl 0;
-    border-bottom: 1px solid var(--border-color);
-    @include tablet {
-      padding: $spacing-l $spacing-m;
-      h1 {
-        line-height: 1.2;
-        font-size: $fs-l;
+  }
+  @include tablet {
+    h1 {
+      line-height: 1.2;
+      font-size: $fs-l;
+    }
+  }
+  @include mobile {
+    h1 {
+      margin-top: $spacing-s;
+    }
+    h2 {
+      font-size: $fs-s;
+    }
+    &-info {
+      grid-template-columns: 1fr!important;
+      div {
+        margin: $spacing-xs 0;
+        strong {
+          margin-bottom: $spacing-xxs;
+        }
       }
     }
+  }
 }
 </style>
 <template>
-  <div class="cs-hero">
-    <div class="wrapper">
-      <h1 class="styled-title">{{ name }}</h1>
-      <h2 class="text-body">{{ context }}</h2>
-      <div class="cs-hero-line" />
-      <div class="cs-hero-info grid-container">
-        <div>
-          <strong class="styled-text">what I did</strong>
-          <span>{{role}}</span>
-        </div>
-        <div>
-          <strong class="styled-text">tech/tools</strong>
+  <Window class="cs-hero" :topBarText="`summary.docx`" width="100">
+    <div class="grid-container">
+      <prismic-image :field="cover" />
+      <div>
+        <h1 class="styled-title">{{ name }}</h1>
+        <h2 class="text-body">{{ context }}</h2>
+        <div class="cs-hero-line" />
+        <div class="cs-hero-info grid-container">
+          <div>
+            <strong class="styled-text">key tech/tools</strong>
             <span v-for="t in tools.split(',')" :key="t.name" class="tag">
               {{t}}
             </span>
-        </div>
-        <div>
-          <strong class="styled-text">timeframe</strong>
-          <span>{{timeframe}}</span>
+          </div>
+          <div>
+            <strong class="styled-text">my role</strong>
+              {{ role }}
+          </div>
+          <div>
+            <strong class="styled-text">timeframe</strong>
+            {{ timeframe }}
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </Window>
 </template>
 <script>
 export default {
   props: {
-    coverUrl: String,
+    cover: Array,
     name: String,
     context: String,
     role: String,
     timeframe: String,
     tools: String,
+    tags: String
   },
 }
 </script>

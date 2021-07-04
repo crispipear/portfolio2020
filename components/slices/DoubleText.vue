@@ -9,11 +9,11 @@
 <template>
   <div class="cs__double-text grid-container">
     <div>
-      <h4 class="header">{{header_left}}</h4>
+      <Header>{{header_left}}</Header>
       <prismic-rich-text :field="text_left" class="text" />
     </div>
     <div>
-      <h4 class="header">{{header_right}}</h4>
+      <Header>{{header_right}}</Header>
       <prismic-rich-text :field="text_right" class="text" />
     </div>
   </div>

@@ -21,7 +21,7 @@
   <div class="cs__tri-grid">
     <prismic-image :field="image_left"/>
     <div>
-      <h4 class="header">{{header}}</h4>
+      <Header>{{header}}</Header>
       <prismic-rich-text :field="text" class="text"/>
     </div>
     <prismic-image :field="image_right"/>

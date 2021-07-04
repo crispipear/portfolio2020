@@ -16,6 +16,9 @@
         height: 100%;
       }
     }
+    &-text{
+      font-size: $fs-m;
+    }
     @include tablet{
       width: 100%;
       &-video{
@@ -26,7 +29,7 @@
 </style>
 <template>
   <div class="cs__video">
-    <prismic-rich-text :field="text" class="header"/>
+    <prismic-rich-text :field="text" class="cs__video-text"/>
     <div class="cs__video-video">
       <iframe :src="video_link" frameBorder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
         allowFullScreen />

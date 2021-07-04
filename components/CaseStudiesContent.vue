@@ -58,13 +58,16 @@ export default {
 <style lang="scss" scoped>
 	.cs{
 		/deep/ &__wrapper{
-			padding: $spacing-xxl 0;
+			padding: $spacing-xl 0;
     }
     /deep/ &__slice{
-      padding: $spacing-xxl 0;
+      padding: $spacing-xl 0;
       .header{
-        @extend .text-header;
-        font-size: $fs-m;
+        margin: $spacing-m 0 $spacing-xs 0;
+        span {
+          font-size: $fs-m;
+          line-height: 1.6;
+        }
       }
       .text{
         @extend .text-body;
@@ -81,7 +84,10 @@ export default {
         margin-bottom: 0;
       }
       @include tablet{
-        padding: $spacing-l;
+        padding: $spacing-m;
+      }
+      @include mobile{
+        padding: 0;
       }
     }
   }

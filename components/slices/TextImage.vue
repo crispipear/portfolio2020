@@ -40,7 +40,7 @@
 <template>
   <div :class="reverse ? 'cs__text-image grid-container reverse' : 'cs__text-image grid-container'">
     <div>
-      <h4 class="header">{{header}}</h4>
+      <Header>{{header}}</Header>
       <prismic-rich-text :field="text" class="text"/>
     </div>
     <div>

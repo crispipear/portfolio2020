@@ -1,8 +1,8 @@
 <template>
-  <div id="content__wrapper">
+  <div>
+    <LoadingScreen />
     <Nav />
     <Nuxt />
-    <Footer />
   </div>
 </template>
 <script>

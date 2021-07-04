@@ -1,13 +1,9 @@
 <template>
-  <section>
-    <Hero />
-    <CaseStudies />
-    <Projects />
-  </section>
+  <Hero />
 </template>
 
 <script>
 export default {
-  transition: {name: 'slide-left', mode: 'out-in'}
+  transition (to, from) {},
 }
 </script>
