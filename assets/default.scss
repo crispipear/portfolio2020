@@ -15,6 +15,7 @@ body{
   *{
     cursor: var(--cursor-default);
   }
+  overflow: hidden;
 }
 
 .page-enter-active,
@@ -56,18 +57,18 @@ body{
 }
 
 section {
-  margin-left: calc(100% - #{$width-main});
+  margin-left: calc(100vw - #{$width-main});
   padding: $spacing-xl;
   width: $width-main;
   @include tablet {
-    margin-left: calc(100% - #{$width-main__tablet});
+    margin-left: calc(100vw - #{$width-main__tablet});
     width: $width-main__tablet;
   }
   @include mobile {
     padding: $spacing-m;
     margin-left: 0;
     margin-top: 52px;
-    width: 100%;
+    width: 100vw;
     overflow-x: hidden;
   }
 }

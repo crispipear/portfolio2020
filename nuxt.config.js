@@ -2,6 +2,9 @@ import CONFIG from './site-config';
 export default {
   mode: 'universal',
   target: 'static',
+  htmlAttrs: {
+    lang: 'en'
+  },
   head: {
     title: CONFIG.siteTitle,
     meta: [

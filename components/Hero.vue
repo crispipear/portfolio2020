@@ -1,40 +1,24 @@
 <template>
-  <section class="main" v-if="introData">
-    <div id="hero_img_b" :class="hidden ? 'hero-img' :'hero-img hero-img-show-b'">
-      <img src="/hero.png" id="hero_img_bLeft" />
-      <img src="/hero.png" id="hero_img_bRight" />
-    </div>
-    <div id="hero_img_t" :class="hidden ? 'hero-img' :'hero-img hero-img-show-t'">
-      <img src="/hero.png" id="hero_img_tLeft" />
-      <img src="/hero.png" id="hero_img_tRight" />
-    </div>
+  <div v-if="introData">
     <Window topBarText="hello.exe">
-      <button @click="toggle" class="hero-button">
+      <button @click="toggleImages()" class="hero-button">
         <span>✨(ㆆ◡ㆆ)✌️</span>
-        <span class="styled-title">{{ this.hidden ? "ni hao!" : "bye bye!" }}</span>
+        <span class="styled-title">{{ hidden ? "ni hao!" : "bye bye!" }}</span>
       </button>
       <prismic-rich-text class="hero-intro__content" :field="introData.content_primary" />
     </Window>
-    <Header>featured</Header>
-    <CaseStudies />
-    <!-- <Header>more projects</Header> -->
-    <!-- <Projects /> -->
-  </section>
+  </div>
 </template>
 <script>
 export default {
   data() {
     return{
       introData: this.$store.state.intro,
-      hidden: true,
-      heroImgClassTop: 'hero-img hero-img-hidden-t',
-      heroImgClassBottom: 'hero-img hero-img-hidden-b',
     }
   },
-  methods: {
-    toggle: function(){
-      this.hidden = !this.hidden;
-    }
+  props: {
+    toggleImages: Function,
+    hidden: Boolean
   }
 }
 </script>
@@ -60,18 +44,6 @@ export default {
     }
     span:first-child {
       font-weight: $fw-b;
-    }
-  }
-  .hero-img{
-    position: fixed;
-    width: 100%;
-    left: 0;
-    z-index: 100;
-    pointer-events: none;
-    transition: 0.28s all ease-in-out;
-    img{
-      position: absolute;
-      width: 100px;
     }
   }
   #hero_img_t{

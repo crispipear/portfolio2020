@@ -9,35 +9,22 @@
     width: 100vw;
     height: 100vh;
     background: black;
-    position: fixed;
-    transition: opacity 1s;
+    position: fixed!important;
+    transition: opacity 0.4s;
     pointer-events: none;
   }
 </style>
 <script>
   export default {
-    data: () => ({
-      loading: true
-    }),
+    props: {
+      isLoading: Boolean
+    },
     computed: {
       style () {
         return {
-          opacity: this.loading ? 1 : 0
+          opacity: this.isLoading ? 1 : 0
         }
       }
     },
-    methods: {
-      start() {
-        this.loading = true
-      },
-      finish() {
-        this.loading = false
-      }
-    },
-    mounted() {
-      setTimeout(() => {
-        this.finish();
-      }, 1500)
-    }
   }
 </script>
