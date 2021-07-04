@@ -48,6 +48,10 @@ export default {
           margin-bottom: $spacing-xs;
         }
       }
+      @include mobile {
+        column-count: 1;
+        column-count: 0;
+      }
     }
   }
 </style>

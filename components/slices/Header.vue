@@ -26,8 +26,15 @@ export default {
     flex-direction: row;
     align-items: center;
     margin: $spacing-xl 0 $spacing-s 0;
+    max-width: 100%;
     span {
       font-size: $fs-l;
+      @include mobile {
+        line-height: 1.6;
+        font-size: $fs-m;
+        max-width: 100%;
+        overflow-wrap: break-word;
+      }
     }
   }
 </style>

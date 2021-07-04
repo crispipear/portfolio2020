@@ -2,7 +2,7 @@
   .cs__text-row{
     width: 80%;
     margin: auto;
-    padding: $spacing-xxl 0;
+    margin: $spacing-l 0;
     &-content{
       font-size: $fs-l;
     }

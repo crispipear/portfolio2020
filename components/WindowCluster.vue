@@ -36,5 +36,9 @@ export default {
 <style lang="scss" scoped>
   .window-cluster {
     display: grid;
+    @include tablet {
+      grid-template-columns: 1fr !important;
+      row-gap: $spacing-s!important;
+    }
   }
 </style>

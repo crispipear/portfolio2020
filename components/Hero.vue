@@ -46,6 +46,9 @@ export default {
     /deep/ h2{
       font-size: $fs-m;
       @extend .text-body;
+      @include mobile {
+        font-size: $fs-s;;
+      }
     }
   }
   .hero-button{

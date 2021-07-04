@@ -67,9 +67,6 @@ export default {
       funFacts: false
     }
   },
-  created() {
-    console.log(this.$store.state.about.intro_secondary)
-  },
   methods: {
     setFunFacts: function (setting) {
       this.funFacts = setting;
@@ -83,7 +80,7 @@ export default {
       @extend .link-hover;
     }
     .about-info {
-      min-height: 80vh;
+      min-height: 85vh;
       display: flex;
       flex-direction: row;
       > .window:first-of-type {
@@ -93,6 +90,18 @@ export default {
         width: 50%;
         > .window:first-of-type {
           margin-bottom: calc(100vw*0.02);
+        }
+      }
+      @include tablet {
+        flex-direction: column;
+        > .window:first-of-type {
+          margin: 0 0 $spacing-s 0;
+        }
+        .window, .about-info__other {
+          width: 100%!important;
+          > .window:first-of-type {
+            margin-bottom: $spacing-s;
+          }
         }
       }
     }
@@ -123,6 +132,9 @@ export default {
     .grid-container {
       grid-template-columns: 1fr 1.2fr;
       column-gap: calc(100vw*0.02);
+      @include tablet {
+        column-gap: $spacing-s;
+      }
     }
   }
 </style>

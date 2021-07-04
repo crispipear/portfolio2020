@@ -59,6 +59,17 @@ section {
   margin-left: calc(100% - #{$width-main});
   padding: $spacing-xl;
   width: $width-main;
+  @include tablet {
+    margin-left: calc(100% - #{$width-main__tablet});
+    width: $width-main__tablet;
+  }
+  @include mobile {
+    padding: $spacing-m;
+    margin-left: 0;
+    margin-top: 52px;
+    width: 100%;
+    overflow-x: hidden;
+  }
 }
 
 a {
@@ -220,7 +231,7 @@ img {
 }
 
 ul {
-  margin-top: -$spacing-xs;
+  margin-top: -$spacing-xxs;
   padding: 0;
   list-style: none;
   li {
@@ -246,6 +257,6 @@ button, .button {
   padding: $spacing-xxs $spacing-s;
   @extend .outline-hover;
   @include mobile {
-    outline: unset;
+    font-size: $fs-xxs;
   }
 }

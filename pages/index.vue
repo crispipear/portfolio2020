@@ -4,6 +4,6 @@
 
 <script>
 export default {
-  transition (to, from) {}
+  transition (to, from) {},
 }
 </script>

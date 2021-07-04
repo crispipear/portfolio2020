@@ -1,5 +1,6 @@
 <template>
   <div>
+    <LoadingScreen />
     <Nav />
     <Nuxt />
   </div>

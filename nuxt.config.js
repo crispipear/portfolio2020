@@ -30,8 +30,8 @@ export default {
   },
   styleResources: {
     scss: [
-      '~/assets/variables.scss',
       '~/assets/mixins.scss',
+      '~/assets/variables.scss',
       '~/assets/default.scss',
     ]
   },

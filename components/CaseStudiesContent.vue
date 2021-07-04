@@ -62,9 +62,12 @@ export default {
     }
     /deep/ &__slice{
       padding: $spacing-xl 0;
-      .header span{
-        font-size: $fs-m;
-        line-height: 1.6;
+      .header{
+        margin: $spacing-m 0 $spacing-xs 0;
+        span {
+          font-size: $fs-m;
+          line-height: 1.6;
+        }
       }
       .text{
         @extend .text-body;
@@ -81,7 +84,10 @@ export default {
         margin-bottom: 0;
       }
       @include tablet{
-        padding: $spacing-l;
+        padding: $spacing-m;
+      }
+      @include mobile{
+        padding: 0;
       }
     }
   }

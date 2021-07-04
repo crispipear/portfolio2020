@@ -2,13 +2,22 @@
   <nav>
     <BackgroundGradient class="nav-bar">
       <span class="styled-text">syl</span>
-      <div class="nav-toggle" @click="toggleTheme">
-        {{
-          currentTheme === 'light' ? "&#x1F31E;" : "&#x1F31A;"
-        }}
+      <div class="nav-bar__right">
+        <div v-if="isMobileViewPort" class="nav-bar__mobile-menu" @click="toggleMobileMenu()">
+          <span class="styled-text">
+            {{
+              showMobileMenu ? 'close' : 'menu'
+            }}
+          </span>
+        </div>
+        <div class="nav-toggle" @click="toggleTheme()">
+          {{
+            currentTheme === 'light' ? "&#x1F31E;" : "&#x1F31A;"
+          }}
+        </div>
       </div>
     </BackgroundGradient>
-    <div class="nav-main">
+    <div v-if="showMobileMenu || !isMobileViewPort" class="nav-main">
       <div class="nav-routes">
         <div class="nav-route-item">
           <nuxt-link data-text="home" to="/">
@@ -44,6 +53,8 @@
   export default {
     data() {
       return {
+        showMobileMenu: false,
+        isMobileViewPort: false,
         currentTheme: 'light',
         currentRoute: '',
         links: Array
@@ -55,10 +66,20 @@
     watch: {
       '$route'(to, from) {
         this.updateRouteName();
-      }
+        this.showMobileMenu = false;
+      },
+    },
+    beforeMount() {
+      this.setMobileViewPort();
     },
     mounted() {
+      this.$nextTick(() => {
+        window.addEventListener('resize', this.setMobileViewPort);
+      });
       this.updateRouteName();
+    },
+    beforeUnmount() { 
+      window.removeEventListener('resize', this.setMobileViewPort); 
     },
     methods: {
       updateRouteName: function () {
@@ -80,6 +101,16 @@
         }else{
           this.changeTheme('light');
         }
+      },
+      setMobileViewPort: function (){
+        if (window.innerWidth <= 700) {
+          this.isMobileViewPort = true;
+        } else {
+          this.isMobileViewPort = false;
+        }
+      },
+      toggleMobileMenu() {
+        this.showMobileMenu = !this.showMobileMenu;
       }
     }
   }
@@ -89,13 +120,20 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 12%;
+    width: $width-nav;
     height: 100vh;
-    z-index: 100;
+    z-index: 10;
     border-right: $border;
     background-color: var(--background-color);
     .styled-text{
       font-size: $fs-xxs;
+    }
+    @include tablet {
+      width: $width-nav__tablet;
+    }
+    @include mobile {
+      width: 100vw;
+      height: auto;
     }
   }
   .nav-bar{
@@ -104,6 +142,7 @@
     justify-content: space-between;
     align-items: center;
     padding: $spacing-xs;
+    width: 100%;
     height: 10%;
     border-bottom: $border;
     span {
@@ -113,6 +152,13 @@
     .nav-toggle {
       font-size: $fs-m;
       cursor: var(--cursor-pointer);
+    }
+    &__right{
+      display: flex;
+      flex-direction: row;
+    }
+    &__mobile-menu{
+      margin-right: $spacing-xs;
     }
   }
   .nav-main{
@@ -148,6 +194,21 @@
     }
     .nav-copy{
       margin-top: $spacing-m;
+    }
+  }
+  @include mobile {
+    .nav-bar {
+      height: 52px;
+    }
+    .nav-main {
+      border-bottom: $border;
+    }
+    .nav-routes {
+      display: flex;
+      flex-direction: row;
+    }
+    a { 
+      margin-right: $spacing-xs;
     }
   }
 

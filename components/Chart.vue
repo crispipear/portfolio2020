@@ -1,6 +1,6 @@
 <template>
   <div class="chart">
-    <span class="styled-text">lately been playing...</span>
+    <span class="styled-text">recent gameplay time spent..</span>
     <div
       class="chart-item" 
       v-for="item in data"
