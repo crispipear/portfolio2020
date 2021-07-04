@@ -21,10 +21,12 @@
       }
     },
     mounted() {
-      setTimeout(() => {
-        this.isLoading = false;
-        document.documentElement.style.overflow = 'auto';
-      }, 1500)
+      this.$nextTick(() => {
+        setTimeout(() => {
+          this.isLoading = false;
+          document.documentElement.style.overflow = 'auto';
+        }, 1000)
+      })
     }
   }
 </script>
