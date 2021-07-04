@@ -1,11 +1,10 @@
 $priFont: 'Inter', 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont,'Roboto', 'Oxygen',
 'Fira Sans', 'Droid Sans', sans-serif;
 $secFont: 'Lexend Mega', 'Montserrat', 'Georgia', 'Times New Roman';
-$content-width: 85%;
-$width-nav: 12%;
-$width-main: 88%;
-$width-nav__tablet: 12%;
-$width-main__tablet: 80%;
+$width-nav: 12vw;
+$width-main: 88vw;
+$width-nav__tablet: 16vw;
+$width-main__tablet: 84vw;
 
 
 html {
