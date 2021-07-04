@@ -15,6 +15,7 @@ body{
   *{
     cursor: var(--cursor-default);
   }
+  overflow: hidden;
 }
 
 .page-enter-active,

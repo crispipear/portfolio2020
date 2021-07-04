@@ -16,28 +16,15 @@
 </style>
 <script>
   export default {
-    data: () => ({
-      loading: true
-    }),
+    props: {
+      isLoading: Boolean
+    },
     computed: {
       style () {
         return {
-          opacity: this.loading ? 1 : 0
+          opacity: this.isLoading ? 1 : 0
         }
       }
     },
-    methods: {
-      start() {
-        this.loading = true
-      },
-      finish() {
-        this.loading = false
-      }
-    },
-    mounted() {
-      setTimeout(() => {
-        this.finish();
-      }, 1500)
-    }
   }
 </script>

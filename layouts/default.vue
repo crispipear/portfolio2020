@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LoadingScreen />
+    <LoadingScreen :isLoading="isLoading"/>
     <Nav />
     <Nuxt />
   </div>
@@ -8,12 +8,23 @@
 <script>
   export default {
     name: 'default',
+    data() {
+      return {
+        isLoading: true
+      }
+    },
     head() {
       return {
         bodyAttrs: {
           class: 'default-layout',
         }
       }
+    },
+    mounted() {
+      setTimeout(() => {
+        this.isLoading = false;
+        document.documentElement.style.overflow = 'auto';
+      }, 1500)
     }
   }
 </script>
