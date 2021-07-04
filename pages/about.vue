@@ -25,7 +25,7 @@
         </WindowCluster>
       </div>
     </div>
-    <Header>experience</Header>
+    <Header withIcon>experience</Header>
     <WindowCluster colTemplate="1fr 1fr 1fr">
       <Window class="exp-item" v-for="(exp, index) in data.experience" :topBarText="`work_exp_${index+1}.docx`"
         :key="exp.org">
@@ -40,7 +40,7 @@
         <prismic-rich-text :field="exp.description" />
       </Window>
     </WindowCluster>
-    <Header>what_I_have_worked_with</Header>
+    <Header withIcon>what_I_have_worked_with</Header>
     <WindowCluster colTemplate="1fr 1fr">
       <Window topBarText="programming.docx" class="skill-item">
         <div class="skill-text tag" v-for="l in data.languages.split(', ')" :key="l">{{l}}</div>

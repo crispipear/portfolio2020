@@ -1,5 +1,5 @@
 <template>
-  <section class="main" v-if="introData">
+  <div v-if="introData">
     <div id="hero_img_b" :class="hidden ? 'hero-img' :'hero-img hero-img-show-b'">
       <img src="/hero.png" id="hero_img_bLeft" />
       <img src="/hero.png" id="hero_img_bRight" />
@@ -15,11 +15,7 @@
       </button>
       <prismic-rich-text class="hero-intro__content" :field="introData.content_primary" />
     </Window>
-    <Header>featured</Header>
-    <CaseStudies />
-    <!-- <Header>more projects</Header> -->
-    <!-- <Projects /> -->
-  </section>
+  </div>
 </template>
 <script>
 export default {
