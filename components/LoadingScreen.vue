@@ -9,7 +9,7 @@
     width: 100vw;
     height: 100vh;
     background: black;
-    position: fixed;
+    position: fixed!important;
     transition: opacity 0.4s;
     pointer-events: none;
   }
