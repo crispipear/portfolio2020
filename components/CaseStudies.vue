@@ -50,7 +50,6 @@ export default {
       }
       @include mobile {
         column-count: 1;
-        column-count: 0;
       }
     }
   }
