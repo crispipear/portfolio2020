@@ -2,7 +2,8 @@ export const state = () => ({
   caseStudies: [],
   projects: [],
   intro: {},
-  about: {}
+  about: {},
+  isDoneFetching: false
 })
 
 export const mutations = {
@@ -17,10 +18,13 @@ export const mutations = {
   },
   SET_ABOUT_CONTENT(state, data){
     state.about = data
+  },
+  SET_IS_DONE_FETCHING(state, data){
+    state.isDoneFetching = data
   }
 }
 export const actions = {
-  async nuxtServerInit({
+  async nuxtClientInit({
     commit
   }, app) {
     const projectsDoc = await app.$prismic.api.query(
@@ -43,5 +47,7 @@ export const actions = {
     })));
     commit('SET_INTRO_CONTENT', introDoc.data);
     commit('SET_ABOUT_CONTENT', aboutDoc.data);
+    commit('SET_IS_DONE_FETCHING', true);
+    console.log('is done fetching')
   }
 }
