@@ -43,5 +43,6 @@ export default {
     splitChunks: {
       layouts: true
     }
-  }
+  },
+  plugins: [{ src: '~/plugins/nuxt-client-init.js', ssr: false }]
 }

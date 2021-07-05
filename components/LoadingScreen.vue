@@ -1,5 +1,5 @@
 <template>
-  <BackgroundGradient class="loading-screen" :style="style"/>
+  <div class="loading-screen" :style="`opacity: ${removeLoadScreen ? 0 : 1}`"/>
 </template>
 <style lang="scss" scoped>
   .loading-screen {
@@ -8,23 +8,17 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: black;
+    background: #fdfdfd;
     position: fixed!important;
     transition: opacity 0.4s;
     pointer-events: none;
+    opacity: 1;
   }
 </style>
 <script>
   export default {
     props: {
-      isLoading: Boolean
-    },
-    computed: {
-      style () {
-        return {
-          opacity: this.isLoading ? 1 : 0
-        }
-      }
-    },
+      removeLoadScreen: Boolean
+    }
   }
 </script>
