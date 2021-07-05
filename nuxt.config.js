@@ -2,6 +2,7 @@ import CONFIG from './site-config';
 export default {
   mode: 'universal',
   target: 'static',
+  ssr: false,
   htmlAttrs: {
     lang: 'en'
   },
