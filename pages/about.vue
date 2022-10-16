@@ -4,7 +4,6 @@
       <Window topBarText="info.docx" alignTop width="50">
         <prismic-rich-text v-if="!funFacts" :field="data.intro_text" class="text-body" />
         <prismic-rich-text v-if="funFacts" :field="data.intro_facts" />
-        <Chart :data="data.games" v-if="funFacts"/>
       </Window>
       <div class="about-info__other">
         <Window topBarText="info_controlls.exe">
@@ -16,10 +15,7 @@
           </button>
         </Window>
         <WindowCluster colTemplate="1fr 1fr">
-          <Window class="about-img" topBarText="me.jpg">
-            <img src="/me.jpg" alt="picture" />
-          </Window>
-           <Window class="about-img" topBarText="me_again.jpg">
+           <Window class="about-img" topBarText="hallo_again.jpg">
             <img src="/hero.png" alt="picture" />
           </Window>
         </WindowCluster>
@@ -80,7 +76,6 @@ export default {
       @extend .link-hover;
     }
     .about-info {
-      min-height: 85vh;
       display: flex;
       flex-direction: row;
       > .window:first-of-type {

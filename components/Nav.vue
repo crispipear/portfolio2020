@@ -31,6 +31,12 @@
             about
           </nuxt-link>
         </div>
+        <div class="nav-route-item">
+          <nuxt-link data-text="games" to="/games">
+            <div class="icon-folder"/>
+            games
+          </nuxt-link>
+        </div>
       </div>
       <div class="nav-links">
         <a 
@@ -177,8 +183,6 @@
       font-family: $secFont;
       display: inline-flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
     }
     .nav-route-item{
       margin-bottom: $spacing-s;
