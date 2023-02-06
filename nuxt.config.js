@@ -29,7 +29,9 @@ export default {
   ],
   prismic: {
     endpoint: process.env.NUXT_ENV_PRISMIC_ENDPOINT,
-    apiOptions: { accessToken: process.env.NUXT_ENV_PRISMIC_TOKEN },
+    apiOptions: {
+      accessToken: process.env.NUXT_ENV_PRISMIC_TOKEN
+    },
     preview: false
   },
   styleResources: {

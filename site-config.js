@@ -1,6 +1,6 @@
 export default {
     siteTitle: "Su Li :: UX Engineer",
     siteUrl: "https://lisuying.com/",
-    description: "I'm an ux engineer specialized in front end development and ux design based in Seattle. Focused on creating solutions for problems where user experience, visual aesthetics and technology collide.",
+    description: "Seattle-based ux engineer specializing in front end development and ux design with 5+ years of experience of building and delivering interactive user experiences on web and mobile.",
     metaImageUrl: "https://lisuying.com/meta.jpg"
 }

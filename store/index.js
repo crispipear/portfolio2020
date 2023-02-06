@@ -3,6 +3,7 @@ export const state = () => ({
   projects: [],
   intro: {},
   about: {},
+  games: {},
   isDoneFetching: false
 })
 
@@ -18,6 +19,9 @@ export const mutations = {
   },
   SET_ABOUT_CONTENT(state, data){
     state.about = data
+  },
+  SET_GAMES_CONTENT(state, data){
+    state.games = data
   },
   SET_IS_DONE_FETCHING(state, data){
     state.isDoneFetching = data
@@ -39,6 +43,7 @@ export const actions = {
     );
     const introDoc = await app.$prismic.api.getSingle('intro');
     const aboutDoc = await app.$prismic.api.getSingle('about');
+    const gamesDoc = await app.$prismic.api.getSingle('games');
 
     commit('SET_PROJECTS', projectsDoc.results.map(item => item.data));
     commit('SET_CASE_STUDIES', csDoc.results.map(item => ({
@@ -47,7 +52,7 @@ export const actions = {
     })));
     commit('SET_INTRO_CONTENT', introDoc.data);
     commit('SET_ABOUT_CONTENT', aboutDoc.data);
+    commit('SET_GAMES_CONTENT', gamesDoc.data);
     commit('SET_IS_DONE_FETCHING', true);
-    console.log('is done fetching')
   }
 }

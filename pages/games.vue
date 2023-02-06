@@ -4,13 +4,14 @@
       <prismic-rich-text :field="games_intro" class="text"/>
     </Window>
     <div class="divider" />
-    <Window :topBarText="`~/games/${selected}`" width="100">
+    <Window :topBarText="`~/games/${selectedGameName}`" width="100">
       <div class="games-container">
         <div
           class="game-item"
-          v-for="game in games"
+          v-for="(game, index) in games"
+          v-bind:class="{ selected: index === selectedIndex }"
           :key="game.name"
-          @click="setSelectedGame(game.name)"
+          @click="setSelectedGame(index)"
         >
           <prismic-image 
             :field="game.icon"
@@ -25,14 +26,16 @@ export default {
   transition (to, from) {},
   data() {
     return {
-      selected: '',
-      games: this.$store.state.about.games,
-      games_intro: this.$store.state.about.games_intro
+      selectedIndex: 0,
+      selectedGameName: '',
+      games: this.$store.state.games.games,
+      games_intro: this.$store.state.games.games_intro
     }
   },
   methods: {
-    setSelectedGame: function (game) {
-      this.selected = game;
+    setSelectedGame: function (index) {
+      this.selectedIndex = index;
+      this.selectedGameName = this.games[index].name;
     }
   }
 }
@@ -41,7 +44,7 @@ export default {
   .games-container {
     display: grid;
     grid-template-columns: repeat(8, 1fr)!important;
-    column-gap: $spacing-xl;
+    column-gap: $spacing-l;
     row-gap: $spacing-l;
     @include tablet {
       grid-template-columns: repeat(6, 1fr)!important;
@@ -58,10 +61,11 @@ export default {
     font-size: $fs-xxs;
     display: flex;
     flex-direction: column;
-    transition: transform 0.12s;
-      &:hover{
-        transform: translateY(-4px);
-      }
+    outline: 0px;
+    padding: $spacing-xxs;
+    &:hover, &.selected{
+      outline: 2px solid var(--border-color);
+    }
     *{
       cursor: var(--cursor-pointer);
     }
