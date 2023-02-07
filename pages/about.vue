@@ -1,7 +1,7 @@
 <template>
   <section class="about">
     <div class="about-info">
-      <Window topBarText="info.docx" alignTop width="50">
+      <Window topBarText="info.docx" alignTop width="80">
         <prismic-rich-text v-if="!funFacts" :field="data.intro_text" class="text-body" />
         <prismic-rich-text v-if="funFacts" :field="data.intro_facts" />
       </Window>
@@ -21,7 +21,7 @@
         </WindowCluster>
       </div>
     </div>
-    <Header withIcon>experience</Header>
+    <Header withIcon>work_experience</Header>
     <WindowCluster colTemplate="1fr 1fr 1fr">
       <Window class="exp-item" v-for="(exp, index) in data.experience" :topBarText="`work_exp_${index+1}.docx`"
         :key="exp.org">
@@ -72,11 +72,12 @@ export default {
 </script>
 <style lang="scss" scoped>
   .about {
-    /deep/ a {
+    ::v-deep a {
       @extend .link-hover;
     }
     .about-info {
       display: flex;
+      min-height: 50vh;
       flex-direction: row;
       > .window:first-of-type {
         margin-right: calc(100vw*0.02);
@@ -100,8 +101,11 @@ export default {
         }
       }
     }
-    .exp-item /deep/ p, .exp-item-time{
+    .exp-item ::v-deep p, .exp-item-time{
         font-size: $fs-xxs;
+    }
+    .skill-item, .exp-item {
+      height: 100%;
     }
     .window button{
       &:first-of-type {
@@ -110,7 +114,7 @@ export default {
     }
     .exp-item{
       width: 100%;
-      /deep/ .window__content {
+      ::v-deep .window__content {
         flex-direction: column;
         display: flex;
       }

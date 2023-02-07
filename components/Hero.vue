@@ -24,10 +24,10 @@ export default {
 </script>
 <style lang="scss" scoped>
   .hero-intro__content {
-    /deep/ a {
+    ::v-deep a {
       @extend .link-hover;
     }
-    /deep/ h2{
+    ::v-deep h2{
       font-size: $fs-m;
       @extend .text-body;
       @include mobile {

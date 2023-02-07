@@ -53,20 +53,20 @@ export default {
       margin-left: $spacing-xs;
     }
     .case-studies__image {
-      height: 36vh;
+      max-height: 40vh;
       object-fit: cover;
     }
     .case-studies__container{
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       column-gap: $spacing-xl;
+      row-gap: $spacing-xl;
       .window {
         height: auto;
-        margin-bottom: $spacing-xl;
-        /deep/ h2 {
+        ::v-deep h2 {
           margin: $spacing-xxs 0;
         }
-        /deep/ h3 {
+        ::v-deep h3 {
           font-size: $fs-xs;
           font-weight: $fw-r;
           margin-bottom: $spacing-xs;

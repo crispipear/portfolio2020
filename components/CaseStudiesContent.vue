@@ -57,10 +57,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 	.cs{
-		/deep/ &__wrapper{
+		::v-deep &__wrapper{
 			padding: $spacing-xl 0;
     }
-    /deep/ &__slice{
+    ::v-deep &__slice{
       padding: $spacing-xl 0;
       .header{
         margin: $spacing-m 0 $spacing-xs 0;

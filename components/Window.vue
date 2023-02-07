@@ -38,7 +38,6 @@ export default {
     height: fit-content;
   }
   .window__content{
-    height: 100%;
     padding: $spacing-m;
   }
   .window__top-bar {
