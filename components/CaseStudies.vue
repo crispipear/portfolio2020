@@ -3,17 +3,33 @@
    <div class="case-studies" v-if="data">
     <div class="case-studies__container">
         <Window
-          v-for="item in data"
+          v-for="(item, index) in data"
           :key="item.name"
-          topBarText="project.docx"
+          :topBarText="`project_${index+1}.docx`"
         >
-          <prismic-image :field="item.cover"/>
+          <prismic-image
+            class="case-studies__image"
+            :field="item.cover"
+          />
           <div class="case-study__info">
               <h2 class="styled-text">{{item.name}}</h2>
               <h3>{{item.context}}</h3>
-              <nuxt-link class="button" :to="'/casestudies/' + item.ref">
+              <nuxt-link
+                v-if="item.is_case_study"
+                class="button"
+                :to="'/casestudies/' + item.ref"
+              >
                 read more
               </nuxt-link>
+              <prismic-link
+                v-if="!item.is_case_study || item.website.url"
+                class="button visit"
+                v-bind:class="{ spaced: item.is_case_study }"
+                target="_blank"
+                :field="item.website"
+              >
+                visit site &#8599;
+              </prismic-link>
           </div>
         </Window>
       </div>
@@ -23,7 +39,7 @@
 export default {
   data() {
     return {
-      data: this.$store.state.caseStudies,
+      data: this.$store.state.caseStudies
     }
   }
 }
@@ -33,8 +49,16 @@ export default {
     img {
       width: 100%;
     }
+    .button.spaced {
+      margin-left: $spacing-xs;
+    }
+    .case-studies__image {
+      height: 36vh;
+      object-fit: cover;
+    }
     .case-studies__container{
-      column-count: 2;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       column-gap: $spacing-xl;
       .window {
         height: auto;
@@ -49,7 +73,15 @@ export default {
         }
       }
       @include mobile {
-        column-count: 1;
+        grid-template-columns: repeat(1, 1fr);
+        .button {
+          text-align: center;
+          display: block;
+          &.visit {
+            margin-top: $spacing-xs;
+            margin-left: 0;
+          }
+        }
       }
     }
   }

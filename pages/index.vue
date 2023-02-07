@@ -9,10 +9,8 @@
       <img src="/hero.png" id="hero_img_tRight" />
     </div>
     <Hero :toggleImages="toggleImages" :hidden="hidden"/>
-    <Header withIcon>featured</Header>
+    <Header withIcon>work</Header>
     <CaseStudies />
-    <!-- <Header>more projects</Header> -->
-    <!-- <Projects /> -->
   </section>
 </template>
 <script>
