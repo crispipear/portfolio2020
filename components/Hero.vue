@@ -1,11 +1,16 @@
 <template>
-  <div v-if="introData">
+  <div>
     <Window topBarText="hello.exe">
       <button @click="toggleImages()" class="hero-button">
         <span>✨(ㆆ◡ㆆ)✌️</span>
         <span class="styled-title">{{ hidden ? "ni hao!" : "bye bye!" }}</span>
       </button>
-      <prismic-rich-text class="hero-intro__content" :field="introData.content_primary" />
+      <prismic-rich-text v-if="introData"
+        class="hero-intro__content" :field="introData.content_primary"
+      />
+      <div v-else>
+        Hi, I'm Su. I'm a UX Engineer based in Seattle. I design and develop solutions for problems where user experience, visual aesthetics and technology collide. Currently, I'm a Front End Engineer at IMDb working on video experiences.
+      </div>
     </Window>
   </div>
 </template>

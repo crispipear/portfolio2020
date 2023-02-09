@@ -40,7 +40,7 @@
   }
 </style>
 <template>
-  <section class="case-studies cs" v-if="cs_data">
+  <section class="case-studies cs main" v-if="cs_data">
       <CaseStudiesHero
         v-bind="cs_data"
       />

@@ -1,8 +1,8 @@
 <template>
   <div>
     <LoadingScreen :removeLoadScreen="removeLoadScreen"/>
-    <Nav v-if="!isLoading"/>
-    <Nuxt v-if="!isLoading"/>
+    <Nav />
+    <Nuxt />
   </div>
 </template>
 <script>
@@ -10,7 +10,6 @@
     name: 'default',
     data() {
       return {
-        isLoading: true,
         removeLoadScreen: false,
       }
     },
@@ -28,18 +27,17 @@
     },
     methods: {
       checkIsLoading: function() {
-        if (this.$store.state.isDoneFetching){
-          setTimeout(() => {
-            this.isLoading = false;
-            document.documentElement.style.overflow = 'auto';
-          }, 100);
+        if (
+          this.$store.state.isDoneFetching
+          && this.$store.state.caseStudies.length
+        ){
+          document.documentElement.style.overflow = 'auto';
+          document.getElementsByClassName('main')[0].style.opacity = 1;
           setTimeout(() => {
             this.removeLoadScreen = true;
-          }, 1000)
+          }, 200);
         } else {
-          setTimeout(() => {
-            this.checkIsLoading();
-          }, 100)
+          this.checkIsLoading();
         }
       }
     }

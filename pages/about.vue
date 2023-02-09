@@ -1,5 +1,5 @@
 <template>
-  <section class="about">
+  <section class="about main">
     <div class="about-info">
       <Window topBarText="info.docx" alignTop width="80">
         <prismic-rich-text v-if="!funFacts" :field="data.intro_text" class="text-body" />

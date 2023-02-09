@@ -49,7 +49,7 @@
           {{ item.link_name }} &#8599;
         </a>
         <div class="nav-copy">
-          <span class="styled-text">&copy; Su Li 2021</span>
+          <span class="styled-text">&copy; Su Li {{ currentYear }} </span>
         </div>
       </div>
     </div>
@@ -63,7 +63,8 @@
         isMobileViewPort: false,
         currentTheme: 'light',
         currentRoute: '',
-        links: Array
+        links: Array,
+        currentYear: null,
       }
     },
     created() {
@@ -83,6 +84,7 @@
         window.addEventListener('resize', this.setMobileViewPort);
       });
       this.updateRouteName();
+      this.currentYear = new Date().getFullYear();
     },
     beforeUnmount() { 
       window.removeEventListener('resize', this.setMobileViewPort); 

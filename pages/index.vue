@@ -8,8 +8,10 @@
       <img src="/hero.png" id="hero_img_tLeft" />
       <img src="/hero.png" id="hero_img_tRight" />
     </div>
-    <Hero :toggleImages="toggleImages" :hidden="hidden"/>
-    <Header withIcon>work</Header>
+    <Hero
+      :toggleImages="toggleImages"
+      :hidden="hidden"
+    />
     <CaseStudies />
   </section>
 </template>

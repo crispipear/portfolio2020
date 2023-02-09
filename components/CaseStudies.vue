@@ -34,6 +34,9 @@
         </Window>
       </div>
   </div>
+  <div v-else>
+    Working hard to display my work...
+  </div>
 </template>
 <script>
 export default {
@@ -46,6 +49,7 @@ export default {
 </script>
 <style lang="scss" scoped>
   .case-studies{
+    margin-top: $spacing-xl;
     img {
       width: 100%;
     }
